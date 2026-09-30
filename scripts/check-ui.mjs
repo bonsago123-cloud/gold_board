@@ -1,0 +1,33 @@
+// Optional DOM behavior test using synthetic responses; not browser visual QA.
+// Usage: node scripts/check-ui.mjs /absolute/path/to/jsdom/lib/api.js
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
+import {normalize,success,emptyState} from '../public/core.mjs';
+if(!process.argv[2])throw new Error('Pass the installed jsdom module path.');
+const {JSDOM}=await import(pathToFileURL(process.argv[2]));
+const dom=new JSDOM(await readFile('public/index.html','utf8'),{url:'https://example.test'});
+globalThis.window=dom.window;globalThis.document=dom.window.document;globalThis.localStorage=dom.window.localStorage;
+const now=new Date().toISOString(),prev=new Date(Date.parse(now)-86400000).toISOString();
+const make=(price,t)=>normalize({symbol:'XAU',currency:'USD',price,updatedAt:t},t);
+let sample=success(success(emptyState(),make(3000,prev)),make(3030,now));sample.evidence=sample.daily;sample.mode='live';
+let failNetwork=false;
+globalThis.fetch=async()=>{if(failNetwork)throw new TypeError('Synthetic disconnect');return new Response(JSON.stringify(sample));};
+let tick;
+globalThis.setInterval=fn=>{tick=fn;return 0;};
+await import('../public/app.mjs');
+await new Promise(r=>setImmediate(r));
+const $=id=>document.getElementById(id);
+assert.equal($('price').textContent,'3,030.00');assert.equal($('daily-rows').children.length,2);assert.ok($('two-days').textContent.includes('2/2'));
+assert.ok($('change').textContent.includes('+30.000000'));
+$('tab-lab').click();assert.equal($('lab').hidden,false);assert.equal($('export').disabled,true);
+$('suite').click();
+await new Promise(r=>setTimeout(r,250));
+assert.equal($('suite-result').children.length,5);assert.ok([...$('suite-result').children].every(x=>x.textContent.startsWith('통과')));
+assert.equal($('daily-rows').children.length,2);assert.equal($('price').textContent,'3,040.00');
+$('tab-live').click();assert.equal($('price').textContent,'3,030.00');
+failNetwork=true;$('refresh').click();await new Promise(r=>setImmediate(r));
+assert.equal($('price').textContent,'3,030.00');assert.ok($('status').textContent.includes('stale'));assert.equal($('export').disabled,true);
+tick();
+console.log('DOM PASS: live rendering, exact fields, daily rows, comparison, 5-failure suite, lab isolation, offline price retention and export guard.');
+dom.window.close();

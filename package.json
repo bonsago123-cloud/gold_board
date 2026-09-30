@@ -1,0 +1,14 @@
+{
+  "name": "gold-information-board",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "24.x" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node --env-file-if-exists=.env.local scripts/dev.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "verify:assets": "node scripts/verify-assets.mjs",
+    "capture": "node scripts/capture.mjs"
+  }
+}
