@@ -1,9 +1,11 @@
 {
   "name": "gold-information-board",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": "24.x" },
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node --env-file-if-exists=.env.local scripts/dev.mjs",

@@ -1,9 +1,12 @@
+import { initMarket } from './market.mjs';
+import { nextPollTime, canPoll } from './poll-policy.mjs';
 import { ERRORS, emptyState, failure, withAge, comparison, formatValue, SOURCE_URL } from './core.mjs';
 import { FIXTURES, replay } from './fixtures.mjs';
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const time=iso=>iso?new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).format(new Date(iso)):'—';
 let live=emptyState(),lab=emptyState(),mode='live',busy=false,selected=null,cached=false,labBusy=false;
+let autoEnabled=true,nextPollAt=Infinity,pollFailures=0;
 function current(){return mode==='lab'?lab:withAge(live);}
 function storeCache(){try{localStorage.setItem('gold-note-last-snapshot-v1',JSON.stringify(live));}catch{}}
 function readCache(){try{const s=JSON.parse(localStorage.getItem('gold-note-last-snapshot-v1'));if(s?.last_good&&Array.isArray(s.daily)){live=failure(s,'offline');cached=true;}}catch{}}
@@ -11,6 +14,7 @@ function deltaText(rows){const c=comparison(rows);if(!c)return '비교할 기록
 function recordMatch(r){return r.raw?.price===r.value&&r.raw?.updatedAt===r.source_at&&r.raw?.currency==='USD'&&r.source_url===SOURCE_URL;}
 function render(){
   const s=current(),r=s.last_good;
+  $('market').hidden=mode==='lab';
   $('lab').hidden=mode!=='lab'; $('mode-label').textContent=mode==='lab'?'합성 시험값 · 실제 가격 아님':'실제 원천 · XAU';
   $('tab-live').classList.toggle('active',mode==='live');$('tab-lab').classList.toggle('active',mode==='lab');
   $('tab-live').setAttribute('aria-pressed',String(mode==='live'));$('tab-lab').setAttribute('aria-pressed',String(mode==='lab'));
@@ -44,6 +48,8 @@ function updateButtons(){
   const wait=Math.max(0,Math.ceil((Date.parse(live.next_attempt_at??'')-Date.now())/1000))||0;
   $('refresh').disabled=busy||wait>0; $('refresh').textContent=busy?'조회 중…':wait>0?`${wait}초 후 재조회`:'실제 금시세 조회';
   $('retry').disabled=mode==='lab'?labBusy:(busy||wait>0);
+  const remaining=Math.max(0,Math.ceil((nextPollAt-Date.now())/1000));
+  $('auto-status').textContent=!autoEnabled?'자동 갱신 꺼짐':mode==='lab'?'합성 시험 중 자동 조회 일시정지':document.hidden?'다른 탭을 보는 동안 일시정지':busy?'원천 조회 중…':Number.isFinite(remaining)?`${remaining}초 후 자동 조회 · 30초 이상 간격`:'자동 조회 준비 중';
 }
 async function request(refresh=false){
   if(busy)return;busy=true;updateButtons();
@@ -54,8 +60,9 @@ async function request(refresh=false){
     if(!Array.isArray(data.daily)||!['empty','fresh','stale','error'].includes(data.status)) throw new Error('bad server response');
     if(!res.ok&&live.last_good&&!data.last_good){live=failure(live,data.error_code??'storage_error');cached=true;}
     else {live=data;cached=false;if(res.ok)storeCache();}
-  }catch{live=failure(live,controller.signal.aborted?'timeout':'offline');cached=Boolean(live.last_good);}
-  finally{clearTimeout(timer);busy=false;render();}
+    pollFailures=res.ok&&['none','source_stale'].includes(data.error_code)?0:pollFailures+1;
+  }catch{pollFailures++;live=failure(live,controller.signal.aborted?'timeout':'offline');cached=Boolean(live.last_good);}
+  finally{clearTimeout(timer);busy=false;nextPollAt=nextPollTime(Date.now(),live.next_attempt_at,pollFailures);render();}
 }
 async function runFixture(id){
   if(labBusy)return;labBusy=true;updateButtons();
@@ -84,12 +91,14 @@ $('suite').onclick=async()=>{
 };
 $('export').onclick=()=>{
   const rows=live.evidence??[],c=comparison(rows);
-  const payload={title:'국제 금시세 실제 이틀 증빙',timezone:'Asia/Seoul',exported_at:new Date().toISOString(),official_package_verified:false,
+  const payload={title:'국제 금시세 실제 이틀 증빙',timezone:'Asia/Seoul',exported_at:new Date().toISOString(),official_package_report:"/official-verification.json",
     complete_real_two_dates:rows.length===2&&new Set(rows.map(r=>r.date_kst)).size===2,records:rows,
     comparison:c?{from:c.from.date_kst,to:c.to.date_kst,label:c.consecutive?'어제 대비':'이전 기록 대비',delta:c.delta.toFixed(6),percent:c.percent.toFixed(4),rule:'(later - earlier), (later - earlier) / earlier * 100'}:null};
   const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));
   const a=document.createElement('a');a.href=url;a.download='gold-real-evidence.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
-readCache();render();request(false);
-setInterval(()=>{updateButtons();if(mode==='live'&&!busy){const aged=withAge(live);if(aged.status!==live.status){live=aged;render();}}},1000);
+$('auto-refresh').onchange=()=>{autoEnabled=$('auto-refresh').checked;updateButtons();};
+readCache();render();request(false).then(()=>{if(autoEnabled&&mode==='live'&&!document.hidden&&live.configured!==false&&(!live.last_good||Date.now()-Date.parse(live.last_good.fetched_at)>=30000)){request(true);}});
+initMarket();
+setInterval(()=>{updateButtons();if(canPoll({enabled:autoEnabled,hidden:document.hidden,mode,busy,now:Date.now(),due:nextPollAt})){request(true);}if(mode==='live'&&!busy){const aged=withAge(live);if(aged.status!==live.status){live=aged;render();}}},1000);
 window.addEventListener('offline',()=>{live=failure(live,'offline');cached=Boolean(live.last_good);render();});
