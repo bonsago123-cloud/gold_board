@@ -3,7 +3,7 @@ export default async function handler(req,res){
   res.setHeader('Content-Type','application/json; charset=utf-8');res.setHeader('Cache-Control','no-store');
   if(req.method!=='GET'){res.setHeader('Allow','GET');return res.status(405).json({error:'method_not_allowed'});}
   const symbol=new URL(req.url,'https://localhost').searchParams.get('symbol');
-  if(!Object.hasOwn(METALS,symbol))return res.status(400).json({error:'unsupported_symbol'});
+  if(!['XAU','XAG'].includes(symbol))return res.status(400).json({error:'unsupported_symbol'});
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
   try{
     const response=await fetch(`https://api.gold-api.com/price/${symbol}`,{signal:controller.signal,headers:{Accept:'application/json'},redirect:'error'});
