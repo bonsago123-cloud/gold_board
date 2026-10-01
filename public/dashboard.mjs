@@ -1,4 +1,5 @@
 import {METALS} from './metals.mjs';
+import {requestSilver} from './silver-client.mjs';
 import {initMarket} from './market.mjs';
 import {emptyState,failure,withAge,ERRORS,formatValue,comparison} from './core.mjs';
 import {nextPollTime} from './poll-policy.mjs';
@@ -41,6 +42,7 @@ async function request(symbol,initial=false){
  const s=states[symbol];if(s.busy||(!initial&&Date.now()<s.due))return;
  if(METALS[symbol].type==='widget'){chart.reload();s.due=Date.now()+30000;s.reloadedAt=new Date().toISOString();controls();return;}
  s.busy=true;controls();
+ if(symbol==='XAG'){try{Object.assign(s,await requestSilver(s));}finally{s.busy=false;if(asset===symbol)render();}return;}
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),symbol==='XAU'?35000:12000);
  try{
   const response=await fetch(symbol==='XAU'?'/api/board':`/api/metals?symbol=${symbol}`,{method:symbol==='XAU'&&!initial?'POST':'GET',cache:'no-store',signal:controller.signal});const data=await response.json();
@@ -51,10 +53,6 @@ async function request(symbol,initial=false){
    s.due=nextPollTime(Date.now(),s.next_attempt_at,s.failures);
    if(initial&&s.configured!==false&&s.error_code==='none'&&(!s.last_good||Date.now()-Date.parse(s.last_good.fetched_at)>=30000))s.due=0;
    if(response.ok)try{localStorage.setItem('gold-note-last-snapshot-v1',JSON.stringify(s));}catch{}
-  }else{
-   if(!response.ok){s.due=Date.now()+Math.max(60,Math.min(3600,Number(data.retry_after)||60))*1000;throw new Error(data.error);}
-   const q=data.quote;if(!q||q.symbol!==symbol||typeof q.value!=='number'||!Number.isFinite(q.value)||q.value<=0||!Number.isFinite(Date.parse(q.source_at))||!Number.isFinite(Date.parse(q.fetched_at)))throw new Error('schema_changed');
-   s.last_good=q;s.status='fresh';s.error_code='none';s.due=Date.now()+30000;
   }
  }catch(error){Object.assign(s,failure(s,controller.signal.aborted?'timeout':Object.hasOwn(ERRORS,error.message)?error.message:'offline'));s.due=Math.max(s.due,Date.now()+60000);}
  finally{clearTimeout(timer);s.busy=false;if(symbol===asset)render();}

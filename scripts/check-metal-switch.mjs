@@ -4,7 +4,7 @@ const now=new Date().toISOString(),gold=success(emptyState(),normalize({symbol:'
 let resolveSilver;const calls=[];globalThis.fetch=async url=>{calls.push(url);if(url==='/api/board')return Response.json(gold);return new Promise(resolve=>{resolveSilver=resolve;});};let tick;globalThis.setInterval=fn=>{tick=fn;return 0;};let clock=Date.now();Date.now=()=>clock;
 const flush=()=>new Promise(r=>setImmediate(r)), $=id=>document.getElementById(id),select=s=>document.querySelector(`[data-symbol="${s}"]`).click();
 await import('../public/dashboard.mjs');await flush();assert.equal(document.querySelector('#proof'),null);assert.equal(document.querySelector('[data-symbol="XPT"]'),null);
-select('XAG');select('XAU');resolveSilver(Response.json({quote:{symbol:'XAG',value:60,source_at:now,fetched_at:now}}));await flush();assert.equal($('price').textContent,'4,000.00');select('XAG');assert.equal($('price').textContent,'60.00');
+select('XAG');select('XAU');resolveSilver(Response.json({quote:{symbol:'XAG',value:60,source_at:now,fetched_at:now,unit:'USD / 트로이온스',source_url:'https://api.gold-api.com/price/XAG',timezone:'Asia/Seoul'}}));await flush();assert.equal($('price').textContent,'4,000.00');select('XAG');assert.equal($('price').textContent,'60.00');
 for(const [symbol,chart] of [['WTI','OANDA:WTICOUSD'],['WHEAT','OANDA:WHEATUSD']]){select(symbol);assert.equal($('dashboard').hidden,true);assert.equal($('futures-panel').hidden,false);assert.equal(JSON.parse($('futures-quote').querySelector('script').textContent).symbol,chart);assert.equal(JSON.parse($('chart-host').querySelector('script').textContent).symbol,chart);}
 assert.ok(!calls.some(u=>/symbol=(WTI|WHEAT)/.test(u)));
 assert.equal(document.querySelector('[data-symbol="RHENIUM"]'),null);

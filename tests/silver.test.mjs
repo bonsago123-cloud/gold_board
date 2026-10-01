@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {checkSilverFailures} from '../public/silver-checks.mjs';
+import {requestSilver} from '../public/silver-client.mjs';
+import {normalizeMetal} from '../public/metals.mjs';
+import {emptyState} from '../public/core.mjs';
+test('Silver production client keeps last quote for five synthetic failures and recovers without daily records',async()=>{const result=await checkSilverFailures();assert.equal(result.synthetic,true);assert.equal(result.results.length,5);assert.ok(result.results.every(r=>r.passed));});
+test('Silver validates context, marks old source stale and respects retry delay',async()=>{const now=Date.now(),at=new Date(now).toISOString();const quote=normalizeMetal({symbol:'XAG',currency:'USD',price:60,updatedAt:at},'XAG',at);const run=q=>requestSilver(emptyState(),{now:()=>now,fetcher:async()=>Response.json({quote:q})});assert.equal((await run(quote)).status,'fresh');for(const delta of [{symbol:'XAU'},{unit:'USD / 배럴'},{source_url:'https://wrong.test'},{value:'60'},{source_at:'bad'},{timezone:'UTC'}])assert.equal((await run({...quote,...delta})).error_code,'schema_changed');assert.equal((await run({...quote,source_at:new Date(now-1000000).toISOString()})).error_code,'source_stale');const limited=await requestSilver(emptyState(),{now:()=>now,fetcher:async()=>Response.json({error:'rate_limited',retry_after:120},{status:502})});assert.equal(limited.due,now+120000);});
