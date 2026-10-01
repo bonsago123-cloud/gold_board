@@ -3,7 +3,8 @@ import {initMarket} from './market.mjs';
 import {emptyState,failure,withAge,ERRORS,formatValue,comparison} from './core.mjs';
 import {nextPollTime} from './poll-policy.mjs';
 const $=id=>document.getElementById(id),states=Object.fromEntries(Object.keys(METALS).map(k=>[k,{...emptyState(),due:0,busy:false,failures:0}]));
-let asset='XAU',auto=true,chart;
+const requestedAsset=new URLSearchParams(location.search).get('asset');
+let asset=Object.hasOwn(METALS,requestedAsset)?requestedAsset:'XAU',auto=true,chart;
 const time=iso=>iso?new Date(iso).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'—';
 function render(){
  const state=withAge(states[asset]),q=state.last_good,meta=METALS[asset],name=meta.name,isWidget=meta.type==='widget';
@@ -61,7 +62,7 @@ async function request(symbol,initial=false){
 $('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{asset=b.dataset.symbol;render();chart.update();if(METALS[asset].type==='widget'){states[asset].due=Date.now()+30000;states[asset].reloadedAt=new Date().toISOString();controls();}else request(asset);});
 $('refresh').onclick=$('retry').onclick=()=>request(asset);$('auto-refresh').onchange=()=>{auto=$('auto-refresh').checked;controls();};
 try{const cached=JSON.parse(localStorage.getItem('gold-note-last-snapshot-v1'));if(cached?.last_good&&Array.isArray(cached.daily))Object.assign(states.XAU,failure(cached,'offline'),{busy:false,due:0});}catch{}
-render();chart=initMarket(()=>asset);request('XAU',true).then(()=>{if(auto&&!document.hidden&&asset==='XAU'&&states.XAU.due===0)request('XAU');});
+render();chart=initMarket(()=>asset);if(METALS[asset].type==='widget'){states[asset].due=Date.now()+30000;states[asset].reloadedAt=new Date().toISOString();controls();}else if(asset!=='XAU')request(asset);request('XAU',true).then(()=>{if(auto&&!document.hidden&&asset==='XAU'&&states.XAU.due===0)request('XAU');});
 const interval=setInterval(()=>{controls();if(auto&&!document.hidden)request(asset);if(withAge(states[asset]).status!==states[asset].status){Object.assign(states[asset],withAge(states[asset]));render();}},1000);
 window.addEventListener('offline',()=>{for(const s of Object.values(states))Object.assign(s,failure(s,'offline'));render();});
 window.addEventListener('pagehide',()=>clearInterval(interval),{once:true});
