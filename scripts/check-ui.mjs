@@ -13,7 +13,7 @@ const now=new Date().toISOString(),prev=new Date(Date.parse(now)-86400000).toISO
 const make=(price,t)=>normalize({symbol:'XAU',currency:'USD',price,updatedAt:t},t);
 let sample=success(success(emptyState(),make(3000,prev)),make(3030,now));sample.evidence=sample.daily;sample.mode='live';
 let failNetwork=false;
-globalThis.fetch=async()=>{if(failNetwork)throw new TypeError('Synthetic disconnect');return new Response(JSON.stringify(sample));};
+globalThis.fetch=async(url)=>{if(String(url).startsWith('/api/metals')){const symbol=new URL(url,'https://example.test').searchParams.get('symbol');return Response.json({quote:{symbol,value:symbol==='XAG'?60:3030,source_at:now,fetched_at:now}});}if(failNetwork)throw new TypeError('Synthetic disconnect');return new Response(JSON.stringify(sample));};
 let tick;
 globalThis.setInterval=fn=>{tick=fn;return 0;};
 await import('../public/app.mjs');
@@ -21,7 +21,13 @@ await new Promise(r=>setImmediate(r));
 const $=id=>document.getElementById(id);
 assert.equal($('price').textContent,'3,030.00');assert.equal($('daily-rows').children.length,2);assert.ok($('two-days').textContent.includes('2/2'));
 assert.ok($('change').textContent.includes('+30.000000'));
-assert.equal(JSON.parse($('news-host').querySelector('script').textContent).symbol,'OANDA:XAUUSD');
+assert.equal(document.querySelector('[id^="news-"]'),null);
+assert.equal($('metal-value').textContent,'$3,030');
+$('metal-select').value='XAG';$('metal-select').dispatchEvent(new dom.window.Event('change'));
+await new Promise(r=>setImmediate(r));
+assert.equal($('metal-value').textContent,'$60');assert.equal($('metal-name').textContent,'은 현재 시세 · XAG');
+assert.equal(JSON.parse($('chart-host').querySelector('script').textContent).symbol,'OANDA:XAGUSD');
+assert.equal($('price').textContent,'3,030.00');assert.equal($('daily-rows').children.length,2);
 for(const interval of ['1','5','15','60','240','D','W','M']){$('chart-interval').value=interval;$('chart-interval').dispatchEvent(new dom.window.Event('change'));assert.equal(JSON.parse($('chart-host').querySelector('script').textContent).interval,interval);}
 $('auto-refresh').checked=false;$('auto-refresh').dispatchEvent(new dom.window.Event('change'));assert.equal($('auto-status').textContent,'자동 갱신 꺼짐');
 $('tab-lab').click();assert.equal($('lab').hidden,false);assert.equal($('export').disabled,true);

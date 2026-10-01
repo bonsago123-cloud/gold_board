@@ -2,13 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {CHART_INTERVALS,chartConfig,NEWS_CONFIG} from '../public/market.mjs';
+import {CHART_INTERVALS,chartConfig} from '../public/market.mjs';
 import {canPoll,nextPollTime} from '../public/poll-policy.mjs';
 import {OFFICIAL_FILES,officialSuite} from '../public/official-checks.mjs';
 const root=new URL('../public/assets/studio-task-assets/t04-real-information-board/',import.meta.url);
 test('Chart changes real data interval and keeps XAUUSD/KST for every option',()=>{
   for(const interval of Object.keys(CHART_INTERVALS)){const config=chartConfig(interval);assert.equal(config.interval,interval);assert.equal(config.symbol,'OANDA:XAUUSD');assert.equal(config.timezone,'Asia/Seoul');assert.equal(config.allow_symbol_change,false);}
-  assert.throws(()=>chartConfig('bad'));assert.equal(NEWS_CONFIG.feedMode,'symbol');assert.equal(NEWS_CONFIG.symbol,'OANDA:XAUUSD');
+  assert.throws(()=>chartConfig('bad'));
 });
 test('Polling obeys 30 seconds, upstream Retry-After and failure backoff',()=>{
   const now=Date.now();assert.equal(nextPollTime(now,null,0),now+30000);
