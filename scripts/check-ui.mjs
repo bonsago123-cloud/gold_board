@@ -22,12 +22,16 @@ const $=id=>document.getElementById(id);
 assert.equal($('price').textContent,'3,030.00');assert.equal($('daily-rows').children.length,2);assert.ok($('two-days').textContent.includes('2/2'));
 assert.ok($('change').textContent.includes('+30.000000'));
 assert.equal(document.querySelector('[id^="news-"]'),null);
-assert.equal($('metal-value').textContent,'$3,030');
-$('metal-select').value='XAG';$('metal-select').dispatchEvent(new dom.window.Event('change'));
-await new Promise(r=>setImmediate(r));
-assert.equal($('metal-value').textContent,'$60');assert.equal($('metal-name').textContent,'은 현재 시세 · XAG');
-assert.equal(JSON.parse($('chart-host').querySelector('script').textContent).symbol,'OANDA:XAGUSD');
-assert.equal($('price').textContent,'3,030.00');assert.equal($('daily-rows').children.length,2);
+for(const [symbol,name] of [['XAG','은'],['XPT','백금'],['XPD','팔라듐']]){
+ document.querySelector(`[data-symbol="${symbol}"]`).click();await new Promise(r=>setImmediate(r));
+ assert.equal($('price').textContent,symbol==='XAG'?'60.00':'3,030.00');
+ assert.equal($('board-title').textContent,`오늘의 국제 ${name} 시세`);
+ assert.equal($('quote-source').textContent,`Gold API · ${symbol}`);
+ assert.equal(JSON.parse($('chart-host').querySelector('script').textContent).symbol,`OANDA:${symbol}USD`);
+ assert.equal($('gold-records').hidden,true);assert.equal($('export').disabled,true);
+}
+document.querySelector('[data-symbol="XAU"]').click();
+assert.equal($('price').textContent,'3,030.00');assert.equal($('gold-records').hidden,false);assert.equal($('daily-rows').children.length,2);
 for(const interval of ['1','5','15','60','240','D','W','M']){$('chart-interval').value=interval;$('chart-interval').dispatchEvent(new dom.window.Event('change'));assert.equal(JSON.parse($('chart-host').querySelector('script').textContent).interval,interval);}
 $('auto-refresh').checked=false;$('auto-refresh').dispatchEvent(new dom.window.Event('change'));assert.equal($('auto-status').textContent,'자동 갱신 꺼짐');
 $('tab-lab').click();assert.equal($('lab').hidden,false);assert.equal($('export').disabled,true);
