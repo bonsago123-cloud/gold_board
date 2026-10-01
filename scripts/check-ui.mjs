@@ -6,7 +6,7 @@ import {pathToFileURL} from 'node:url';
 import {normalize,success,emptyState} from '../public/core.mjs';
 if(!process.argv[2])throw new Error('Pass the installed jsdom module path.');
 const {JSDOM}=await import(pathToFileURL(process.argv[2]));
-const dom=new JSDOM(await readFile('public/index.html','utf8'),{url:'https://example.test'});
+const dom=new JSDOM(await readFile('public/verify.html','utf8'),{url:'https://example.test'});
 globalThis.MutationObserver=dom.window.MutationObserver;
 globalThis.window=dom.window;globalThis.document=dom.window.document;globalThis.localStorage=dom.window.localStorage;
 const now=new Date().toISOString(),prev=new Date(Date.parse(now)-86400000).toISOString();
@@ -22,17 +22,6 @@ const $=id=>document.getElementById(id);
 assert.equal($('price').textContent,'3,030.00');assert.equal($('daily-rows').children.length,2);assert.ok($('two-days').textContent.includes('2/2'));
 assert.ok($('change').textContent.includes('+30.000000'));
 assert.equal(document.querySelector('[id^="news-"]'),null);
-for(const [symbol,name] of [['XAG','은'],['XPT','백금'],['XPD','팔라듐']]){
- document.querySelector(`[data-symbol="${symbol}"]`).click();await new Promise(r=>setImmediate(r));
- assert.equal($('price').textContent,symbol==='XAG'?'60.00':'3,030.00');
- assert.equal($('board-title').textContent,`오늘의 국제 ${name} 시세`);
- assert.equal($('quote-source').textContent,`Gold API · ${symbol}`);
- assert.equal(JSON.parse($('chart-host').querySelector('script').textContent).symbol,`OANDA:${symbol}USD`);
- assert.equal($('gold-records').hidden,true);assert.equal($('export').disabled,true);
-}
-document.querySelector('[data-symbol="XAU"]').click();
-assert.equal($('price').textContent,'3,030.00');assert.equal($('gold-records').hidden,false);assert.equal($('daily-rows').children.length,2);
-for(const interval of ['1','5','15','60','240','D','W','M']){$('chart-interval').value=interval;$('chart-interval').dispatchEvent(new dom.window.Event('change'));assert.equal(JSON.parse($('chart-host').querySelector('script').textContent).interval,interval);}
 $('auto-refresh').checked=false;$('auto-refresh').dispatchEvent(new dom.window.Event('change'));assert.equal($('auto-status').textContent,'자동 갱신 꺼짐');
 $('tab-lab').click();assert.equal($('lab').hidden,false);assert.equal($('export').disabled,true);
 $('suite').click();

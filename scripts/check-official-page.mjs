@@ -1,0 +1,14 @@
+import {readFile} from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
+import assert from 'node:assert/strict';
+const {JSDOM}=await import(pathToFileURL(process.argv[2]));
+const dom=new JSDOM(await readFile('public/verify.html','utf8'),{url:'https://example.test/verify.html'});
+globalThis.document=dom.window.document;
+globalThis.fetch=async url=>new Response(await readFile('public'+url));
+await import('../public/official-lab.mjs');
+assert.match(document.getElementById('official-hash').textContent,/17\/17/);
+document.getElementById('official-suite').click();
+const rows=[...document.querySelectorAll('#official-suite-result p')];assert.equal(rows.length,6);assert.ok(rows.every(p=>p.textContent.startsWith('통과')));
+assert.equal(document.querySelectorAll('#official-rows tr').length,2);
+const ids=[...document.querySelectorAll('[id]')].map(e=>e.id);assert.equal(new Set(ids).size,ids.length);
+console.log('PASS: unified verification page IDs unique, official 17 hashes and 6 fixture sequences pass.');dom.window.close();

@@ -133,7 +133,7 @@ $('auto-refresh').onchange=()=>{autoEnabled=$('auto-refresh').checked;updateButt
 $('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>chooseAsset(b.dataset.symbol));
 $('show-gold').onclick=()=>chooseAsset('XAU');
 readCache();render();request(false).then(()=>{if(autoEnabled&&asset==='XAU'&&mode==='live'&&!document.hidden&&live.configured!==false&&(!live.last_good||Date.now()-Date.parse(live.last_good.fetched_at)>=30000)){request(true);}});
-market=initMarket(()=>asset);
+if($('chart-host'))market=initMarket(()=>asset);
 setInterval(()=>{
   updateButtons();
   const state=asset==='XAU'?live:extras[asset];
