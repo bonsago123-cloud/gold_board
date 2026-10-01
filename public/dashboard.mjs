@@ -7,12 +7,13 @@ let asset='XAU',auto=true,chart;
 const time=iso=>iso?new Date(iso).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'—';
 function render(){
  const state=withAge(states[asset]),q=state.last_good,meta=METALS[asset],name=meta.name,isWidget=meta.type==='widget';
+ if(isWidget)$('widget-source-link').href=`https://www.tradingview.com/symbols/${meta.chart.replace(':','-')}/`;
  $('dashboard').hidden=isWidget;$('notice').hidden=isWidget;$('futures-panel').hidden=!isWidget;
  $('quote-unit').textContent=meta.unit;
- $('futures-description').textContent=`${name} · ${meta.chart} 연속선물 · ${meta.unit}. 가격·기준 시각·휴장 및 지연 여부는 제공 화면에서 확인하세요. 계약 교체로 가격이 달라질 수 있습니다.`;
- $('market-description').textContent=isWidget?'TradingView 제공 연속선물 시세 · 거래소 데이터는 지연되거나 제공되지 않을 수 있습니다.':asset==='RHENIUM'?'Metals-API 최신 제공 가격 · API 조회 시각이 실제 거래 시각을 의미하지는 않습니다.':'현재 가격: Gold API · 차트: TradingView / OANDA. 제공자가 달라 가격·시각이 다를 수 있습니다.';
+ $('futures-description').textContent=`${name} · ${meta.chart} CFD 참고가격 · ${meta.unit}. 가격·기준 시각·휴장 및 지연 여부는 제공 화면에서 확인하세요. 거래소 선물 체결가와 다른 OANDA의 CFD 호가입니다.`;
+ $('market-description').textContent=isWidget?'TradingView / OANDA CFD 참고가격 · 거래소 선물 가격과 다릅니다. 데이터 제공 상태는 위젯에서 확인하세요.':asset==='RHENIUM'?'Metals-API 최신 제공 가격 · API 조회 시각이 실제 거래 시각을 의미하지는 않습니다.':'현재 가격: Gold API · 차트: TradingView / OANDA. 제공자가 달라 가격·시각이 다를 수 있습니다.';
  $('source-description').textContent=asset==='RHENIUM'?'원천 시각은 API 데이터 수집 timestamp입니다. 레늄 실거래 가격의 갱신 시각과 다를 수 있습니다.':'원천 시각은 updatedAt입니다. 휴장 때 이전 가격이 유지될 수 있습니다.';
- $('board-title').textContent=`오늘의 국제 ${name} 시세`;$('board-description').textContent=`${name} · ${meta.unit}${isWidget?' · 연속선물':''}`;
+ $('board-title').textContent=`오늘의 국제 ${name} 시세`;$('board-description').textContent=`${name} · ${meta.unit}${isWidget?' · CFD 참고가격':''}`;
  $('dashboard').setAttribute('aria-label',`${name} 시세 현황`);$('mode-label').textContent=`실제 원천 · ${asset}`;
  $('price').textContent=q?formatValue(q.value):'—';$('source-at').textContent=time(q?.source_at);$('fetched-at').textContent=time(q?.fetched_at);
  $('quote-source').href=asset==='RHENIUM'?'https://metals-api.com/symbols/RHENIUM':`https://api.gold-api.com/price/${asset}`;$('quote-source').textContent=asset==='RHENIUM'?'Metals-API · RHENIUM':`Gold API · ${asset}`;

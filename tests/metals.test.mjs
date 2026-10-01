@@ -8,7 +8,7 @@ test('Metal quotes keep symbol, unit and source; reject wrong symbol/currency an
  const q=normalizeMetal(raw,'XAG',now);assert.equal(q.symbol,'XAG');assert.equal(q.source_url,'https://api.gold-api.com/price/XAG');assert.equal(q.unit,'USD / 트로이온스');
  for(const delta of [{symbol:'XAU'},{currency:'KRW'},{price:-1},{price:'60'},{updatedAt:'2027-01-01T00:00:00Z'}])assert.throws(()=>normalizeMetal({...raw,...delta},'XAG',now));
  for(const symbol of ['XAU','XAG'])for(const interval of ['1','5','15','60','240','D','W','M'])assert.equal(chartConfig(interval,symbol).symbol,`OANDA:${symbol}USD`);
- assert.throws(()=>chartConfig('60','BAD'));assert.throws(()=>chartConfig('60','RHENIUM'));assert.equal(chartConfig('D','WTI').symbol,'NYMEX:CL1!');assert.equal(chartConfig('D','WHEAT').symbol,'CBOT:ZW1!');
+ assert.throws(()=>chartConfig('60','BAD'));assert.throws(()=>chartConfig('60','RHENIUM'));assert.equal(chartConfig('D','WTI').symbol,'OANDA:WTICOUSD');assert.equal(chartConfig('D','WHEAT').symbol,'OANDA:WHEATUSD');
 });
 test('Metal endpoint allowlists symbols, uses no DB/key, and preserves upstream rate limit',async()=>{
  const original=globalThis.fetch;let calls=0;
