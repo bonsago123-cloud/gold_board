@@ -1,66 +1,45 @@
 import {METALS} from './metals.mjs';
-import {requestSilver} from './silver-client.mjs';
 import {initMarket} from './market.mjs';
-import {emptyState,failure,withAge,ERRORS,formatValue,comparison} from './core.mjs';
-import {nextPollTime} from './poll-policy.mjs';
-const $=id=>document.getElementById(id),states=Object.fromEntries(Object.keys(METALS).map(k=>[k,{...emptyState(),due:0,busy:false,failures:0}]));
-const requestedAsset=new URLSearchParams(location.search).get('asset');
-let asset=Object.hasOwn(METALS,requestedAsset)?requestedAsset:'XAU',auto=true,chart;
-const time=iso=>iso?new Date(iso).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'—';
-function render(){
- const state=withAge(states[asset]),q=state.last_good,meta=METALS[asset],name=meta.name,isWidget=meta.type==='widget';
- if(isWidget)$('widget-source-link').href=`https://www.tradingview.com/symbols/${meta.chart.replace(':','-')}/`;
- $('dashboard').hidden=isWidget;$('notice').hidden=isWidget;$('futures-panel').hidden=!isWidget;
- $('quote-unit').textContent=meta.unit;
- $('futures-description').textContent=`${name} · ${meta.chart} CFD 참고가격 · ${meta.unit}. 가격·기준 시각·휴장 및 지연 여부는 제공 화면에서 확인하세요. 거래소 선물 체결가와 다른 OANDA의 CFD 호가입니다.`;
- $('market-description').textContent=isWidget?'TradingView / OANDA CFD 참고가격 · 거래소 선물 가격과 다릅니다. 데이터 제공 상태는 위젯에서 확인하세요.':'현재 가격: Gold API · 차트: TradingView / OANDA. 제공자가 달라 가격·시각이 다를 수 있습니다.';
- $('source-description').textContent='원천 시각은 updatedAt입니다. 휴장 때 이전 가격이 유지될 수 있습니다.';
- $('board-title').textContent=`오늘의 국제 ${name} 시세`;$('board-description').textContent=`${name} · ${meta.unit}${isWidget?' · CFD 참고가격':''}`;
- $('dashboard').setAttribute('aria-label',`${name} 시세 현황`);$('mode-label').textContent=`실제 원천 · ${asset}`;
- $('price').textContent=q?formatValue(q.value):'—';$('source-at').textContent=time(q?.source_at);$('fetched-at').textContent=time(q?.fetched_at);
- $('quote-source').href=`https://api.gold-api.com/price/${asset}`;$('quote-source').textContent=`Gold API · ${asset}`;
- $('status').textContent=({fresh:'정상',stale:'오래된 값',error:'조회 오류',empty:'조회 전'})[state.status];$('status').className=`badge ${state.status}`;
- const err=ERRORS[state.error_code];$('notice').className=`notice ${err?'warning':q?'good':''}`;
- $('notice-title').textContent=err?err[0]:q?'가격과 관측 시각을 확인하세요.':'시세를 불러오는 중입니다.';
- $('notice-body').textContent=err?`${err[1].replace('금시세',name+' 시세')} ${q?'마지막 정상값을 유지합니다. ':''}${err[2]}`:'원천 관측 후 15분이 지나면 오래된 값으로 표시합니다. 휴장 중에는 이전 가격이 유지될 수 있습니다.';
+import {createBundleClient} from './bundle-client.mjs';
+import {displayTime as time,formatValue,safeDelta} from './bundle-core.mjs';
+import {ERRORS} from './core.mjs';
+import {createGoldClient} from './gold-client.mjs';
+import {createFxClient,toWon} from './fx.mjs';
+const $=id=>document.getElementById(id),requested=new URLSearchParams(location.search).get('asset');
+let asset=Object.hasOwn(METALS,requested)?requested:'XAU',auto=false,chart;
+const goldClient=createGoldClient(()=>render(client.view()));
+const bundleClient=createBundleClient(()=>render(client.view()));
+const client={view:()=> (asset==='XAU'?goldClient:bundleClient).view(),request:collect=>(asset==='XAU'?goldClient:bundleClient).request(collect)};
+const fxClient=createFxClient(()=>render(client.view()));
+function render({data,busy,cached,due}){
+ const state=data.assets[asset],q=state.last_good,meta=METALS[asset];
+ $('board-title').textContent=`오늘의 국제 ${meta.name} 시세`;$('board-description').textContent=`${meta.name} · ${q?.unit??meta.unit}`;
+ $('mode-label').textContent=`${meta.name} · 저장된 실제 원천값`;$('price').textContent=q?formatValue(q.value):'—';$('quote-unit').textContent=q?.unit??meta.unit;
+ const fx=fxClient.view(),won=toWon(q?.value,fx.quote);
+ $('price-krw').textContent=won===null?'—':new Intl.NumberFormat('ko-KR',{maximumFractionDigits:0}).format(won);
+ $('krw-unit').textContent=(q?.unit??meta.unit).replace(/^USD/,'KRW')+' · 환산 참고값';
+ $('fx-status').textContent=fx.quote?`${fx.stale?'이전 환율 사용 · ':''}1 USD = ${fx.quote.rate.toLocaleString('ko-KR',{maximumFractionDigits:4})} KRW · 환율 기준 ${time(fx.quote.source_at)} KST · 조회 ${time(fx.quote.fetched_at)} KST`:(fx.busy?'환율 조회 중…':'환율 조회 실패 · 원화 환산 불가');
+ $('fx-price-note').textContent=q?`${state.status==='stale'?'오래된 달러 가격에 환율을 적용한 참고값입니다. ':''}달러 원천값 × 적용 환율. 국내 매매가·수수료·세금은 포함하지 않습니다.`:'달러 원천값이 없어 원화도 표시할 수 없습니다. 외부 차트 가격은 자동 환산하지 않습니다.';
+ $('source-at').textContent=time(q?.source_at);$('fetched-at').textContent=time(q?.fetched_at);$('quote-source').href=q?.source_url??meta.source;$('quote-source').textContent=meta.provider;
+ $('source-description').textContent=meta.type==='commodity'?'원천 시각은 제공자의 데이터 수집 timestamp입니다. 실제 거래 체결 시각과 다를 수 있으며 갱신 주기는 데이터 이용 플랜을 따릅니다.':'원천 시각은 updatedAt입니다. 휴장 중에는 이전 가격이 유지될 수 있습니다.';
+ $('status').className=`badge ${state.status}`;$('status').textContent=({fresh:'정상',stale:'오래된 값',error:'조회 오류',empty:'조회 전'})[state.status];
+ const error=ERRORS[state.error_code];$('notice').className=`notice ${error?'warning':'good'}`;$('notice-title').textContent=error?error[0]:'가격과 적용 환율을 함께 확인하세요.';$('notice-body').textContent=error?`${error[1]} ${q?'마지막 정상값을 유지합니다. ':''}${error[2]}`:(asset==='XAU'?'조회 성공 시 금 일별 기록을 저장합니다.':'추가 원자재 조회 기능입니다. 석유·밀은 원천 API 연결이 필요합니다.');
+ if(cached)$('notice-body').textContent+=' 서버 확인 실패 · 보관된 기록입니다.';
+ const c=safeDelta(state.daily);$('change').textContent=c?`${Date.parse(c.to.date_kst)-Date.parse(c.from.date_kst)===86400000?'어제':'이전 기록'} 대비 ${c.value>=0?'+':''}${c.value.toFixed(6)} ${q.unit} (${c.percent.toFixed(4)}%)`:'비교할 같은 출처·단위의 일별 기록이 없습니다.';
  $('asset-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.symbol===asset)));
- $('gold-records').hidden=asset!=='XAU';$('change-label').textContent=asset==='XAU'?'일별 저장값 변화':'조회 기준';
- const c=comparison(state.daily);$('change').textContent=asset!=='XAU'?'최근 원천 제공 가격':c?`${c.consecutive?'어제':'이전 기록'} 대비 ${c.delta>=0?'+':''}${c.delta.toFixed(6)} USD (${c.percent.toFixed(4)}%)`:'비교할 일별 기록이 아직 없습니다.';
- const rows=states.XAU.daily;$('row-count').textContent=`${rows.length}일`;$('daily-rows').replaceChildren();
- for(const row of [...rows].reverse()){const tr=document.createElement('tr');for(const value of [row.date_kst,formatValue(row.value),time(row.source_at),time(row.fetched_at)]){const td=document.createElement('td');td.textContent=value;tr.append(td);}$('daily-rows').append(tr);}
- if(!rows.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=4;td.className='empty';td.textContent='정상 조회 후 날짜별 기록이 표시됩니다.';tr.append(td);$('daily-rows').append(tr);}
- controls();
+ $('records-title').textContent=`${meta.name} 일별 기록`;$('row-count').textContent=`${state.daily.length}일`;$('daily-rows').replaceChildren();
+ for(const row of [...state.daily].reverse()){const tr=document.createElement('tr');for(const val of [row.date_kst,`${formatValue(row.value)} ${row.unit}`,toWon(row.value,fx.quote)===null?'—':`${Math.round(toWon(row.value,fx.quote)).toLocaleString('ko-KR')} ${row.unit.replace(/^USD/,'KRW')}${fx.stale?' (이전 환율)':''}`,time(row.source_at),time(row.fetched_at)]){const td=document.createElement('td');td.textContent=val;tr.append(td);}$('daily-rows').append(tr);}
+ if(!state.daily.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=5;td.textContent='정상 조회 후 종목별 날짜 기록이 저장됩니다.';td.className='empty';tr.append(td);$('daily-rows').append(tr);}
+ $('market-description').textContent=`저장 가격: ${meta.provider}. 차트: TradingView/OANDA CFD 참고가격. 두 출처의 가격 종류·단위·관측 시각이 다를 수 있으며 차트 값은 일별 증빙에 사용하지 않습니다.`;
+ controls({data,busy,cached,due});
 }
-function controls(){
- const s=states[asset],widget=METALS[asset].type==='widget',wait=Math.max(0,Math.ceil((s.due-Date.now())/1000));
- $('auto-refresh').disabled=false;$('refresh').disabled=s.busy||wait>0;$('retry').disabled=s.busy||wait>0;
- $('refresh').textContent=s.busy?'조회 중…':wait?`${wait}초 후 재조회`:widget?`${METALS[asset].name} 시세·차트 갱신`:`실제 ${METALS[asset].name} 시세 조회`;
- const status=!auto?'자동 갱신 꺼짐':document.hidden?'다른 탭을 보는 동안 일시정지':s.busy?'원천 조회 중…':`${wait}초 후 자동 ${widget?'화면 갱신':'조회'} · 30초 이상 간격`;
- $('auto-status').textContent=status+(widget&&s.reloadedAt?` · 화면 요청 ${time(s.reloadedAt)} (가격 기준 시각 아님)`:'');
+function controls(v=client.view()){
+ const wait=Math.max(0,Math.ceil((v.due-Date.now())/1000));$('refresh').disabled=$('retry').disabled=v.busy||wait>0;$('refresh').textContent=v.busy?'조회·저장 중…':wait?`${wait}초 후 조회`:(asset==='XAU'?'금 조회·기록':'추가 종목 조회·기록');$('auto-status').textContent=!auto?'자동 갱신 꺼짐':document.hidden?'다른 탭을 보는 동안 일시정지':`${wait}초 후 자동 조회 · 서버 대기 시간 준수`;
+ $('batch-status').textContent=asset==='XAU'?'금 일별 기록 · 한국 날짜 기준':v.data.last_run?`최근 묶음 수집 ${v.data.last_run.success_count}/4 성공 · ${time(v.data.last_run.finished_at)} KST`:'선택한 원자재의 가격과 원천 시각을 확인하세요.';
 }
-async function request(symbol,initial=false){
- const s=states[symbol];if(s.busy||(!initial&&Date.now()<s.due))return;
- if(METALS[symbol].type==='widget'){chart.reload();s.due=Date.now()+30000;s.reloadedAt=new Date().toISOString();controls();return;}
- s.busy=true;controls();
- if(symbol==='XAG'){try{Object.assign(s,await requestSilver(s));}finally{s.busy=false;if(asset===symbol)render();}return;}
- const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),symbol==='XAU'?35000:12000);
- try{
-  const response=await fetch(symbol==='XAU'?'/api/board':`/api/metals?symbol=${symbol}`,{method:symbol==='XAU'&&!initial?'POST':'GET',cache:'no-store',signal:controller.signal});const data=await response.json();
-  if(symbol==='XAU'){
-   if(!Array.isArray(data.daily)||!['empty','fresh','stale','error'].includes(data.status))throw new Error('schema_changed');
-   if(!response.ok&&s.last_good&&!data.last_good)Object.assign(s,failure(s,data.error_code||'storage_error'));else Object.assign(s,data);
-   s.failures=response.ok&&['none','source_stale'].includes(s.error_code)?0:s.failures+1;
-   s.due=nextPollTime(Date.now(),s.next_attempt_at,s.failures);
-   if(initial&&s.configured!==false&&s.error_code==='none'&&(!s.last_good||Date.now()-Date.parse(s.last_good.fetched_at)>=30000))s.due=0;
-   if(response.ok)try{localStorage.setItem('gold-note-last-snapshot-v1',JSON.stringify(s));}catch{}
-  }
- }catch(error){Object.assign(s,failure(s,controller.signal.aborted?'timeout':Object.hasOwn(ERRORS,error.message)?error.message:'offline'));s.due=Math.max(s.due,Date.now()+60000);}
- finally{clearTimeout(timer);s.busy=false;if(symbol===asset)render();}
-}
-$('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{asset=b.dataset.symbol;render();chart.update();if(METALS[asset].type==='widget'){states[asset].due=Date.now()+30000;states[asset].reloadedAt=new Date().toISOString();controls();}else request(asset);});
-$('refresh').onclick=$('retry').onclick=()=>request(asset);$('auto-refresh').onchange=()=>{auto=$('auto-refresh').checked;controls();};
-try{const cached=JSON.parse(localStorage.getItem('gold-note-last-snapshot-v1'));if(cached?.last_good&&Array.isArray(cached.daily))Object.assign(states.XAU,failure(cached,'offline'),{busy:false,due:0});}catch{}
-render();chart=initMarket(()=>asset);if(METALS[asset].type==='widget'){states[asset].due=Date.now()+30000;states[asset].reloadedAt=new Date().toISOString();controls();}else if(asset!=='XAU')request(asset);request('XAU',true).then(()=>{if(auto&&!document.hidden&&asset==='XAU'&&states.XAU.due===0)request('XAU');});
-const interval=setInterval(()=>{controls();if(auto&&!document.hidden)request(asset);if(withAge(states[asset]).status!==states[asset].status){Object.assign(states[asset],withAge(states[asset]));render();}},1000);
-window.addEventListener('offline',()=>{for(const s of Object.values(states))Object.assign(s,failure(s,'offline'));render();});
-window.addEventListener('pagehide',()=>clearInterval(interval),{once:true});
+$('refresh').onclick=$('retry').onclick=()=>{client.request(true);fxClient.request();};
+$('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{asset=b.dataset.symbol;render(client.view());chart.update();client.request(false);fxClient.request();});
+$('auto-refresh').onchange=()=>{auto=$('auto-refresh').checked;controls();};
+render(client.view());chart=initMarket(()=>asset);client.request(false);fxClient.request();$('fx-refresh').onclick=()=>fxClient.request();
+let fxWasStale=fxClient.view().stale;
+const timer=setInterval(()=>{const view=client.view(),fxStale=fxClient.view().stale;if(fxStale!==fxWasStale||$('status').className!==`badge ${view.data.assets[asset].status}`)render(view);else controls(view);fxWasStale=fxStale;if(auto&&!document.hidden){client.request(true);fxClient.request();}},1000);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});

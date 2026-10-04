@@ -36,7 +36,7 @@ export function initMarket(getSymbol=()=> 'XAU'){
   const symbol=getSymbol(),meta=METALS[symbol];dispose();
   $('chart-title').textContent=`${meta.name} 과거 시세 차트`;
   if(symbol!==lastSymbol||forceQuote===true){disposeQuote();if(meta.type==='widget')disposeQuote=mountWidget($('futures-quote'),$('futures-status'),'embed-widget-symbol-info',{symbol:meta.chart,width:'100%',locale:'kr',colorTheme:'light',isTransparent:false});lastSymbol=symbol;}
-  const interval=$('chart-interval').value;$('chart-interval-note').textContent=`${meta.chart} · 간격 ${CHART_INTERVALS[interval]} · x축 시각/날짜 · y축 ${meta.unit}`;
+  const interval=$('chart-interval').value;$('chart-interval-note').textContent=`${meta.chart} · 간격 ${CHART_INTERVALS[interval]} · x축 시각/날짜 · y축 ${meta.chartUnit??meta.unit}`;
   dispose=mountWidget($('chart-host'),$('chart-status'),'embed-widget-advanced-chart',chartConfig(interval,symbol));
  }
  $('chart-interval').addEventListener('change',()=>update());$('chart-reload').onclick=()=>update(true);

@@ -2,6 +2,7 @@ import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import board from '../api/board.mjs';
+import bundle from '../api/bundle.mjs';
 import cron from '../api/cron.mjs';
 import metals from '../api/metals.mjs';
 const types={'.html':'text/html; charset=utf-8','.css':'text/css','.mjs':'text/javascript','.json':'application/json','.svg':'image/svg+xml'};
@@ -9,6 +10,7 @@ const root=path.resolve('public');
 http.createServer(async(req,res)=>{
   res.status=(code)=>{res.statusCode=code;return res;}; res.json=(data)=>res.end(JSON.stringify(data));
   const pathname=new URL(req.url,'http://localhost').pathname;
+  if(pathname==='/api/bundle') return bundle(req,res);
   if(pathname==='/api/board') return board(req,res);
   if(pathname==='/api/cron') return cron(req,res);
   if(pathname==='/api/metals') return metals(req,res);

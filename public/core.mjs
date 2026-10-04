@@ -2,6 +2,7 @@ export const SOURCE_URL = 'https://api.gold-api.com/price/XAU';
 export const UNIT = 'USD / 트로이온스';
 export const TIMEZONE = 'Asia/Seoul';
 export const ERRORS = Object.freeze({
+  source_setup_required: ['석유·밀 원천 연결 대기', 'Commodities-API 연결 키가 설정되지 않았습니다.', 'Vercel 서버 환경변수 COMMODITIES_API_KEY를 설정한 뒤 다시 시도하세요.'],
   timeout: ['응답 지연', '원천이 제한 시간 안에 응답하지 않았습니다.', '잠시 후 다시 시도하세요.'],
   access_denied: ['원천 접근 거절 (401/403)', '금시세 원천이 요청을 거절했습니다.', '출처의 서비스 상태를 확인한 뒤 다시 시도하세요.'],
   rate_limited: ['호출 제한 (429)', '원천의 요청 한도를 넘었습니다.', '재시도 대기 시간이 지난 뒤 다시 시도하세요.'],
