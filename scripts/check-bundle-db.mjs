@@ -1,22 +1,2 @@
-import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {pathToFileURL} from 'node:url';import {normalizeRecord,SYMBOLS} from '../public/bundle-core.mjs';
-const {PGlite}=await import(pathToFileURL(process.argv[2]));const db=new PGlite();
-await db.exec("create role anon;create role authenticated;create role service_role;create table public.test_clock(t timestamptz);insert into public.test_clock values('2026-01-01T03:00:00Z');create function public.test_now() returns timestamptz language sql as 'select t from public.test_clock limit 1';");
-// Isolated synthetic clock; delivered migrations retain real clock_timestamp().
-const migration=async name=>db.exec((await readFile('sql/'+name,'utf8')).replaceAll('clock_timestamp()','public.test_now()'));
-await migration('001_gold_board.sql');
-const old=normalizeRecord({symbol:'XAU',currency:'USD',price:3999,updatedAt:'2025-12-31T03:00:00Z'},'XAU','2025-12-31T03:00:00Z');await db.query('insert into public.gold_daily values($1,$2)',[old.date_kst,JSON.stringify(old)]);
-await migration('002_four_assets.sql');await migration('002_four_assets.sql');
-const snapshot=async()=> (await db.query('select public.market_snapshot() as s')).rows[0].s;
-assert.equal((await snapshot()).assets.XAU.last_good.value,3999);assert.equal((await snapshot()).evidence.length,0);
-let at='2026-01-01T03:00:00Z';
-const outcomes=()=>SYMBOLS.map(symbol=>({symbol,error:'none',wait:60,record:normalizeRecord(['XAU','XAG'].includes(symbol)?{symbol,currency:'USD',price:100,updatedAt:at}:{success:true,base:'USD',timestamp:Date.parse(at)/1000,rates:{WTIOIL:.01,WHEAT:.004},unit:{WTIOIL:'per barrel',WHEAT:'per metric ton'}},symbol,at)}));
-const claim=async()=> (await db.query('select public.market_claim() as c')).rows[0].c.token;
-const finish=async(token,values)=>db.query('select public.market_finish($1,$2) as f',[token,JSON.stringify(values)]);
-const advance=async value=>{at=value;await db.query('update public.test_clock set t=$1',[at]);};
-let token=await claim();assert.ok(token);assert.equal(await claim(),null);await finish(token,outcomes());let s=await snapshot();assert.equal(s.last_run.success_count,4);assert.equal(s.evidence.length,1);assert.equal(s.assets.WTI.daily.length,1);assert.equal((await finish(token,outcomes())).rows[0].f.applied,false);
-await advance('2026-01-01T03:02:00Z');token=await claim();let items=outcomes();items[2]={symbol:'WTI',error:'offline',wait:60};const before=s.assets.WTI.last_good;await finish(token,items);s=await snapshot();assert.equal(s.last_run.success_count,3);assert.equal(s.assets.WTI.status,'stale');assert.deepEqual(s.assets.WTI.last_good,before);assert.equal(s.evidence.length,0);
-await advance('2026-01-01T03:04:00Z');await finish(await claim(),outcomes());s=await snapshot();assert.equal(s.assets.XAG.daily.length,1);assert.equal(s.evidence.length,1);
-await advance('2026-01-02T03:00:00Z');await finish(await claim(),outcomes());s=await snapshot();assert.equal(s.evidence.length,2);assert.equal(s.assets.WTI.daily.length,2);assert.equal(s.assets.WTI.status,'fresh');assert.equal(s.assets.WTI.error_code,'none');
-await advance('2026-01-02T03:02:00Z');token=await claim();items=outcomes();items[3].record.value=999;await assert.rejects(()=>finish(token,items));assert.deepEqual((await snapshot()).assets,s.assets);
-const privileges=(await db.query("select has_function_privilege('anon','public.market_finish(uuid,jsonb)','EXECUTE') as can_write,has_table_privilege('anon','public.market_daily','SELECT') as can_read")).rows[0];assert.equal(privileges.can_write,false);assert.equal(privileges.can_read,false);
-console.log('PASS SQL: migrations/idempotence and old gold preserved; lock/cooldown; 4 assets; partial failure preservation; one row/date; two complete dates; atomic rejection; RLS privileges.');await db.close();
+// v3.1: two-metal collection and preservation migration regression.
+import './check-gold-migration.mjs';

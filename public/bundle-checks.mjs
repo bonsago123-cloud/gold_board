@@ -1,7 +1,7 @@
 import {SYMBOLS,normalizeRecord,applyOutcome,recordMatches} from './bundle-core.mjs';
 import {emptyState} from './core.mjs';
 function fixture(symbol,at,value){
- const raw=['XAU','XAG'].includes(symbol)?{symbol,currency:'USD',price:value,updatedAt:at}:{success:true,base:'USD',timestamp:Date.parse(at)/1000,rates:{WTIOIL:1/value,WHEAT:1/value},unit:{WTIOIL:'per barrel',WHEAT:'per metric ton'}};
+ const raw={symbol,currency:'USD',price:value,updatedAt:at};
  return {...normalizeRecord(raw,symbol,at),synthetic:true};
 }
 export function runBundleChecks(){

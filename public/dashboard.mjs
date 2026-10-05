@@ -21,9 +21,9 @@ function render({data,busy,cached,due}){
  $('fx-status').textContent=fx.quote?`${fx.stale?'이전 환율 사용 · ':''}1 USD = ${fx.quote.rate.toLocaleString('ko-KR',{maximumFractionDigits:4})} KRW · 환율 기준 ${time(fx.quote.source_at)} KST · 조회 ${time(fx.quote.fetched_at)} KST`:(fx.busy?'환율 조회 중…':'환율 조회 실패 · 원화 환산 불가');
  $('fx-price-note').textContent=q?`${state.status==='stale'?'오래된 달러 가격에 환율을 적용한 참고값입니다. ':''}달러 원천값 × 적용 환율. 국내 매매가·수수료·세금은 포함하지 않습니다.`:'달러 원천값이 없어 원화도 표시할 수 없습니다. 외부 차트 가격은 자동 환산하지 않습니다.';
  $('source-at').textContent=time(q?.source_at);$('fetched-at').textContent=time(q?.fetched_at);$('quote-source').href=q?.source_url??meta.source;$('quote-source').textContent=meta.provider;
- $('source-description').textContent=meta.type==='commodity'?'원천 시각은 제공자의 데이터 수집 timestamp입니다. 실제 거래 체결 시각과 다를 수 있으며 갱신 주기는 데이터 이용 플랜을 따릅니다.':'원천 시각은 updatedAt입니다. 휴장 중에는 이전 가격이 유지될 수 있습니다.';
+ $('source-description').textContent='원천 시각은 updatedAt입니다. 휴장 중에는 이전 가격이 유지될 수 있습니다.';
  $('status').className=`badge ${state.status}`;$('status').textContent=({fresh:'정상',stale:'오래된 값',error:'조회 오류',empty:'조회 전'})[state.status];
- const error=ERRORS[state.error_code];$('notice').className=`notice ${error?'warning':'good'}`;$('notice-title').textContent=error?error[0]:'가격과 적용 환율을 함께 확인하세요.';$('notice-body').textContent=error?`${error[1]} ${q?'마지막 정상값을 유지합니다. ':''}${error[2]}`:(asset==='XAU'?'조회 성공 시 금 일별 기록을 저장합니다.':'추가 원자재 조회 기능입니다. 석유·밀은 원천 API 연결이 필요합니다.');
+ const error=ERRORS[state.error_code];$('notice').className=`notice ${error?'warning':'good'}`;$('notice-title').textContent=error?error[0]:'가격과 적용 환율을 함께 확인하세요.';$('notice-body').textContent=error?`${error[1]} ${q?'마지막 정상값을 유지합니다. ':''}${error[2]}`:(asset==='XAU'?'조회 성공 시 금 일별 기록을 저장합니다.':'조회 성공 시 금·은 일별 기록을 저장합니다.');
  if(cached)$('notice-body').textContent+=' 서버 확인 실패 · 보관된 기록입니다.';
  const c=safeDelta(state.daily);$('change').textContent=c?`${Date.parse(c.to.date_kst)-Date.parse(c.from.date_kst)===86400000?'어제':'이전 기록'} 대비 ${c.value>=0?'+':''}${c.value.toFixed(6)} ${q.unit} (${c.percent.toFixed(4)}%)`:'비교할 같은 출처·단위의 일별 기록이 없습니다.';
  $('asset-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.symbol===asset)));
@@ -34,8 +34,8 @@ function render({data,busy,cached,due}){
  controls({data,busy,cached,due});
 }
 function controls(v=client.view()){
- const wait=Math.max(0,Math.ceil((v.due-Date.now())/1000));$('refresh').disabled=$('retry').disabled=v.busy||wait>0;$('refresh').textContent=v.busy?'조회·저장 중…':wait?`${wait}초 후 조회`:(asset==='XAU'?'금 조회·기록':'추가 종목 조회·기록');$('auto-status').textContent=!auto?'자동 갱신 꺼짐':document.hidden?'다른 탭을 보는 동안 일시정지':`${wait}초 후 자동 조회 · 서버 대기 시간 준수`;
- $('batch-status').textContent=asset==='XAU'?'금 일별 기록 · 한국 날짜 기준':v.data.last_run?`최근 묶음 수집 ${v.data.last_run.success_count}/4 성공 · ${time(v.data.last_run.finished_at)} KST`:'선택한 원자재의 가격과 원천 시각을 확인하세요.';
+ const wait=Math.max(0,Math.ceil((v.due-Date.now())/1000));$('refresh').disabled=$('retry').disabled=v.busy||wait>0;$('refresh').textContent=v.busy?'조회·저장 중…':wait?`${wait}초 후 조회`:(asset==='XAU'?'금 조회·기록':'금·은 조회·기록');$('auto-status').textContent=!auto?'자동 갱신 꺼짐':document.hidden?'다른 탭을 보는 동안 일시정지':`${wait}초 후 자동 조회 · 서버 대기 시간 준수`;
+ $('batch-status').textContent=asset==='XAU'?'금 일별 기록 · 한국 날짜 기준':v.data.last_run?`최근 묶음 수집 ${v.data.last_run.success_count}/2 성공 · ${time(v.data.last_run.finished_at)} KST`:'선택한 원자재의 가격과 원천 시각을 확인하세요.';
 }
 $('refresh').onclick=$('retry').onclick=()=>{client.request(true);fxClient.request();};
 $('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{asset=b.dataset.symbol;render(client.view());chart.update();client.request(false);fxClient.request();});
