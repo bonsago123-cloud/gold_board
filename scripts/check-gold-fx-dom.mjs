@@ -18,6 +18,13 @@ d=await dom('verify.html');calls.length=0;await import('../public/verify.mjs');a
 $('bundle-collect').click();await flush();assert.deepEqual(calls.at(-1),['/api/board','POST']);await $('bundle-suite').onclick();assert.match($('bundle-suite-status').textContent,/5\/5/);
 goldFailure=true;$('bundle-read').click();await flush();assert.equal($('bundle-export').disabled,true);assert.match($('bundle-rows').textContent,/4,000.00/);assert.match($('bundle-rows').textContent,/stale/);
 window.dispatchEvent(new d.window.Event('pagehide'));d.window.close();
+// Silver proof has its own rows, two-date calculation and JSON export.
+d=await dom('silver-verify.html');calls.length=0;
+const silverPrior=normalizeRecord({symbol:'XAG',currency:'USD',price:48,updatedAt:prior},'XAG',prior);bundle.assets.XAG.daily=[silverPrior,silver];
+await import('../public/silver-verify.mjs');await flush();assert.deepEqual(calls,[['/api/bundle','GET']]);assert.equal($('bundle-rows').children.length,1);assert.match($('bundle-rows').textContent,/50.00/);assert.equal($('bundle-evidence').children.length,2);assert.match($('bundle-deltas').textContent,/2.000000/);
+await $('bundle-suite').onclick();assert.match($('bundle-suite-status').textContent,/5\/5/);
+const originalURL=URL.createObjectURL;let exported;URL.createObjectURL=b=>(exported=b,'blob:test');d.window.HTMLAnchorElement.prototype.click=function(){};$('bundle-export').click();const payload=JSON.parse(await exported.text());assert.equal(payload.symbol,'XAG');assert.equal(payload.two_dates_complete,true);assert.equal(payload.actual.silver.last_good.symbol,'XAG');assert.equal(payload.actual.gold,undefined);URL.createObjectURL=originalURL;
+window.dispatchEvent(new d.window.Event('pagehide'));d.window.close();
 // FX failures preserve last value or remain unavailable; mock time also verifies stale cache.
 d=await dom('index.html');const {createFxClient}=await import('../public/fx.mjs');localStorage.setItem('usd-krw-v1',JSON.stringify({rate:1300,source_at:prior,next_at:prior,fetched_at:prior}));fxFailure=true;let result;let fx=createFxClient(v=>result=v);await fx.request();assert.equal(result.quote.rate,1300);assert.equal(result.stale,true);localStorage.removeItem('usd-krw-v1');fx=createFxClient(v=>result=v);await fx.request();assert.equal(result.quote,null);assert.equal(result.stale,true);d.window.close();
 console.log('PASS DOM: gold-only collection/evidence, USD and KRW, tab switching, missing numeric prices, five failures, offline preservation/export guard, FX stale and unavailable handling.');
