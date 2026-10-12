@@ -5,12 +5,24 @@ import {displayTime as time,formatValue,safeDelta} from './bundle-core.mjs';
 import {ERRORS} from './core.mjs';
 import {createGoldClient} from './gold-client.mjs';
 import {createFxClient,toWon} from './fx.mjs';
+import {createCopperClient} from './copper-client.mjs';
 const $=id=>document.getElementById(id),requested=new URLSearchParams(location.search).get('asset');
 let asset=Object.hasOwn(METALS,requested)?requested:'XAU',auto=false,chart;
 const goldClient=createGoldClient(()=>render(client.view()));
 const bundleClient=createBundleClient(()=>render(client.view()));
 const client={view:()=> (asset==='XAU'?goldClient:bundleClient).view(),request:collect=>(asset==='XAU'?goldClient:bundleClient).request(collect)};
 const fxClient=createFxClient(()=>render(client.view()));
+const copperClient=createCopperClient(renderCopper);
+function renderCopper(v){
+ const q=v.last_good;
+ $('copper-price').textContent=q?new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:6}).format(q.value):'—';
+ $('copper-unit').textContent=q?.unit??'USD/t';
+ $('copper-fetched-at').textContent=q?new Date(q.fetched_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'—';
+ $('copper-status').textContent=({empty:'조회 전',fresh:'정상',stale:'오래된 값',error:'조회 실패'})[v.status]??v.status;
+ $('copper-error').textContent=v.error_code==='none'?'오류 없음':'구리 조회에 실패했습니다.';
+ $('copper-refresh').disabled=v.busy;
+ $('copper-refresh').textContent=v.busy?'구리 조회 중…':'구리 조회';
+}
 function render({data,busy,cached,due}){
  const state=data.assets[asset],q=state.last_good,meta=METALS[asset];
  $('board-title').textContent=`오늘의 국제 ${meta.name} 시세`;$('board-description').textContent=`${meta.name} · ${q?.unit??meta.unit}`;
@@ -40,6 +52,6 @@ function controls(v=client.view()){
 $('refresh').onclick=$('retry').onclick=()=>{client.request(true);fxClient.request();};
 $('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{asset=b.dataset.symbol;render(client.view());chart.update();client.request(false);fxClient.request();});
 $('auto-refresh').onchange=()=>{auto=$('auto-refresh').checked;controls();};
-render(client.view());chart=initMarket(()=>asset);client.request(false);fxClient.request();$('fx-refresh').onclick=()=>fxClient.request();
+render(client.view());chart=initMarket(()=>asset);client.request(false);fxClient.request();$('fx-refresh').onclick=()=>fxClient.request();renderCopper(copperClient.view());$('copper-refresh').onclick=()=>copperClient.request();
 let fxWasStale=fxClient.view().stale;
 const timer=setInterval(()=>{const view=client.view(),fxStale=fxClient.view().stale;if(fxStale!==fxWasStale||$('status').className!==`badge ${view.data.assets[asset].status}`)render(view);else controls(view);fxWasStale=fxStale;if(auto&&!document.hidden){client.request(true);fxClient.request();}},1000);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});

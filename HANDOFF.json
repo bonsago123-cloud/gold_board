@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "repository-handoff",
-  "phase": "AI_A_START",
+  "phase": "READY_FOR_AI_B",
   "current_feature": {
     "id": "task5-copper-live",
     "title": "금·은 정보판에 구리 시세 조회 기능 추가",
@@ -38,10 +38,10 @@
     "공식 T04 fixture·hash·검사",
     "비밀값과 .env 파일"
   ],
-  "next_action": "AI A가 구리 성공 조회·정규화·화면 표시까지만 구현하고, 실패 보존·오류 분류·재시도 정책은 AI B에 인수인계한다.",
+  "next_action": "AI B는 T05-CU06~T05-CU10 실패를 재현한 뒤 실패 시 마지막 정상값 보존, 429/Retry-After, timeout/offline, 사용자 실패 안내, 재시도 차단·복구를 구현해 10/10으로 만든다.",
   "start_source_commit": "4c4b0bbb92d650728b5349c84545d831277118cf",
-  "ai_a_start_commit": "사용자가 1단계 커밋 후 기록",
-  "ai_a_handoff_commit": null,
-  "ai_b_start_commit": null,
+  "ai_a_start_commit": "913c9e174f7fc323013cd424fe1efdc2e7598eca",
+  "ai_a_handoff_commit": "커밋 후 실제 SHA로 교체",
+  "ai_b_start_commit": "AI B 시작 직전 AI A handoff 커밋 SHA와 동일",
   "ai_b_end_commit": null
 }
