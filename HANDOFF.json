@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "protocol": "repository-handoff",
+  "phase": "AI_A_START",
+  "current_feature": {
+    "id": "task5-copper-live",
+    "title": "금·은 정보판에 구리 시세 조회 기능 추가",
+    "improvement": "회원가입·API 키 없이 구리 현재가를 조회하고 화면에 표시한다."
+  },
+  "handoff_document": "docs/handoff/current.md",
+  "fixed_tests_document": "docs/task5/copper-fixed-tests.md",
+  "fixed_test_ids": [
+    "T05-CU01",
+    "T05-CU02",
+    "T05-CU03",
+    "T05-CU04",
+    "T05-CU05",
+    "T05-CU06",
+    "T05-CU07",
+    "T05-CU08",
+    "T05-CU09",
+    "T05-CU10"
+  ],
+  "commands": {
+    "validate_handoff": "npm run handoff:check",
+    "run_fixed_tests": "npm run task5:check",
+    "baseline_tests": "npm test",
+    "build": "npm run build"
+  },
+  "common_limits": {
+    "time_minutes_per_ai": 30,
+    "request_count_per_ai": 10
+  },
+  "protected_areas": [
+    "기존 금(XAU) 조회·저장·검증",
+    "기존 은(XAG) 조회·저장·검증",
+    "Supabase 스키마와 기존 과제4 증빙",
+    "공식 T04 fixture·hash·검사",
+    "비밀값과 .env 파일"
+  ],
+  "next_action": "AI A가 구리 성공 조회·정규화·화면 표시까지만 구현하고, 실패 보존·오류 분류·재시도 정책은 AI B에 인수인계한다.",
+  "start_source_commit": "4c4b0bbb92d650728b5349c84545d831277118cf",
+  "ai_a_start_commit": "사용자가 1단계 커밋 후 기록",
+  "ai_a_handoff_commit": null,
+  "ai_b_start_commit": null,
+  "ai_b_end_commit": null
+}

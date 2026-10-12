@@ -11,6 +11,8 @@
     "dev": "node --env-file-if-exists=.env.local scripts/dev.mjs",
     "test": "node --test tests/*.test.mjs",
     "verify:assets": "node scripts/verify-assets.mjs",
-    "capture": "node scripts/capture.mjs"
+    "capture": "node scripts/capture.mjs",
+    "handoff:check": "node scripts/handoff-check.mjs",
+    "handoff:new": "node scripts/handoff-new.mjs"
   }
 }
