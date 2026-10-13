@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "repository-handoff",
-  "phase": "READY_FOR_AI_B",
+  "phase": "COMPLETE",
   "current_feature": {
     "id": "task5-copper-live",
     "title": "금·은 정보판에 구리 시세 조회 기능 추가",
@@ -38,10 +38,23 @@
     "공식 T04 fixture·hash·검사",
     "비밀값과 .env 파일"
   ],
-  "next_action": "AI B는 T05-CU06~T05-CU10 실패를 재현한 뒤 실패 시 마지막 정상값 보존, 429/Retry-After, timeout/offline, 사용자 실패 안내, 재시도 차단·복구를 구현해 10/10으로 만든다.",
+  "next_action": "실제 원천 404 해결 여부를 확인한다. 고정 검사/원천을 임의 변경하지 않는다. AI A 실제 사용량·모델 차이·학생 판단을 확인하고 공개 URL을 검증한다.",
   "start_source_commit": "4c4b0bbb92d650728b5349c84545d831277118cf",
   "ai_a_start_commit": "913c9e174f7fc323013cd424fe1efdc2e7598eca",
-  "ai_a_handoff_commit": "커밋 후 실제 SHA로 교체",
-  "ai_b_start_commit": "AI B 시작 직전 AI A handoff 커밋 SHA와 동일",
-  "ai_b_end_commit": null
+  "ai_a_handoff_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
+  "ai_b_start_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
+  "ai_b_end_commit": "12596fe1fa4748c348f3bc07b639cccf107aba4b",
+  "completion_scope": "고정 검사 10/10 및 구리 실패 처리 구현 완료. 실제 원천 GET 404 및 제출 증빙 누락으로 과제 전체 완료는 아님.",
+  "submission_ready": false,
+  "ai_b_measurement": {
+    "started_at": "2026-10-12T06:51:05+00:00",
+    "recorded_at": "2026-10-12T06:58:33+00:00",
+    "elapsed_seconds_at_record": 448,
+    "user_work_requests_observed": 1,
+    "request_unit_confirmation": "A와 동일 단위인지 확인 필요; 도구 호출 횟수를 1로 주장하지 않음",
+    "fixed_test_runs": 2,
+    "failed_fixed_test_runs": 1,
+    "passed_tests": 10
+  },
+  "handoff_original_sha256": "16162d920ec4e45cec5ba250f2207ef6e3d54d5cf13880007cf2b0d541e618cd"
 }

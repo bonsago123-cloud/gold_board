@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "protocol": "repository-handoff",
+  "phase": "READY_FOR_AI_B",
+  "current_feature": {
+    "id": "task5-copper-live",
+    "title": "금·은 정보판에 구리 시세 조회 기능 추가",
+    "improvement": "회원가입·API 키 없이 구리 현재가를 조회하고 화면에 표시한다."
+  },
+  "handoff_document": "docs/handoff/current.md",
+  "fixed_tests_document": "docs/task5/copper-fixed-tests.md",
+  "fixed_test_ids": [
+    "T05-CU01",
+    "T05-CU02",
+    "T05-CU03",
+    "T05-CU04",
+    "T05-CU05",
+    "T05-CU06",
+    "T05-CU07",
+    "T05-CU08",
+    "T05-CU09",
+    "T05-CU10"
+  ],
+  "commands": {
+    "validate_handoff": "npm run handoff:check",
+    "run_fixed_tests": "npm run task5:check",
+    "baseline_tests": "npm test",
+    "build": "npm run build"
+  },
+  "common_limits": {
+    "time_minutes_per_ai": 30,
+    "request_count_per_ai": 10
+  },
+  "protected_areas": [
+    "기존 금(XAU) 조회·저장·검증",
+    "기존 은(XAG) 조회·저장·검증",
+    "Supabase 스키마와 기존 과제4 증빙",
+    "공식 T04 fixture·hash·검사",
+    "비밀값과 .env 파일"
+  ],
+  "next_action": "AI B는 T05-CU06~T05-CU10 실패를 재현한 뒤 실패 시 마지막 정상값 보존, 429/Retry-After, timeout/offline, 사용자 실패 안내, 재시도 차단·복구를 구현해 10/10으로 만든다.",
+  "start_source_commit": "4c4b0bbb92d650728b5349c84545d831277118cf",
+  "ai_a_start_commit": "913c9e174f7fc323013cd424fe1efdc2e7598eca",
+  "ai_a_handoff_commit": "커밋 후 실제 SHA로 교체",
+  "ai_b_start_commit": "AI B 시작 직전 AI A handoff 커밋 SHA와 동일",
+  "ai_b_end_commit": null
+}

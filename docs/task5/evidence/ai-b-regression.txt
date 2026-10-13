@@ -1,0 +1,46 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> gold-information-board@3.2.0 test
+> node --test tests/*.test.mjs
+
+✔ Missing DB configuration is not fake success or a fake price (1.603757ms)
+✔ Untrusted cross-site refresh is rejected (0.159569ms)
+✔ Cron without secret cannot collect or expose anything (0.26008ms)
+✔ Client cannot choose a method that deletes records (0.122133ms)
+✔ only gold and silver remain; neither oil API nor secret required (7.343601ms)
+✔ silver failure does not discard gold success (1.709665ms)
+✔ metal synthetic checks preserve values and recover (10.950176ms)
+✔ Retry-After seconds: blocks before boundary, recovers at boundary (2.586502ms)
+✔ Retry-After HTTP date and missing/invalid fallback (0.943386ms)
+✔ timeout aborts stalled request and stalled response body (20.582502ms)
+✔ concurrent clicks send one request; first failure leaves no fabricated price (2.037564ms)
+✔ malformed JSON and interrupted body have distinct errors (0.510366ms)
+✔ KST midnight changes at UTC 15:00, not UTC midnight (1.40599ms)
+✔ Same day three successes stay one row, new date adds exactly one (14.150699ms)
+✔ LOCAL-SLOW: exact failure, last good retained, no failed day, recovery clears error (303.765099ms)
+✔ LOCAL-DENIED: exact failure, last good retained, no failed day, recovery clears error (1.626001ms)
+✔ LOCAL-LIMIT: exact failure, last good retained, no failed day, recovery clears error (0.988033ms)
+✔ LOCAL-OFFLINE: exact failure, last good retained, no failed day, recovery clears error (0.8195ms)
+✔ LOCAL-SCHEMA: exact failure, last good retained, no failed day, recovery clears error (0.848303ms)
+✔ HTTP 401 and 403 share explicit rejection, 429 uses Retry-After (1.159129ms)
+✔ Broken JSON, wrong currency, string price and future source time rejected (0.750747ms)
+✔ Stale source is honestly labeled even after a successful fetch (0.637197ms)
+✔ Nonconsecutive records are not called yesterday (0.321032ms)
+✔ Chart changes real data interval and keeps XAUUSD/KST for every option (4.094996ms)
+✔ Polling obeys 30 seconds, upstream Retry-After and failure backoff (1.641384ms)
+✔ Official package ID and all 17 publisher manifest file hashes/lengths match (14.965822ms)
+✔ All original official fixtures: same-ID daily update, 5 failures, last good, recovery once (29.570342ms)
+✔ USD to KRW multiplies the unrounded original and keeps unit quantity unchanged (1.498419ms)
+✔ gold evidence uses server earliest dates, independent of other assets and recent 90 days (9.953549ms)
+✔ gold failure suite uses the gold fetch pipeline and preserves daily records (162.687017ms)
+✔ Metal quotes keep symbol, unit and source; reject wrong symbol/currency and invalid values (1.679241ms)
+✔ Metal endpoint allowlists symbols, uses no DB/key, and preserves upstream rate limit (6.126465ms)
+✔ silver uses latest two real distinct KST dates; no gold or synthetic substitute (8.225595ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 444.717961

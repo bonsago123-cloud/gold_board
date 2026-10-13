@@ -12,13 +12,14 @@ function blank(){
 
 export function createCopperClient(onChange=()=>{},options={}){
   let state=blank();
+  const now=options.now??(()=>new Date().toISOString());
 
   function emit(){
     onChange({...state});
   }
 
   async function request(){
-    if(state.busy)return false;
+    if(state.busy||Date.parse(now())<state.due)return false;
     state={...state,busy:true};
     emit();
     try{
@@ -32,15 +33,13 @@ export function createCopperClient(onChange=()=>{},options={}){
       };
       emit();
       return true;
-    }catch{
-      // AI A의 계획된 중단 지점.
-      // 실패 원인 구분, 마지막 정상값 보존, retry-after/backoff는 AI B가 구현한다.
+    }catch(error){
       state={
-        status:'error',
-        error_code:'request_failed',
-        last_good:null,
+        status:state.last_good?'stale':'error',
+        error_code:error.code??'offline',
+        last_good:state.last_good,
         busy:false,
-        due:0
+        due:Date.parse(now())+(error.code==='rate_limited'?error.retryAfterMs:30000)
       };
       emit();
       return false;

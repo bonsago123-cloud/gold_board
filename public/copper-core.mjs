@@ -3,9 +3,10 @@ export const COPPER_SOURCE='https://metalmarket.cash/developers/metal-price-api'
 export const COPPER_UNIT='USD/t';
 
 export class CopperError extends Error{
-  constructor(code='request_failed'){
+  constructor(code='request_failed',retryAfterMs=0){
     super(code);
     this.code=code;
+    this.retryAfterMs=retryAfterMs;
   }
 }
 
@@ -28,26 +29,39 @@ export function normalizeCopper(raw,fetchedAt){
 
 export async function fetchCopperQuote({
   fetcher=fetch,
-  now=()=>new Date().toISOString()
+  now=()=>new Date().toISOString(),
+  timeoutMs=10000
 }={}){
-  let response;
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),timeoutMs);
   try{
-    response=await fetcher(COPPER_ENDPOINT,{
+    const response=await fetcher(COPPER_ENDPOINT,{
       method:'GET',
       headers:{Accept:'application/json'},
-      cache:'no-store'
+      cache:'no-store',
+      signal:controller.signal
     });
-  }catch{
-    throw new CopperError('request_failed');
+    if(response.status===429){
+      const header=response.headers?.get('retry-after')?.trim();
+      const delay=header&&/^\d+$/.test(header)
+        ?Number(header)*1000
+        :Date.parse(header)-Date.parse(now());
+      throw new CopperError('rate_limited',Number.isFinite(delay)?Math.max(0,delay):30000);
+    }
+    if(!response.ok)throw new CopperError(response.status>=500?'server_error':'http_error');
+    let raw;
+    try{
+      raw=await response.json();
+    }catch(error){
+      if(controller.signal.aborted||error?.name==='AbortError'||error?.name==='TimeoutError')throw error;
+      if(error instanceof SyntaxError)throw new CopperError('schema_changed');
+      throw new CopperError('offline');
+    }
+    return normalizeCopper(raw,now());
+  }catch(error){
+    if(error instanceof CopperError)throw error;
+    throw new CopperError(controller.signal.aborted||error?.name==='AbortError'||error?.name==='TimeoutError'?'timeout':'offline');
+  }finally{
+    clearTimeout(timer);
   }
-
-  if(!response.ok)throw new CopperError('request_failed');
-
-  let raw;
-  try{
-    raw=await response.json();
-  }catch{
-    throw new CopperError('schema_changed');
-  }
-  return normalizeCopper(raw,now());
 }

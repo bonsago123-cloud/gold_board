@@ -1,0 +1,14 @@
+AI B initial run, 2026-10-12T06:51Z, source 1241e3eb923468e93b6bc9cbccef33f7201a9137
+Command: npm run task5:check
+Observed results (summary, not verbatim stdout):
+PASS T05-CU01
+PASS T05-CU02
+PASS T05-CU03
+PASS T05-CU04
+PASS T05-CU05
+FAIL T05-CU06: error instead of stale
+FAIL T05-CU07: request_failed instead of rate_limited
+FAIL T05-CU08: request_failed instead of timeout
+FAIL T05-CU09: last_good missing
+FAIL T05-CU10: repeated request accepted
+RESULT 5/10; exit code 1

@@ -1,0 +1,16 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> gold-information-board@3.2.0 task5:check
+> node scripts/task5-copper-check.mjs
+
+PASS T05-CU01
+PASS T05-CU02
+PASS T05-CU03
+PASS T05-CU04
+PASS T05-CU05
+PASS T05-CU06
+PASS T05-CU07
+PASS T05-CU08
+PASS T05-CU09
+PASS T05-CU10
+RESULT 10/10

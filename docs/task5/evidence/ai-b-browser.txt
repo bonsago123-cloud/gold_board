@@ -1,0 +1,1 @@
+NOT RUN: Playwright package available, Chromium binary absent. Browser download failed (invalid/truncated archive). No visual browser PASS claimed.

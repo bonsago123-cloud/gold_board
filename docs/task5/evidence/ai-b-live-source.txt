@@ -1,0 +1,6 @@
+2026-10-12T06:54Z
+GET https://metalmarket.cash/api/v1/prices/copper
+Python urllib request, Origin header supplied: HTTP 404 Not Found.
+Live success was not verified. This is separate from mock-based fixed tests.
+The provider's developer documentation still advertises /api/v1/prices/{metal_id}, including copper.
+The fixed endpoint was preserved. Do not replace it or claim a real quote from mock results.

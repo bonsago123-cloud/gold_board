@@ -15,13 +15,15 @@ const fxClient=createFxClient(()=>render(client.view()));
 const copperClient=createCopperClient(renderCopper);
 function renderCopper(v){
  const q=v.last_good;
+ const wait=Math.max(0,Math.ceil((v.due-Date.now())/1000));
+ const reasons={rate_limited:'요청이 너무 많습니다.',timeout:'응답 대기 시간이 초과되었습니다.',offline:'서버에 연결하지 못했습니다.',schema_changed:'응답 형식이 올바르지 않습니다.',server_error:'시세 서버에 오류가 발생했습니다.',http_error:'시세 서버가 요청을 거절했습니다.'};
  $('copper-price').textContent=q?new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:6}).format(q.value):'—';
  $('copper-unit').textContent=q?.unit??'USD/t';
  $('copper-fetched-at').textContent=q?new Date(q.fetched_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'—';
  $('copper-status').textContent=({empty:'조회 전',fresh:'정상',stale:'오래된 값',error:'조회 실패'})[v.status]??v.status;
- $('copper-error').textContent=v.error_code==='none'?'오류 없음':'구리 조회에 실패했습니다.';
- $('copper-refresh').disabled=v.busy;
- $('copper-refresh').textContent=v.busy?'구리 조회 중…':'구리 조회';
+ $('copper-error').textContent=v.error_code==='none'?'오류 없음':`${reasons[v.error_code]??'구리 조회에 실패했습니다.'} ${q?'마지막 정상값을 유지합니다. ':''}${wait?`${wait}초 후 다시 시도하세요.`:'구리 조회를 눌러 다시 시도하세요.'}`;
+ $('copper-refresh').disabled=v.busy||wait>0;
+ $('copper-refresh').textContent=v.busy?'구리 조회 중…':wait?`${wait}초 후 구리 조회`:'구리 조회';
 }
 function render({data,busy,cached,due}){
  const state=data.assets[asset],q=state.last_good,meta=METALS[asset];
@@ -54,4 +56,4 @@ $('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{asset=b.dat
 $('auto-refresh').onchange=()=>{auto=$('auto-refresh').checked;controls();};
 render(client.view());chart=initMarket(()=>asset);client.request(false);fxClient.request();$('fx-refresh').onclick=()=>fxClient.request();renderCopper(copperClient.view());$('copper-refresh').onclick=()=>copperClient.request();
 let fxWasStale=fxClient.view().stale;
-const timer=setInterval(()=>{const view=client.view(),fxStale=fxClient.view().stale;if(fxStale!==fxWasStale||$('status').className!==`badge ${view.data.assets[asset].status}`)render(view);else controls(view);fxWasStale=fxStale;if(auto&&!document.hidden){client.request(true);fxClient.request();}},1000);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
+const timer=setInterval(()=>{renderCopper(copperClient.view());const view=client.view(),fxStale=fxClient.view().stale;if(fxStale!==fxWasStale||$('status').className!==`badge ${view.data.assets[asset].status}`)render(view);else controls(view);fxWasStale=fxStale;if(auto&&!document.hidden){client.request(true);fxClient.request();}},1000);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
