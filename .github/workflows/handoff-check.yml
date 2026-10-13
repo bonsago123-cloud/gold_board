@@ -1,19 +1,49 @@
-name: Handoff protocol check
+name: Continuous handoff verification
 
 on:
   push:
   pull_request:
+  workflow_dispatch:
+  deployment_status:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: handoff-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
 
 jobs:
-  validate:
+  verify:
+    if: github.event_name != 'deployment_status' || github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm run handoff:check
-      - run: npm test
-      - run: npm run build
+      - name: Install real browser
+        id: browser-install
+        continue-on-error: true
+        run: npx playwright install --with-deps chromium
+      - name: Reproduce, validate and write next handoff
+        run: npm run handoff:ci
+      - name: Keep evidence even when blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: handoff-evidence-${{ github.run_id }}
+          retention-days: 30
+          path: |
+            HANDOFF.json
+            handoff/
+            docs/handoff/current.md
+            public/handoff-status.json
+      - name: Explain setup interruption
+        if: failure()
+        run: echo 'A failed/unfinished run is not completion. Read the step logs and handoff-evidence artifact. If verification never started, do not use older PASS evidence.' >> "$GITHUB_STEP_SUMMARY"

@@ -12,8 +12,15 @@
     "test": "node --test tests/*.test.mjs",
     "verify:assets": "node scripts/verify-assets.mjs",
     "capture": "node scripts/capture.mjs",
-    "handoff:check": "node scripts/handoff-check.mjs",
-    "handoff:new": "node scripts/handoff-new.mjs",
-    "task5:check": "node scripts/task5-copper-check.mjs"
+    "handoff:check": "node scripts/handoff.mjs check",
+    "handoff:new": "node scripts/handoff.mjs new",
+    "task5:check": "node scripts/task5-copper-check.mjs",
+    "handoff:resume": "node scripts/handoff.mjs resume",
+    "handoff:finish": "node scripts/handoff.mjs finish",
+    "handoff:status": "node scripts/handoff.mjs status",
+    "handoff:ci": "node scripts/handoff.mjs ci"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
   }
 }

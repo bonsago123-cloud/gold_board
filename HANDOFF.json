@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
-  "protocol": "repository-handoff",
-  "phase": "COMPLETE",
+  "schema_version": 2,
+  "protocol": "repository-handoff-v2",
+  "phase": "BLOCKED",
   "current_feature": {
     "id": "task5-copper-live",
     "title": "금·은 정보판에 구리 시세 조회 기능 추가",
@@ -22,6 +22,9 @@
     "T05-CU10"
   ],
   "commands": {
+    "resume": "npm run handoff:resume",
+    "finish": "npm run handoff:finish",
+    "status": "npm run handoff:status",
     "validate_handoff": "npm run handoff:check",
     "run_fixed_tests": "npm run task5:check",
     "baseline_tests": "npm test",
@@ -38,13 +41,13 @@
     "공식 T04 fixture·hash·검사",
     "비밀값과 .env 파일"
   ],
-  "next_action": "실제 원천 404 해결 여부를 확인한다. 고정 검사/원천을 임의 변경하지 않는다. AI A 실제 사용량·모델 차이·학생 판단을 확인하고 공개 URL을 검증한다.",
+  "next_action": "실제 구리 API의 HTTP 상태/응답/CORS를 확인한다. 404이면 제공자 문서와 실제 경로를 조사한다. 고정 출처 변경이 불가피하면 변경 근거를 기록하고 사용자 판단을 요청한다. 가짜 가격으로 대체하지 않는다.",
   "start_source_commit": "4c4b0bbb92d650728b5349c84545d831277118cf",
   "ai_a_start_commit": "913c9e174f7fc323013cd424fe1efdc2e7598eca",
   "ai_a_handoff_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
   "ai_b_start_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
-  "ai_b_end_commit": "12596fe1fa4748c348f3bc07b639cccf107aba4b",
-  "completion_scope": "고정 검사 10/10 및 구리 실패 처리 구현 완료. 실제 원천 GET 404 및 제출 증빙 누락으로 과제 전체 완료는 아님.",
+  "ai_b_end_commit": "5a520d7f064ae95c4b9f080011b21f410ca03784",
+  "completion_scope": "실제 API·배포·브라우저·증빙을 포함한 모든 필수 gate가 PASS일 때만 COMPLETE. 모의 검사 통과만으로 완료 금지.",
   "submission_ready": false,
   "ai_b_measurement": {
     "started_at": "2026-10-12T06:51:05+00:00",
@@ -56,5 +59,11 @@
     "failed_fixed_test_runs": 1,
     "passed_tests": 10
   },
-  "handoff_original_sha256": "16162d920ec4e45cec5ba250f2207ef6e3d54d5cf13880007cf2b0d541e618cd"
+  "handoff_original_sha256": "16162d920ec4e45cec5ba250f2207ef6e3d54d5cf13880007cf2b0d541e618cd",
+  "ai_b_original_local_commit": "12596fe1fa4748c348f3bc07b639cccf107aba4b",
+  "runtime_report": "handoff/latest.json",
+  "config": "handoff/config.json",
+  "last_run_id": "2026-10-13T06-18-04-497Z-d5d64464",
+  "verified_source_digest": "a49a4b8c4fd494424e07e2cf0d54ef2610bd213d86679274ea1fa8c906b7879f",
+  "source_commit": "fa185814e15b31a1818b54932a3b3acf7e56c986"
 }

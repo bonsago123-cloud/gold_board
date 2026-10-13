@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "id": "2026-10-13T06-18-04-497Z-d5d64464",
+  "mode": "finish",
+  "feature_id": "task5-copper-live",
+  "source_commit": "fa185814e15b31a1818b54932a3b3acf7e56c986",
+  "source_digest": "a49a4b8c4fd494424e07e2cf0d54ef2610bd213d86679274ea1fa8c906b7879f",
+  "parent_run_id": "2026-10-13T06-17-25-720Z-1c759b18",
+  "parent_report_sha256": "e830eca55527d0b3e923e13209f1a6a705f57c110b93bef0823a3f2c37ec40fd",
+  "started_at": "2026-10-13T06:18:04.497Z",
+  "finished_at": "2026-10-13T06:18:22.804Z",
+  "environment": "local",
+  "ci_run_url": null,
+  "gates": [
+    {
+      "id": "integrity",
+      "status": "PASS",
+      "reason": "Original Git baseline + document + executable hashes unchanged"
+    },
+    {
+      "id": "fixed_tests",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "id": "regression",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "id": "build",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "id": "live_api",
+      "status": "FAIL",
+      "http_status": 404,
+      "reason": "HTTP 404 from fixed endpoint"
+    },
+    {
+      "id": "deployment",
+      "status": "PASS",
+      "reason": "Anonymous deployment files match current source bytes"
+    },
+    {
+      "id": "browser",
+      "status": "NOT_RUN",
+      "reason": "Requires real API and current deployment to pass first"
+    },
+    {
+      "id": "submission",
+      "status": "UNVERIFIED",
+      "reason": "Missing human evidence: a_actual_seconds, a_actual_requests, a_failed_test_runs, b_actual_seconds, b_actual_requests, b_failed_test_runs, different_models_confirmed, student_tool_choice, student_decision, student_rejected_suggestion_or_reason, common_request_unit, a_usage_evidence_path, b_usage_evidence_path, model_evidence_path"
+    }
+  ],
+  "session_id": "2026-10-13T06-17-25-720Z-1c759b18",
+  "phase": "BLOCKED",
+  "blockers": [
+    "live_api",
+    "browser",
+    "submission"
+  ],
+  "next_action": "실제 구리 API의 HTTP 상태/응답/CORS를 확인한다. 404이면 제공자 문서와 실제 경로를 조사한다. 고정 출처 변경이 불가피하면 변경 근거를 기록하고 사용자 판단을 요청한다. 가짜 가격으로 대체하지 않는다.",
+  "session_elapsed_seconds": 57
+}

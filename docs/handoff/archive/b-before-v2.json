@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "protocol": "repository-handoff",
+  "phase": "COMPLETE",
+  "current_feature": {
+    "id": "task5-copper-live",
+    "title": "금·은 정보판에 구리 시세 조회 기능 추가",
+    "improvement": "회원가입·API 키 없이 구리 현재가를 조회하고 화면에 표시한다."
+  },
+  "handoff_document": "docs/handoff/current.md",
+  "fixed_tests_document": "docs/task5/copper-fixed-tests.md",
+  "fixed_test_ids": [
+    "T05-CU01",
+    "T05-CU02",
+    "T05-CU03",
+    "T05-CU04",
+    "T05-CU05",
+    "T05-CU06",
+    "T05-CU07",
+    "T05-CU08",
+    "T05-CU09",
+    "T05-CU10"
+  ],
+  "commands": {
+    "validate_handoff": "npm run handoff:check",
+    "run_fixed_tests": "npm run task5:check",
+    "baseline_tests": "npm test",
+    "build": "npm run build"
+  },
+  "common_limits": {
+    "time_minutes_per_ai": 30,
+    "request_count_per_ai": 10
+  },
+  "protected_areas": [
+    "기존 금(XAU) 조회·저장·검증",
+    "기존 은(XAG) 조회·저장·검증",
+    "Supabase 스키마와 기존 과제4 증빙",
+    "공식 T04 fixture·hash·검사",
+    "비밀값과 .env 파일"
+  ],
+  "next_action": "실제 원천 404 해결 여부를 확인한다. 고정 검사/원천을 임의 변경하지 않는다. AI A 실제 사용량·모델 차이·학생 판단을 확인하고 공개 URL을 검증한다.",
+  "start_source_commit": "4c4b0bbb92d650728b5349c84545d831277118cf",
+  "ai_a_start_commit": "913c9e174f7fc323013cd424fe1efdc2e7598eca",
+  "ai_a_handoff_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
+  "ai_b_start_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
+  "ai_b_end_commit": "12596fe1fa4748c348f3bc07b639cccf107aba4b",
+  "completion_scope": "고정 검사 10/10 및 구리 실패 처리 구현 완료. 실제 원천 GET 404 및 제출 증빙 누락으로 과제 전체 완료는 아님.",
+  "submission_ready": false,
+  "ai_b_measurement": {
+    "started_at": "2026-10-12T06:51:05+00:00",
+    "recorded_at": "2026-10-12T06:58:33+00:00",
+    "elapsed_seconds_at_record": 448,
+    "user_work_requests_observed": 1,
+    "request_unit_confirmation": "A와 동일 단위인지 확인 필요; 도구 호출 횟수를 1로 주장하지 않음",
+    "fixed_test_runs": 2,
+    "failed_fixed_test_runs": 1,
+    "passed_tests": 10
+  },
+  "handoff_original_sha256": "16162d920ec4e45cec5ba250f2207ef6e3d54d5cf13880007cf2b0d541e618cd"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "2026-10-13T06-17-25-720Z-1c759b18",
+  "started_at": "2026-10-13T06:17:25.720Z",
+  "start_commit": "fa185814e15b31a1818b54932a3b3acf7e56c986",
+  "start_digest": "a49a4b8c4fd494424e07e2cf0d54ef2610bd213d86679274ea1fa8c906b7879f",
+  "inherited_session_id": "2026-10-13T06-15-34-655Z-3c36c84d",
+  "closed_at": "2026-10-13T06:18:22.804Z",
+  "end_commit": "fa185814e15b31a1818b54932a3b3acf7e56c986",
+  "end_digest": "a49a4b8c4fd494424e07e2cf0d54ef2610bd213d86679274ea1fa8c906b7879f",
+  "elapsed_seconds": 57,
+  "last_run_id": "2026-10-13T06-18-04-497Z-d5d64464"
+}

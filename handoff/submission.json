@@ -1,0 +1,16 @@
+{
+  "a_actual_seconds": null,
+  "a_actual_requests": null,
+  "a_failed_test_runs": null,
+  "a_usage_evidence_path": null,
+  "different_models_confirmed": null,
+  "model_evidence_path": null,
+  "student_tool_choice": null,
+  "student_decision": null,
+  "student_rejected_suggestion_or_reason": null,
+  "b_actual_seconds": null,
+  "b_actual_requests": null,
+  "b_failed_test_runs": null,
+  "b_usage_evidence_path": null,
+  "common_request_unit": null
+}
