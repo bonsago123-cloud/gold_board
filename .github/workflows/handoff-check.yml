@@ -17,7 +17,7 @@ jobs:
   verify:
     if: github.event_name != 'deployment_status' || github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,6 +33,9 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Reproduce, validate and write next handoff
         run: npm run handoff:ci
+      - name: Exercise all site functions independently of copper API result
+        if: always()
+        run: npm run site:check
       - name: Keep evidence even when blocked
         if: always()
         uses: actions/upload-artifact@v4
@@ -44,6 +47,14 @@ jobs:
             handoff/
             docs/handoff/current.md
             public/handoff-status.json
+      - name: Keep full site test evidence even when blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-check-evidence-${{ github.run_id }}
+          retention-days: 30
+          if-no-files-found: warn
+          path: test-output/site-check/
       - name: Explain setup interruption
         if: failure()
-        run: echo 'A failed/unfinished run is not completion. Read the step logs and handoff-evidence artifact. If verification never started, do not use older PASS evidence.' >> "$GITHUB_STEP_SUMMARY"
+        run: echo 'A failed/unfinished run is not completion. Download both handoff-evidence and site-check-evidence artifacts; missing real-site proof is UNVERIFIED.' >> "$GITHUB_STEP_SUMMARY"

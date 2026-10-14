@@ -18,7 +18,8 @@
     "handoff:resume": "node scripts/handoff.mjs resume",
     "handoff:finish": "node scripts/handoff.mjs finish",
     "handoff:status": "node scripts/handoff.mjs status",
-    "handoff:ci": "node scripts/handoff.mjs ci"
+    "handoff:ci": "node scripts/handoff.mjs ci",
+    "site:check": "node scripts/site-check.mjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"
