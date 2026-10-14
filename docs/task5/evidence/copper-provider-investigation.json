@@ -1,0 +1,42 @@
+[
+  {
+    "url": "https://metalmarket.cash/api/v1/prices/copper",
+    "checked_at": "2026-10-14T01:18:09.818Z",
+    "status": 404,
+    "final_url": "https://metalmarket.cash/api/v1/prices/copper",
+    "content_type": "text/html; charset=UTF-8",
+    "cors": null,
+    "body_excerpt": "<!DOCTYPE html>\n<html lang=\"en\" class=\"dark\">\n<head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta name=\"theme",
+    "documents_fixed_path": false
+  },
+  {
+    "url": "https://metalmarket.cash/api/v1/prices",
+    "checked_at": "2026-10-14T01:18:09.816Z",
+    "status": 404,
+    "final_url": "https://metalmarket.cash/api/v1/prices",
+    "content_type": "text/html; charset=UTF-8",
+    "cors": null,
+    "body_excerpt": "<!DOCTYPE html>\n<html lang=\"en\" class=\"dark\">\n<head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta name=\"theme",
+    "documents_fixed_path": false
+  },
+  {
+    "url": "https://metalmarket.cash/api/docs",
+    "checked_at": "2026-10-14T01:18:09.827Z",
+    "status": 404,
+    "final_url": "https://metalmarket.cash/api/docs",
+    "content_type": "text/html; charset=UTF-8",
+    "cors": null,
+    "body_excerpt": "<!DOCTYPE html>\n<html lang=\"en\" class=\"dark\">\n<head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta name=\"theme",
+    "documents_fixed_path": false
+  },
+  {
+    "url": "https://metalmarket.cash/developers/metal-price-api",
+    "checked_at": "2026-10-14T01:18:09.842Z",
+    "status": 200,
+    "final_url": "https://metalmarket.cash/developers/metal-price-api",
+    "content_type": "text/html; charset=UTF-8",
+    "cors": null,
+    "body_excerpt": "<!DOCTYPE html>\n<html lang=\"en\" class=\"dark\">\n<head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta name=\"theme",
+    "documents_fixed_path": true
+  }
+]

@@ -41,7 +41,7 @@
     "공식 T04 fixture·hash·검사",
     "비밀값과 .env 파일"
   ],
-  "next_action": "실제 구리 API의 HTTP 상태/응답/CORS를 확인한다. 404이면 제공자 문서와 실제 경로를 조사한다. 고정 출처 변경이 불가피하면 변경 근거를 기록하고 사용자 판단을 요청한다. 가짜 가격으로 대체하지 않는다.",
+  "next_action": "선행 조사: docs/task5/evidence/copper-provider-investigation.md 및 JSON. 공식 문서의 구리/전체 가격/API 명세 경로 모두 2026-10-14 HTTP 404 확인. 고정 조건을 유지하고 제공자 복구 시 재검증한다. 다른 출처로 변경하려면 기존 실험 보존 및 별도 사용자 결정이 필요하다.",
   "start_source_commit": "4c4b0bbb92d650728b5349c84545d831277118cf",
   "ai_a_start_commit": "913c9e174f7fc323013cd424fe1efdc2e7598eca",
   "ai_a_handoff_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
@@ -63,7 +63,7 @@
   "ai_b_original_local_commit": "12596fe1fa4748c348f3bc07b639cccf107aba4b",
   "runtime_report": "handoff/latest.json",
   "config": "handoff/config.json",
-  "last_run_id": "2026-10-13T06-18-04-497Z-d5d64464",
-  "verified_source_digest": "a49a4b8c4fd494424e07e2cf0d54ef2610bd213d86679274ea1fa8c906b7879f",
-  "source_commit": "fa185814e15b31a1818b54932a3b3acf7e56c986"
+  "last_run_id": "2026-10-14T01-25-38-535Z-963613d9",
+  "verified_source_digest": "8e08322f1c802005c0e3408f30a2c60f4d3496be73e8892632ee9052a50763d8",
+  "source_commit": "6336e975438394e3a6762cf05eefd7efe77f4edc"
 }
