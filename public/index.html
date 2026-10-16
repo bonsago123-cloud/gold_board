@@ -18,7 +18,12 @@
 <div class="proof-cell"><h3>현재 비트코인 가격</h3><strong id="bitcoin-price">—</strong><p id="bitcoin-unit">USD/BTC</p></div>
 <div class="proof-cell"><h3>상태</h3><strong id="bitcoin-status" role="status">조회 전</strong><p id="bitcoin-error">조회 버튼을 눌러 주세요.</p></div>
 <div class="proof-cell"><h3>원천 관측 시각 · KST</h3><strong id="bitcoin-source-at">—</strong><h3>조회 시각 · KST</h3><strong id="bitcoin-fetched-at">—</strong><p><a id="bitcoin-source" href="https://api.gold-api.com/price/BTC" target="_blank" rel="noopener noreferrer">Gold API · BTC</a></p></div>
-</div></section>
+</div>
+<section class="market-card" aria-labelledby="bitcoin-chart-title">
+<div class="market-toolbar"><h3 id="bitcoin-chart-title">비트코인 과거 시세 차트</h3><div><label for="bitcoin-chart-interval">시간 간격</label><select id="bitcoin-chart-interval"><option value="1">1분</option><option value="5">5분</option><option value="15">15분</option><option value="60" selected>1시간</option><option value="240">4시간</option><option value="D">1일</option><option value="W">1주</option><option value="M">1개월</option></select><button id="bitcoin-chart-reload" class="secondary" type="button">다시 불러오기</button></div></div>
+<p id="bitcoin-chart-note" class="widget-note">TradingView / Bitstamp · BTCUSD · USD/BTC 참고가격. 현재가(Gold API)와 출처·관측 시각·가격이 다를 수 있습니다. 시간대: Asia/Seoul. 차트를 확대·축소해 기간을 조절하세요.</p>
+<div id="bitcoin-chart-host" class="widget-host"></div><p id="bitcoin-chart-status" class="widget-status" role="status" aria-live="polite"></p>
+</section></section>
 <section class="fx-panel"><p id="fx-status" role="status">환율 확인 중…</p><p class="section-note">최신 제공 USD/KRW 환율 · 하루 1회 갱신, 실시간 환율이 아닙니다. <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a></p><button id="fx-refresh" class="secondary">환율 다시 확인</button></section>
 <section id="notice" class="notice" aria-live="polite"><div><strong id="notice-title">저장된 기록을 불러오는 중입니다.</strong><p id="notice-body">가격과 원천 시각을 함께 확인합니다.</p><small id="machine-state" hidden>status: empty · error_code: none</small></div><button id="retry" class="secondary">다시 시도</button></section>
 <section id="market" class="market-section" aria-label="선택한 원자재 과거 차트">

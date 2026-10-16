@@ -1,3 +1,4 @@
+import {initBitcoinChart} from './bitcoin-chart.mjs';
 import {createBitcoinClient} from './bitcoin-client.mjs';
 import {METALS} from './metals.mjs';
 import {initMarket} from './market.mjs';
@@ -25,6 +26,8 @@ function render({data,busy,cached,due}){
  $('source-at').textContent=time(q?.source_at);$('fetched-at').textContent=time(q?.fetched_at);$('quote-source').href=q?.source_url??meta.source;$('quote-source').textContent=meta.provider;
  $('source-description').textContent='원천 시각은 updatedAt입니다. 휴장 중에는 이전 가격이 유지될 수 있습니다.';
  $('status').className=`badge ${state.status}`;$('status').textContent=({fresh:'정상',stale:'오래된 값',error:'조회 오류',empty:'조회 전'})[state.status];
+ // Source-age details belong to the verification page; retain the stale price badge.
+ $('notice').hidden=state.error_code==='source_stale'&&!cached;
  const error=ERRORS[state.error_code];$('notice').className=`notice ${error?'warning':'good'}`;$('notice-title').textContent=error?error[0]:'가격과 적용 환율을 함께 확인하세요.';$('notice-body').textContent=error?`${error[1]} ${q?'마지막 정상값을 유지합니다. ':''}${error[2]}`:(asset==='XAU'?'조회 성공 시 금 일별 기록을 저장합니다.':'조회 성공 시 금·은 일별 기록을 저장합니다.');
  if(cached)$('notice-body').textContent+=' 서버 확인 실패 · 보관된 기록입니다.';
  const c=safeDelta(state.daily);$('change').textContent=c?`${Date.parse(c.to.date_kst)-Date.parse(c.from.date_kst)===86400000?'어제':'이전 기록'} 대비 ${c.value>=0?'+':''}${c.value.toFixed(6)} ${q.unit} (${c.percent.toFixed(4)}%)`:'비교할 같은 출처·단위의 일별 기록이 없습니다.';
@@ -63,3 +66,5 @@ function renderBitcoin(v=bitcoinClient.view()){
 $('bitcoin-refresh').onclick=()=>bitcoinClient.request();renderBitcoin();
 const bitcoinTimer=setInterval(()=>renderBitcoin(),1000);
 window.addEventListener('pagehide',()=>clearInterval(bitcoinTimer),{once:true});
+
+initBitcoinChart();

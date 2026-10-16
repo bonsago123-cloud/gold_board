@@ -39,5 +39,5 @@
 - `npm run handoff:finish`가 갱신한 `docs/handoff/current.md`의 7항목에 사이트 보고서 경로와 실패·미확인 항목을 연결한다. 이후 다시 finish를 실행하면 생성 문서가 덮어써질 수 있으므로 별도 기록을 보존한다.
 - CI에서는 기존 gate가 FAIL이라도 `site:check` 단계가 별도로 실행되며 실패는 무시되지 않는다. `site-check-evidence` artifact를 확인한다. 증거가 없으면 PASS로 주장하지 않는다.
 
-현재 활성 고정10개는 docs/task5/bitcoin/fixed-tests.json. 구리 검사와 과거 결과는 보존한다.
-자동검사 밖 증거는 handoff/bitcoin/manual.json에 최신 source_digest, finished_at, 항목별 실제 증거 경로를 기록한다.
+현재 활성 차트 고정10개는 docs/task5/bitcoin-chart/fixed-tests.json이며 기존 현재가 고정10개는 회귀 검사로 보존한다. 구리 검사와 과거 결과는 보존한다.
+현재 차트의 자동검사 밖 증거는 handoff/chart/review.json에 NEXT.md의 형식대로 기록한다. 이전 현재가 증거 handoff/bitcoin/manual.json은 보존한다.

@@ -29,7 +29,7 @@
     "finish": "npm run handoff:finish",
     "run_fixed_tests": "npm run chart:check"
   },
-  "source_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "source_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
   "next_action": "Read handoff/chart/latest.json and NEXT.md; fix first failure, record unverified items",
-  "last_run_id": "2026-10-16T12-24-27-941Z"
+  "last_run_id": "2026-10-16T12-31-40-498Z"
 }
