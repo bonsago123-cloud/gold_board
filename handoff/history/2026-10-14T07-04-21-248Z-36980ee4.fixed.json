@@ -1,0 +1,76 @@
+{
+  "kind": "synthetic",
+  "at": "2026-10-14T07:04:22.228Z",
+  "rows": [
+    {
+      "id": "T05-BTC01",
+      "input": "정상 BTC 응답: symbol BTC, currency USD, price 65000, updatedAt 2026-10-14T00:00:00Z; 조회시각 00:00:01Z",
+      "expected": "value 65000, unit USD/BTC, 두 시각 보존, 원천 URL 명시",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "T05-BTC02",
+      "input": "price 0/-1/문자열/NaN/Infinity, 잘못된 symbol/currency/updatedAt/조회시각",
+      "expected": "모두 schema_changed 오류; 정상값으로 사용 금지",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "T05-BTC03",
+      "input": "합성 GET 성공 응답",
+      "expected": "고정 endpoint GET, 65000 반환, AbortSignal 전달, 인증키 없음",
+      "status": "FAIL",
+      "reason": "not_implemented"
+    },
+    {
+      "id": "T05-BTC04",
+      "input": "합성 HTTP 429 Retry-After 60",
+      "expected": "rate_limited, retryAfterMs 60000",
+      "status": "FAIL",
+      "reason": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nError: not_implemented"
+    },
+    {
+      "id": "T05-BTC05",
+      "input": "합성 지연 응답; timeoutMs 5",
+      "expected": "timeout 오류, 요청 취소",
+      "status": "FAIL",
+      "reason": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nError: not_implemented"
+    },
+    {
+      "id": "T05-BTC06",
+      "input": "합성 네트워크 거부 / HTML 응답 / HTTP 500",
+      "expected": "각 offline / schema_changed / server_error",
+      "status": "FAIL",
+      "reason": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nError: not_implemented"
+    },
+    {
+      "id": "T05-BTC07",
+      "input": "초기 상태에서 실패",
+      "expected": "last_good null, status error, 오류 offline",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly equal:\n\n'empty' !== 'error'\n"
+    },
+    {
+      "id": "T05-BTC08",
+      "input": "성공 뒤 30초 경과 후 실패",
+      "expected": "마지막 정상 가격·두 시각 보존, stale/offline",
+      "status": "FAIL",
+      "reason": "Cannot read properties of null (reading 'value')"
+    },
+    {
+      "id": "T05-BTC09",
+      "input": "실패 대기 종료 후 정상 응답 66000",
+      "expected": "fresh/none, 새 가격 66000, 새 조회시각",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly equal:\n\n'empty' !== 'fresh'\n"
+    },
+    {
+      "id": "T05-BTC10",
+      "input": "성공 후 즉시 재요청, 30초 후 재요청",
+      "expected": "첫 성공 후 30초 안에는 추가 요청 없음; 30초 후 추가 요청 가능",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    }
+  ]
+}

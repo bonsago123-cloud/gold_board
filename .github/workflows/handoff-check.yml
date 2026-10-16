@@ -33,9 +33,10 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Reproduce, validate and write next handoff
         run: npm run handoff:ci
-      - name: Exercise all site functions independently of copper API result
+      - name: Exercise all site functions if orchestration was interrupted
         if: always()
-        run: npm run site:check
+        run: |
+          if [ ! -f test-output/site-check/result.json ]; then npm run site:check; fi
       - name: Keep evidence even when blocked
         if: always()
         uses: actions/upload-artifact@v4
@@ -47,6 +48,7 @@ jobs:
             handoff/
             docs/handoff/current.md
             public/handoff-status.json
+            test-output/handoff/
       - name: Keep full site test evidence even when blocked
         if: always()
         uses: actions/upload-artifact@v4

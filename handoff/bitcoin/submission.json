@@ -1,0 +1,19 @@
+{
+  "reviewed": false,
+  "source_digest": null,
+  "a_seconds": null,
+  "a_requests": null,
+  "b_seconds": null,
+  "b_requests": null,
+  "a_start_commit": null,
+  "a_end_commit": null,
+  "b_start_commit": null,
+  "b_end_commit": null,
+  "different_models": null,
+  "handoff_equal": null,
+  "public_report_verified": null,
+  "evidence_paths": [],
+  "student_choice": null,
+  "student_decision": null,
+  "student_rejection_or_reason": null
+}

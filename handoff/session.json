@@ -1,12 +1,12 @@
 {
-  "id": "2026-10-14T01-25-14-283Z-38478763",
-  "started_at": "2026-10-14T01:25:14.283Z",
-  "start_commit": "6336e975438394e3a6762cf05eefd7efe77f4edc",
-  "start_digest": "8e08322f1c802005c0e3408f30a2c60f4d3496be73e8892632ee9052a50763d8",
-  "inherited_session_id": "2026-10-14T01-23-27-875Z-c5ee5695",
-  "closed_at": "2026-10-14T01:25:52.124Z",
-  "end_commit": "6336e975438394e3a6762cf05eefd7efe77f4edc",
-  "end_digest": "8e08322f1c802005c0e3408f30a2c60f4d3496be73e8892632ee9052a50763d8",
-  "elapsed_seconds": 38,
-  "last_run_id": "2026-10-14T01-25-38-535Z-963613d9"
+  "id": "2026-10-14T07-00-00-539Z-bbfa2792",
+  "started_at": "2026-10-14T07:00:00.539Z",
+  "closed_at": "2026-10-14T07:02:45.912Z",
+  "start_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
+  "start_digest": "fbb03e40e268d44bd02375eae81c04f9ab7129ea752d6846ede79061f4e3cd40",
+  "received_handoff_sha256": "04e4f142c76def83471fc1da57b40efd9eed468cd849369d7c7930dedca576a7",
+  "inherited_session": "2026-10-14T01-25-14-283Z-38478763",
+  "end_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
+  "end_digest": "b6162af28a2246113c1b6c6926a98878c176c3eb8a07f9e2924f3bfcdb50830e",
+  "elapsed_seconds": 165.373
 }

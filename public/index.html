@@ -3,7 +3,7 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="금·은 시세와 차트를 확인하고 금의 실제 일별 기록과 실패 상태를 대조하는 공개 정보판."><title>METAL / NOTE · 원자재 시세 정보판</title><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css"><script type="module" src="/dashboard.mjs"></script></head>
 <body>
 <a href="#main" class="skip">본문으로 이동</a>
-<header class="top"><a href="/" class="brand"><span class="mark">Au</span><span>METAL<span class="muted"> / </span>NOTE</span></a><span class="top-meta">금 · 은 · 구리 <span class="desktop">· KST / UTC+9</span></span></header>
+<header class="top"><a href="/" class="brand"><span class="mark">Au</span><span>METAL<span class="muted"> / </span>NOTE</span></a><span class="top-meta">금 · 은 · 비트코인 <span class="desktop">· KST / UTC+9</span></span></header>
 <main id="main">
 <nav id="asset-tabs" class="asset-tabs" aria-label="원자재 선택"><button data-symbol="XAU" aria-pressed="true">금<small>XAU</small></button><button data-symbol="XAG" aria-pressed="false">은<small>XAG</small></button></nav>
 <div class="heading"><div><p class="eyebrow">TODAY’S OBSERVATION</p><h1 id="board-title">오늘의 국제 금 시세</h1><p id="board-description" class="muted">금 1트로이온스의 미국 달러 가격 · XAU / USD</p></div><div class="live-controls"><button id="refresh" class="primary">실제 금시세 조회</button><label class="auto-label"><input id="auto-refresh" type="checkbox"> 자동 조회·기록</label><small id="auto-status" aria-live="off">자동 갱신 꺼짐</small></div></div>
@@ -11,15 +11,14 @@
 <div class="quote"><div class="quote-head"><span class="small-label" id="mode-label">실제 원천 · XAU</span><span id="status" class="badge">조회 전</span></div><div class="price-line"><span class="currency">$</span><strong id="price">—</strong></div><p id="quote-unit" class="unit">USD / 트로이온스 <span>· 1트로이온스 ≈ 31.1035g</span></p><div class="krw-price"><span>원화 환산 · KRW</span><div class="price-line"><span class="currency">₩</span><strong id="price-krw">—</strong></div><p id="krw-unit" class="unit">KRW / 트로이온스 · 환산 참고값</p><p id="fx-price-note" class="section-note"></p></div><div class="price-footer"><span id="change-label">일별 저장값 변화</span><strong id="change">비교할 기록이 아직 없습니다.</strong></div></div>
 <aside class="context"><h2>가격의 맥락</h2><dl><div><dt>출처</dt><dd><a id="quote-source" href="https://api.gold-api.com/price/XAU" target="_blank" rel="noopener noreferrer">Gold API · XAU</a></dd></div><div><dt>원천 관측 시각</dt><dd id="source-at">—</dd></div><div><dt>실제 조회 시각</dt><dd id="fetched-at">—</dd></div><div><dt>기준 시간대</dt><dd>Asia/Seoul · KST (UTC+9)</dd></div></dl><p id="source-description">원천 관측 시각은 제공자가 돌려준 updatedAt입니다. 조회 시각과 다를 수 있으며, 휴장 때는 이전 가격이 유지될 수 있습니다.</p></aside>
 </section>
-<section id="copper-live" class="proof">
-<div class="section-heading"><div><p class="eyebrow">INDUSTRIAL METAL / COPPER</p><h2>구리 시세</h2></div><button id="copper-refresh" class="secondary">구리 조회</button></div>
-<p class="section-note">MetalMarket.cash 공개 REST API에서 구리 현재가를 조회합니다. 회원가입·API 키 없이 사용하며 단위는 USD/t입니다. 조회 실패 시 마지막 정상값을 유지하고 재시도 대기 시간을 안내합니다. <a href="/task5.html">과제5 비교 보고서</a></p>
+<section id="bitcoin-live" class="proof">
+<div class="section-heading"><div><p class="eyebrow">BITCOIN / BTC</p><h2>비트코인 시세</h2></div><button id="bitcoin-refresh" class="secondary" disabled>비트코인 조회 준비 중</button></div>
+<p class="section-note">비트코인 조회 기능을 준비하고 있습니다. 아직 실제 가격 조회는 연결되지 않았습니다. <a href="/task5.html">과제5 비교 보고서</a></p>
 <div class="proof-grid">
-<div class="proof-cell"><h3>현재 구리 가격</h3><strong id="copper-price">—</strong><p id="copper-unit">USD/t</p></div>
-<div class="proof-cell"><h3>상태</h3><strong id="copper-status">조회 전</strong><p id="copper-error">오류 없음</p></div>
-<div class="proof-cell"><h3>조회 시각 · KST</h3><strong id="copper-fetched-at">—</strong><p><a href="https://metalmarket.cash/developers/metal-price-api" target="_blank" rel="noopener noreferrer">MetalMarket.cash</a></p></div>
-</div>
-</section>
+<div class="proof-cell"><h3>현재 비트코인 가격</h3><strong id="bitcoin-price">—</strong><p id="bitcoin-unit">USD/BTC</p></div>
+<div class="proof-cell"><h3>상태</h3><strong id="bitcoin-status">구현 중</strong><p id="bitcoin-error">조회 기능 준비 중</p></div>
+<div class="proof-cell"><h3>원천 관측 시각 · KST</h3><strong id="bitcoin-source-at">—</strong><h3>조회 시각 · KST</h3><strong id="bitcoin-fetched-at">—</strong><p><a id="bitcoin-source" href="https://api.gold-api.com/price/BTC" target="_blank" rel="noopener noreferrer">Gold API · BTC</a></p></div>
+</div></section>
 <section class="fx-panel"><p id="fx-status" role="status">환율 확인 중…</p><p class="section-note">최신 제공 USD/KRW 환율 · 하루 1회 갱신, 실시간 환율이 아닙니다. <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a></p><button id="fx-refresh" class="secondary">환율 다시 확인</button></section>
 <section id="notice" class="notice" aria-live="polite"><div><strong id="notice-title">저장된 기록을 불러오는 중입니다.</strong><p id="notice-body">가격과 원천 시각을 함께 확인합니다.</p><small id="machine-state" hidden>status: empty · error_code: none</small></div><button id="retry" class="secondary">다시 시도</button></section>
 <section id="market" class="market-section" aria-label="선택한 원자재 과거 차트">

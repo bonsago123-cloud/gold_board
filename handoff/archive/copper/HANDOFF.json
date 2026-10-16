@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "protocol": "repository-handoff-v2",
+  "phase": "BLOCKED",
+  "current_feature": {
+    "id": "task5-copper-live",
+    "title": "금·은 정보판에 구리 시세 조회 기능 추가",
+    "improvement": "회원가입·API 키 없이 구리 현재가를 조회하고 화면에 표시한다."
+  },
+  "handoff_document": "docs/handoff/current.md",
+  "fixed_tests_document": "docs/task5/copper-fixed-tests.md",
+  "fixed_test_ids": [
+    "T05-CU01",
+    "T05-CU02",
+    "T05-CU03",
+    "T05-CU04",
+    "T05-CU05",
+    "T05-CU06",
+    "T05-CU07",
+    "T05-CU08",
+    "T05-CU09",
+    "T05-CU10"
+  ],
+  "commands": {
+    "resume": "npm run handoff:resume",
+    "finish": "npm run handoff:finish",
+    "status": "npm run handoff:status",
+    "validate_handoff": "npm run handoff:check",
+    "run_fixed_tests": "npm run task5:check",
+    "baseline_tests": "npm test",
+    "build": "npm run build"
+  },
+  "common_limits": {
+    "time_minutes_per_ai": 30,
+    "request_count_per_ai": 10
+  },
+  "protected_areas": [
+    "기존 금(XAU) 조회·저장·검증",
+    "기존 은(XAG) 조회·저장·검증",
+    "Supabase 스키마와 기존 과제4 증빙",
+    "공식 T04 fixture·hash·검사",
+    "비밀값과 .env 파일"
+  ],
+  "next_action": "선행 조사: docs/task5/evidence/copper-provider-investigation.md 및 JSON. 공식 문서의 구리/전체 가격/API 명세 경로 모두 2026-10-14 HTTP 404 확인. 고정 조건을 유지하고 제공자 복구 시 재검증한다. 다른 출처로 변경하려면 기존 실험 보존 및 별도 사용자 결정이 필요하다.",
+  "start_source_commit": "4c4b0bbb92d650728b5349c84545d831277118cf",
+  "ai_a_start_commit": "913c9e174f7fc323013cd424fe1efdc2e7598eca",
+  "ai_a_handoff_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
+  "ai_b_start_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
+  "ai_b_end_commit": "5a520d7f064ae95c4b9f080011b21f410ca03784",
+  "completion_scope": "실제 API·배포·브라우저·증빙을 포함한 모든 필수 gate가 PASS일 때만 COMPLETE. 모의 검사 통과만으로 완료 금지.",
+  "submission_ready": false,
+  "ai_b_measurement": {
+    "started_at": "2026-10-12T06:51:05+00:00",
+    "recorded_at": "2026-10-12T06:58:33+00:00",
+    "elapsed_seconds_at_record": 448,
+    "user_work_requests_observed": 1,
+    "request_unit_confirmation": "A와 동일 단위인지 확인 필요; 도구 호출 횟수를 1로 주장하지 않음",
+    "fixed_test_runs": 2,
+    "failed_fixed_test_runs": 1,
+    "passed_tests": 10
+  },
+  "handoff_original_sha256": "16162d920ec4e45cec5ba250f2207ef6e3d54d5cf13880007cf2b0d541e618cd",
+  "ai_b_original_local_commit": "12596fe1fa4748c348f3bc07b639cccf107aba4b",
+  "runtime_report": "handoff/latest.json",
+  "config": "handoff/config.json",
+  "last_run_id": "2026-10-14T01-25-38-535Z-963613d9",
+  "verified_source_digest": "8e08322f1c802005c0e3408f30a2c60f4d3496be73e8892632ee9052a50763d8",
+  "source_commit": "6336e975438394e3a6762cf05eefd7efe77f4edc"
+}

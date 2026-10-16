@@ -14,12 +14,13 @@
     "capture": "node scripts/capture.mjs",
     "handoff:check": "node scripts/handoff.mjs check",
     "handoff:new": "node scripts/handoff.mjs new",
-    "task5:check": "node scripts/task5-copper-check.mjs",
+    "task5:check": "node scripts/task5-bitcoin-check.mjs",
     "handoff:resume": "node scripts/handoff.mjs resume",
     "handoff:finish": "node scripts/handoff.mjs finish",
     "handoff:status": "node scripts/handoff.mjs status",
     "handoff:ci": "node scripts/handoff.mjs ci",
-    "site:check": "node scripts/site-check.mjs"
+    "site:check": "node scripts/site-check.mjs",
+    "task5:copper:archive": "node scripts/task5-copper-check.mjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

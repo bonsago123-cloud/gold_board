@@ -1,53 +1,17 @@
 {
-  "schema_version": 2,
-  "feature_id": "task5-copper-live",
-  "title": "구리 현재 시세 조회 및 연속 인수인계",
-  "baseline_commit": "1241e3eb923468e93b6bc9cbccef33f7201a9137",
-  "fixed_ids": [
-    "T05-CU01",
-    "T05-CU02",
-    "T05-CU03",
-    "T05-CU04",
-    "T05-CU05",
-    "T05-CU06",
-    "T05-CU07",
-    "T05-CU08",
-    "T05-CU09",
-    "T05-CU10"
-  ],
-  "fixed_files": {
-    "docs/task5/copper-fixed-tests.md": "38f709ea0f1b2d64f41e7d0bfe7c81fdc149b307eb4b005d7aa8172fea7dd10a",
-    "scripts/task5-copper-check.mjs": "e8feaa24e2f30555628165315aaa385a69130668ae84e52b1245609ab52ff3c2"
-  },
-  "endpoint": "https://metalmarket.cash/api/v1/prices/copper",
+  "schema_version": 3,
+  "feature_id": "task5-bitcoin-v1",
+  "title": "BTC \ud604\uc7ac\uac00 \uc870\ud68c",
+  "endpoint": "https://api.gold-api.com/price/BTC",
   "deployment_url": "https://goldboard-omega.vercel.app",
   "deployed_files": [
     "index.html",
-    "copper-core.mjs",
-    "copper-client.mjs",
-    "dashboard.mjs"
+    "dashboard.mjs",
+    "bitcoin-core.mjs",
+    "bitcoin-client.mjs"
   ],
-  "evidence_max_age_minutes": 60,
-  "original_ab_limits": {
-    "minutes_per_ai": 30,
-    "requests_per_ai": 10,
-    "note": "원래 A/B 실험 상한 보존. 이번 시스템 보완은 후속 작업이며 과거 측정에 합산/소급하지 않는다."
-  },
-  "protected_areas": [
-    "기존 금·은 조회/저장/검증",
-    "Supabase 스키마와 T04 실제 증빙",
-    "T04 공식 fixture/hash/검사",
-    ".env와 비밀값",
-    "고정 검사 10개 ID/입력/기대값"
-  ],
-  "next_actions": {
-    "integrity": "고정 검사와 기준 커밋의 차이를 확인하고 원래 조건을 복구한다. 조건을 완화하지 않는다.",
-    "fixed_tests": "고정 검사 출력의 첫 FAIL을 재현하고 구현을 수정한다.",
-    "regression": "회귀 검사 로그의 첫 실패를 수정한다. 고정 10개는 변경하지 않는다.",
-    "build": "빌드 실패를 수정한다.",
-    "live_api": "선행 조사: docs/task5/evidence/copper-provider-investigation.md 및 JSON. 공식 문서의 구리/전체 가격/API 명세 경로 모두 2026-10-14 HTTP 404 확인. 고정 조건을 유지하고 제공자 복구 시 재검증한다. 다른 출처로 변경하려면 기존 실험 보존 및 별도 사용자 결정이 필요하다.",
-    "deployment": "배포된 코드와 현재 코드를 맞춘다. GitHub 홈페이지 업로드 후 배포 완료를 확인하고 다시 실행한다.",
-    "browser": "Chromium 의존성을 설치하고 실제 배포 화면에서 구리 조회를 검증한다. 오류 원인을 고친다. 실행 불가는 통과가 아니다.",
-    "submission": "handoff/submission.json의 누락된 실제 A/B 사용량과 공통 집계 단위·실제 모델 차이·학생 판단을 증거에 따라 채운다. 값을 추측하지 않는다."
-  }
+  "fixed_tests": "docs/task5/bitcoin/fixed-tests.json",
+  "freeze": "docs/task5/bitcoin/freeze.json",
+  "archive": "handoff/archive/copper/",
+  "next_actions": "docs/task5/bitcoin/NEXT.md"
 }

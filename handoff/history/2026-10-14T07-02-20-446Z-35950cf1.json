@@ -1,0 +1,95 @@
+{
+  "schema_version": 3,
+  "id": "2026-10-14T07-02-20-446Z-35950cf1",
+  "feature_id": "task5-bitcoin-v1",
+  "mode": "finish",
+  "started_at": "2026-10-14T07:02:20.446Z",
+  "finished_at": "2026-10-14T07:02:45.912Z",
+  "source_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
+  "source_digest": "b6162af28a2246113c1b6c6926a98878c176c3eb8a07f9e2924f3bfcdb50830e",
+  "parent_run_id": "2026-10-14T07-00-00-539Z-bbfa2792",
+  "parent_report_sha256": "dfa24a1cfca4801a6c33c1f2a969b03abf21ae75531a6dffd22d96c78f52383c",
+  "gates": [
+    {
+      "id": "integrity",
+      "status": "UNVERIFIED",
+      "reason": "Local freeze valid; initial upload commit not yet available. Next AI validates Git anchor."
+    },
+    {
+      "id": "fixed_tests",
+      "status": "FAIL",
+      "exit_code": 1,
+      "output": "PASS T05-BTC01\nPASS T05-BTC02\nFAIL T05-BTC03\nnot_implemented\nFAIL T05-BTC04\nThe validation function is expected to return \"true\". Received false\n\nCaught error:\n\nError: not_implemented\nFAIL T05-BTC05\nThe validation function is expected to return \"true\". Received false\n\nCaught error:\n\nError: not_implemented\nFAIL T05-BTC06\nThe validation function is expected to return \"true\". Received false\n\nCaught error:\n\nError: not_implemented\nFAIL T05-BTC07\nExpected values to be strictly equal:\n\n'empty' !== 'error'\n\nFAIL T05-BTC08\nCannot read properties of null (reading 'value')\nFAIL T05-BTC09\nExpected values to be strictly equal:\n\n'empty' !== 'fresh'\n\nFAIL T05-BTC10\nExpected values to be strictly equal:\n\n0 !== 1\n\nRESULT 2/10\n"
+    },
+    {
+      "id": "regression",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "✔ Missing DB configuration is not fake success or a fake price (46.444348ms)\n✔ Untrusted cross-site refresh is rejected (0.441587ms)\n✔ Cron without secret cannot collect or expose anything (0.725815ms)\n✔ Client cannot choose a method that deletes records (2.015027ms)\n✔ BTC completion requires every gate, rejects missing/duplicate/unverified (23.527603ms)\n✔ Site unavailable or incomplete never counts as live success (1.714326ms)\n✔ only gold and silver remain; neither oil API nor secret required (24.751607ms)\n✔ silver failure does not discard gold success (8.251166ms)\n✔ metal synthetic checks preserve values and recover (44.974073ms)\n✔ Retry-After seconds: blocks before boundary, recovers at boundary (6.598098ms)\n✔ Retry-After HTTP date and missing/invalid fallback (2.098541ms)\n✔ timeout aborts stalled request and stalled response body (21.813526ms)\n✔ concurrent clicks send one request; first failure leaves no fabricated price (1.649113ms)\n✔ malformed JSON and interrupted body have distinct errors (0.938094ms)\n✔ KST midnight changes at UTC 15:00, not UTC midnight (9.591216ms)\n✔ Same day three successes stay one row, new date adds exactly one (92.833747ms)\n✔ LOCAL-SLOW: exact failure, last good retained, no failed day, recovery clears error (354.787407ms)\n✔ LOCAL-DENIED: exact failure, last good retained, no failed day, recovery clears error (6.281076ms)\n✔ LOCAL-LIMIT: exact failure, last good retained, no failed day, recovery clears error (5.990949ms)\n✔ LOCAL-OFFLINE: exact failure, last good retained, no failed day, recovery clears error (3.954687ms)\n✔ LOCAL-SCHEMA: exact failure, last good retained, no failed day, recovery clears error (4.431964ms)\n✔ HTTP 401 and 403 share explicit rejection, 429 uses Retry-After (4.360119ms)\n✔ Broken JSON, wrong currency, string price and future source time rejected (1.667136ms)\n✔ Stale source is honestly labeled even after a successful fetch (2.291747ms)\n✔ Nonconsecutive records are not called yesterday (1.3628ms)\n✔ Chart changes real data interval and keeps XAUUSD/KST for every option (3.885895ms)\n✔ Polling obeys 30 seconds, upstream Retry-After and failure backoff (1.855946ms)\n✔ Official package ID and all 17 publisher manifest file hashes/lengths match (66.183006ms)\n✔ All original official fixtures: same-ID daily update, 5 failures, last good, recovery once (106.84895ms)\n✔ USD to KRW multiplies the unrounded original and keeps unit quantity unchanged (16.029363ms)\n✔ gold evidence uses server earliest dates, independent of other assets and recent 90 days (38.773841ms)\n✔ gold failure suite uses the gold fetch pipeline and preserves daily records (201.264568ms)\n✔ Every required gate must pass; mocks alone never complete (6.005958ms)\n✔ Different source, stale/future time and unfinished evidence are rejected (1.504897ms)\n✔ Fixed result must contain all ten unique PASS IDs and no FAIL (1.278887ms)\n✔ HTTP 404 blocks completion even with all simulated checks PASS (7.010837ms)\n✔ Network denial is UNVERIFIED rather than HTTP 404 or PASS (1.806048ms)\n✔ Real check rejects HTML, invalid schema and missing CORS (7.281335ms)\n✔ Metal quotes keep symbol, unit and source; reject wrong symbol/currency and invalid values (7.094471ms)\n✔ Metal endpoint allowlists symbols, uses no DB/key, and preserves upstream rate limit (24.073207ms)\n✔ silver uses latest two real distinct KST dates; no gold or synthetic substitute (17.353583ms)\nℹ tests 41\nℹ suites 0\nℹ pass 41\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1921.314684\n"
+    },
+    {
+      "id": "build",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "Built public assets only; server credentials are never bundled.\n"
+    },
+    {
+      "id": "live_api",
+      "status": "PASS",
+      "http_status": 200,
+      "quote": {
+        "symbol": "BTC",
+        "value": 83364.117188,
+        "unit": "USD/BTC",
+        "source_url": "https://api.gold-api.com/price/BTC",
+        "source_at": "2026-10-14T07:02:20Z",
+        "fetched_at": "2026-10-14T07:02:33.494Z",
+        "timezone": "Asia/Seoul"
+      }
+    },
+    {
+      "id": "deployment",
+      "status": "FAIL",
+      "reason": "Deployment mismatch index.html"
+    },
+    {
+      "id": "site",
+      "status": "UNVERIFIED",
+      "exit_code": 1,
+      "reason": "{\"PASS\":0,\"FAIL\":0,\"UNVERIFIED\":1}",
+      "output": "SITE CHECK: {\"PASS\":0,\"FAIL\":0,\"UNVERIFIED\":1}. Evidence: test-output/site-check/report.md\nBrowser setup or site check interrupted: browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n"
+    },
+    {
+      "id": "manual",
+      "status": "UNVERIFIED",
+      "reason": "Manual evidence stale/source mismatch"
+    },
+    {
+      "id": "submission",
+      "status": "UNVERIFIED",
+      "reason": "Current BTC submission not reviewed"
+    }
+  ],
+  "phase": "BLOCKED",
+  "blockers": [
+    "integrity",
+    "fixed_tests",
+    "deployment",
+    "site",
+    "manual",
+    "submission"
+  ],
+  "next_action": "test-output/bitcoin-fixed.json 첫 FAIL부터 bitcoin-core/client를 구현하고 화면을 연결한다.",
+  "session": {
+    "id": "2026-10-14T07-00-00-539Z-bbfa2792",
+    "started_at": "2026-10-14T07:00:00.539Z",
+    "closed_at": "2026-10-14T07:02:45.912Z",
+    "start_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
+    "start_digest": "fbb03e40e268d44bd02375eae81c04f9ab7129ea752d6846ede79061f4e3cd40",
+    "received_handoff_sha256": "04e4f142c76def83471fc1da57b40efd9eed468cd849369d7c7930dedca576a7",
+    "inherited_session": "2026-10-14T01-25-14-283Z-38478763",
+    "end_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
+    "end_digest": "b6162af28a2246113c1b6c6926a98878c176c3eb8a07f9e2924f3bfcdb50830e",
+    "elapsed_seconds": 165.373
+  }
+}

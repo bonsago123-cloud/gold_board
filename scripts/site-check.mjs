@@ -199,22 +199,22 @@ try{
     await page.locator('#auto-refresh').uncheck();
     const status=await text('#auto-status');expect(status.includes('꺼짐'),'Auto-refresh still on');return status;
   }});
-  await test('S08','/','Click copper live refresh','Real positive price, USD/t, timestamp and provider',{run:async()=>{
-    await click('#copper-refresh');
-    await page.waitForFunction(()=>['정상','조회 실패','오래된 값'].includes(document.querySelector('#copper-status')?.textContent),{},{timeout:16000});
-    const status=await text('#copper-status');
-    expect(status==='정상',`Copper real fetch failed: ${status} / ${await text('#copper-error')}`);
-    expect(Number((await text('#copper-price')).replaceAll(',',''))>0,'Copper price not positive');
-    expect((await text('#copper-unit'))==='USD/t','Copper unit incorrect');
-    expect((await text('#copper-fetched-at'))!=='—','Copper timestamp missing');
-    return `${await text('#copper-price')} ${await text('#copper-unit')}`;
+  await test('S08','/','Click bitcoin live refresh','Real positive price, USD/BTC, timestamp and provider',{run:async()=>{
+    await click('#bitcoin-refresh');
+    await page.waitForFunction(()=>['정상','조회 실패','오래된 값'].includes(document.querySelector('#bitcoin-status')?.textContent),{},{timeout:16000});
+    const status=await text('#bitcoin-status');
+    expect(status==='정상',`Bitcoin real fetch failed: ${status} / ${await text('#bitcoin-error')}`);
+    expect(Number((await text('#bitcoin-price')).replaceAll(',',''))>0,'Bitcoin price not positive');
+    expect((await text('#bitcoin-unit'))==='USD/BTC','Bitcoin unit incorrect');
+    expect((await text('#bitcoin-fetched-at'))!=='—','Bitcoin timestamp missing');
+    return `${await text('#bitcoin-price')} ${await text('#bitcoin-unit')}`;
   }});
-  await test('S09','/','Click copper again during cooldown','Retry delay enforced, previous price unchanged',{run:async()=>{
-    const status=await text('#copper-status');
-    const button=page.locator('#copper-refresh');
-    if(status!=='조회 실패'&&status!=='오래된 값')throw new NotVerified('No failed request preceding cooldown trial');
+  await test('S09','/','Click bitcoin again during cooldown','Retry delay enforced, previous price unchanged',{run:async()=>{
+    const status=await text('#bitcoin-status');
+    const button=page.locator('#bitcoin-refresh');
+    if(!['정상','조회 실패','오래된 값'].includes(status))throw new NotVerified('No completed request preceding cooldown trial');
     expect(await button.isDisabled(),'Cooldown button unexpectedly enabled');
-    return `${await text('#copper-error')}`;
+    return `${await text('#bitcoin-error')}`;
   }});
   await test('S10','/','Refresh exchange rate','Exchange rate status updated',{run:async()=>{
     await click('#fx-refresh');
@@ -282,7 +282,7 @@ try{
   }});
   await test('H03','/handoff.html','Follow home link','Main board displayed',{run:async()=>{
     await click('a[href="/"]');await page.waitForURL(url=>url.pathname==='/',{timeout:10000});
-    expect(await page.locator('#copper-live').count()>0,'Dashboard not displayed');return page.url();
+    expect(await page.locator('#bitcoin-live').count()>0,'Dashboard not displayed');return page.url();
   }});
   await test('META','all','Capture browser JavaScript errors','No pageerror observed',{run:async()=>{
     expect(!errors.length,`JavaScript errors: ${errors.slice(0,8).join('; ')}`);return 'No uncaught page errors';

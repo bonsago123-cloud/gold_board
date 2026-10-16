@@ -1,0 +1,34 @@
+{
+  "ended_at": "2026-10-14T07:09:27.867560+00:00",
+  "actual_seconds": 863.048034,
+  "actual_user_work_requests": 1,
+  "request_unit": "사용자 작업 지시 메시지. 도구/API 호출 제외.",
+  "tool_call_count": null,
+  "fixed_test_runs": 4,
+  "failed_fixed_test_runs": 4,
+  "rounds": [
+    {
+      "run_id": "2026-10-14T07-00-00-539Z-bbfa2792",
+      "failed": true
+    },
+    {
+      "run_id": "2026-10-14T07-04-21-248Z-36980ee4",
+      "failed": true
+    },
+    {
+      "run_id": "2026-10-14T07-02-20-446Z-35950cf1",
+      "failed": true
+    },
+    {
+      "run_id": "2026-10-14T07-07-29-329Z-fbcbdff4",
+      "failed": true
+    }
+  ],
+  "passed_fixed_tests": 2,
+  "source_digest": "496305a1a3e53556e7df680986fd8a0e6ede18f35a72afbe02da4fdd87b8b428",
+  "base_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
+  "a_end_upload_commit": null,
+  "upload_state": "사용자 GitHub 업로드 전. 종료 커밋은 다음 AI가 확인.",
+  "handoff_sha256": "95f20aa83eabe6c931c0ac849a2738494fe6fffc5d4badb02fc92877e2040f98",
+  "formal_submission_ready": false
+}

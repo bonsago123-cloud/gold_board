@@ -1,26 +1,24 @@
 {
-  "schema_version": 2,
-  "id": "2026-10-14T01-25-38-535Z-963613d9",
-  "mode": "finish",
-  "feature_id": "task5-copper-live",
-  "source_commit": "6336e975438394e3a6762cf05eefd7efe77f4edc",
-  "source_digest": "8e08322f1c802005c0e3408f30a2c60f4d3496be73e8892632ee9052a50763d8",
-  "parent_run_id": "2026-10-14T01-25-14-283Z-38478763",
-  "parent_report_sha256": "e4ec827b08551433257a2876221f56d30b83a5b9fe72c28a5edc48a6d53001dd",
-  "started_at": "2026-10-14T01:25:38.535Z",
-  "finished_at": "2026-10-14T01:25:52.124Z",
-  "environment": "local",
-  "ci_run_url": null,
+  "schema_version": 3,
+  "id": "2026-10-14T07-07-29-329Z-fbcbdff4",
+  "feature_id": "task5-bitcoin-v1",
+  "mode": "ci",
+  "started_at": "2026-10-14T07:07:29.329Z",
+  "finished_at": "2026-10-14T07:08:29.132Z",
+  "source_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
+  "source_digest": "496305a1a3e53556e7df680986fd8a0e6ede18f35a72afbe02da4fdd87b8b428",
+  "parent_run_id": "2026-10-14T07-04-21-248Z-36980ee4",
+  "parent_report_sha256": "8954dfc3028e2682b5125277495b9996e4c8cee4dd9d900552a54639789549e0",
   "gates": [
     {
       "id": "integrity",
-      "status": "PASS",
-      "reason": "Original Git baseline + document + executable hashes unchanged"
+      "status": "UNVERIFIED",
+      "reason": "Local freeze valid; initial upload commit not yet available. Next AI validates Git anchor."
     },
     {
       "id": "fixed_tests",
-      "status": "PASS",
-      "exit_code": 0
+      "status": "FAIL",
+      "exit_code": 1
     },
     {
       "id": "regression",
@@ -34,33 +32,48 @@
     },
     {
       "id": "live_api",
-      "status": "FAIL",
-      "http_status": 404,
-      "reason": "HTTP 404 from fixed endpoint"
+      "status": "PASS",
+      "http_status": 200,
+      "quote": {
+        "symbol": "BTC",
+        "value": 83404.460938,
+        "unit": "USD/BTC",
+        "source_url": "https://api.gold-api.com/price/BTC",
+        "source_at": "2026-10-14T07:07:50Z",
+        "fetched_at": "2026-10-14T07:08:18.129Z",
+        "timezone": "Asia/Seoul"
+      }
     },
     {
       "id": "deployment",
-      "status": "PASS",
-      "reason": "Anonymous deployment files match current source bytes"
+      "status": "FAIL",
+      "reason": "Deployment mismatch index.html"
     },
     {
-      "id": "browser",
-      "status": "NOT_RUN",
-      "reason": "Requires real API and current deployment to pass first"
+      "id": "site",
+      "status": "UNVERIFIED",
+      "exit_code": 1,
+      "reason": "{\"PASS\":0,\"FAIL\":0,\"UNVERIFIED\":1}"
+    },
+    {
+      "id": "manual",
+      "status": "UNVERIFIED",
+      "reason": "Manual evidence stale/source mismatch"
     },
     {
       "id": "submission",
       "status": "UNVERIFIED",
-      "reason": "Missing human evidence: a_actual_seconds, a_actual_requests, a_failed_test_runs, b_actual_seconds, b_actual_requests, b_failed_test_runs, different_models_confirmed, student_tool_choice, student_decision, student_rejected_suggestion_or_reason, common_request_unit, a_usage_evidence_path, b_usage_evidence_path, model_evidence_path"
+      "reason": "Current BTC submission not reviewed"
     }
   ],
-  "session_id": "2026-10-14T01-25-14-283Z-38478763",
   "phase": "BLOCKED",
   "blockers": [
-    "live_api",
-    "browser",
+    "integrity",
+    "fixed_tests",
+    "deployment",
+    "site",
+    "manual",
     "submission"
   ],
-  "next_action": "선행 조사: docs/task5/evidence/copper-provider-investigation.md 및 JSON. 공식 문서의 구리/전체 가격/API 명세 경로 모두 2026-10-14 HTTP 404 확인. 고정 조건을 유지하고 제공자 복구 시 재검증한다. 다른 출처로 변경하려면 기존 실험 보존 및 별도 사용자 결정이 필요하다.",
-  "session_elapsed_seconds": 38
+  "next_action": "test-output/bitcoin-fixed.json 첫 FAIL부터 bitcoin-core/client를 구현하고 화면을 연결한다."
 }

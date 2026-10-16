@@ -1,47 +1,40 @@
-# 현재 인수인계 — task5-copper-live
+# 현재 인수인계 — 비트코인
 
 ## 1. 목표
-구리 현재 시세 조회 및 연속 인수인계
+구리 화면 제거 후 BTC 현재가 한 기능 완성. 구리 과거 실패/고정검사는 보존.
 
 ## 2. 현재 상태
-BLOCKED. COMPLETE 문구를 믿지 말고 시작 시 재검증한다.
-실행 ID: 2026-10-14T01-25-38-535Z-963613d9
-시작 기준 커밋: 6336e975438394e3a6762cf05eefd7efe77f4edc
-검사한 작업트리 SHA-256: 8e08322f1c802005c0e3408f30a2c60f4d3496be73e8892632ee9052a50763d8
-검사 시각: 2026-10-14T01:25:52.124Z
-부모 실행: 2026-10-14T01-25-14-283Z-38478763
-실행 환경: local
-이 JSON과 handoff/latest.json은 명령이 자동 생성한다. GitHub 홈페이지 업로드로 커밋 SHA가 바뀌어도 작업트리 해시로 검증하며 다음 실행에서 실제 HEAD를 자동 기록한다.
+BLOCKED. 소스 기준 커밋 ef03f512cf265d55240452acb8743b487b466c9b; 작업트리 SHA-256 496305a1a3e53556e7df680986fd8a0e6ede18f35a72afbe02da4fdd87b8b428.
+시작 2026-10-14T07:07:29.329Z; 종료 2026-10-14T07:08:29.132Z; 실행 2026-10-14T07-07-29-329Z-fbcbdff4; 이전 2026-10-14T07-04-21-248Z-36980ee4.
+A는 normalize와 준비 화면까지만 구현. B가 fetch/client/화면 연결을 완성한다. 상태가 완료여도 오래된 기록은 재검사한다.
 
 ## 3. 실행 명령
-Node 24, Git 필요. 저장소 루트에서 npm ci 후 npm run handoff:resume. 브라우저 실행 파일이 없으면 npx playwright install chromium. 종료 시 npm run handoff:finish. Windows PowerShell 정책 오류 시 npm 대신 npm.cmd 사용.
-실행 권한/네트워크가 없으면 UNVERIFIED로 남긴다. 과거 대화 대신 이 저장소만 읽는다.
+Node 24 + Git. npm ci → npx playwright install chromium → npm run handoff:resume. 수정 후 npm run handoff:finish. 종료 코드 1은 미완료이므로 첫 실패를 수정한다. 2는 설정 오류.
 
 ## 4. 통과 검사
-- integrity: PASS — Original Git baseline + document + executable hashes unchanged
-- fixed_tests: PASS
+- integrity: UNVERIFIED — Local freeze valid; initial upload commit not yet available. Next AI validates Git anchor.
+- fixed_tests: FAIL
 - regression: PASS
 - build: PASS
-- live_api: FAIL — HTTP 404 from fixed endpoint
-- deployment: PASS — Anonymous deployment files match current source bytes
-- browser: NOT_RUN — Requires real API and current deployment to pass first
-- submission: UNVERIFIED — Missing human evidence: a_actual_seconds, a_actual_requests, a_failed_test_runs, b_actual_seconds, b_actual_requests, b_failed_test_runs, different_models_confirmed, student_tool_choice, student_decision, student_rejected_suggestion_or_reason, common_request_unit, a_usage_evidence_path, b_usage_evidence_path, model_evidence_path
-전체 출력: handoff/history/2026-10-14T01-25-38-535Z-963613d9.json
-고정 10개는 변경하지 않으며 운영 gate는 별도로 관리한다.
+- live_api: PASS
+- deployment: FAIL — Deployment mismatch index.html
+- site: UNVERIFIED — {"PASS":0,"FAIL":0,"UNVERIFIED":1}
+- manual: UNVERIFIED — Manual evidence stale/source mismatch
+- submission: UNVERIFIED — Current BTC submission not reviewed
+실제 전체 출력: handoff/history/2026-10-14T07-07-29-329Z-fbcbdff4.json. 모의 고정검사 결과는 실제 시세 성공 증거가 아니다.
 
 ## 5. 남은 문제
-- live_api: 선행 조사: docs/task5/evidence/copper-provider-investigation.md 및 JSON. 공식 문서의 구리/전체 가격/API 명세 경로 모두 2026-10-14 HTTP 404 확인. 고정 조건을 유지하고 제공자 복구 시 재검증한다. 다른 출처로 변경하려면 기존 실험 보존 및 별도 사용자 결정이 필요하다.
-- browser: Chromium 의존성을 설치하고 실제 배포 화면에서 구리 조회를 검증한다. 오류 원인을 고친다. 실행 불가는 통과가 아니다.
-- submission: handoff/submission.json의 누락된 실제 A/B 사용량과 공통 집계 단위·실제 모델 차이·학생 판단을 증거에 따라 채운다. 값을 추측하지 않는다.
-실패 종료 코드는 작업 중단 명령이 아니라 완료 불가 신호다. 수정 가능한 문제를 계속 해결한다.
+- integrity: 고정 검사 원본/업로드 커밋을 대조한다. 검사·기대값을 변경하지 않는다.
+- fixed_tests: test-output/bitcoin-fixed.json 첫 FAIL부터 bitcoin-core/client를 구현하고 화면을 연결한다.
+- deployment: 사용자가 업로드한 커밋의 배포 완료 후 재실행한다. 로컬 수정과 배포 완료는 별개다.
+- site: site 보고서의 FAIL/UNVERIFIED를 수정하고 모든 항목을 재검사한다.
+- manual: SITE-CHECK.md의 자동화 밖 항목을 실제 실행하고 source_digest와 증거 경로를 manual.json에 기록한다.
+- submission: 비트코인 A/B 시작·종료 커밋, 동일 인수인계, 실제 사용량·모델 차이·학생 판단과 공개 비교 보고서를 완성한다. 과거 구리 기록을 재사용하지 않는다.
+사이트 원본 증거: test-output/handoff/2026-10-14T07-07-29-329Z-fbcbdff4/site/ (Actions artifact 포함). 실행할 수 없는 항목은 미확인.
 
 ## 6. 다음 행동
-선행 조사: docs/task5/evidence/copper-provider-investigation.md 및 JSON. 공식 문서의 구리/전체 가격/API 명세 경로 모두 2026-10-14 HTTP 404 확인. 고정 조건을 유지하고 제공자 복구 시 재검증한다. 다른 출처로 변경하려면 기존 실험 보존 및 별도 사용자 결정이 필요하다.
-AGENTS.md의 반복 절차를 따른다. 매 작업 종료 시 finish가 검사·상태·7항목·실행 이력을 갱신한다. 아직 실패해도 기록하고 다음 AI가 같은 resume으로 이어받는다.
+test-output/bitcoin-fixed.json 첫 FAIL부터 bitcoin-core/client를 구현하고 화면을 연결한다.
+첫 기능 실패는 T05-BTC03 예상. docs/task5/bitcoin/NEXT.md 순서로 진행. 새 AI를 자동 호출하지 않으며 사용자가 별도 모델/서비스에서 저장소를 제공한다.
 
 ## 7. 건드리지 말 것
-- 기존 금·은 조회/저장/검증
-- Supabase 스키마와 T04 실제 증빙
-- T04 공식 fixture/hash/검사
-- .env와 비밀값
-- 고정 검사 10개 ID/입력/기대값
+금·은·환율·Supabase 및 T04 증빙; 두 실험의 고정 검사·freeze 원본; 구리 이력; 비밀값. 이전 대화 전문을 다음 AI에게 요구하지 않는다.
