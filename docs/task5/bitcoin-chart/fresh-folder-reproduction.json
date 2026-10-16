@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-16T12:20:04.233397+00:00",
+  "kind": "fresh-folder-reproduction",
+  "results": [
+    {
+      "command": "npm ci",
+      "exit_code": 0,
+      "output": "\nadded 2 packages in 344ms\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    },
+    {
+      "command": "npm run handoff:resume",
+      "exit_code": 0,
+      "output": "\n> gold-information-board@3.2.0 handoff:resume\n> node scripts/handoff.mjs resume\n\nSession started. Record actual service/model and additional user requests in session.json.\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    },
+    {
+      "command": "npm run handoff:finish",
+      "exit_code": 1,
+      "output": "\n> gold-information-board@3.2.0 handoff:finish\n> node scripts/handoff.mjs finish\n\nRunning chart_fixed\nRunning quote_fixed\nRunning regression\nRunning build\nRunning site\nBLOCKED: see handoff/chart/latest.json; update current.md seven sections with findings.\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    }
+  ],
+  "note": "Dependencies installed anew. Browser binary unavailable; finish returns BLOCKED, not completion."
+}

@@ -4,33 +4,32 @@
   "phase": "BLOCKED",
   "submission_ready": false,
   "current_feature": {
-    "id": "task5-bitcoin-v1",
-    "title": "BTC 현재가 조회"
+    "id": "task5-bitcoin-chart-v1",
+    "title": "BTC 차트"
   },
   "handoff_document": "docs/handoff/current.md",
-  "fixed_tests_document": "docs/task5/bitcoin/fixed-tests.json",
+  "fixed_tests_document": "docs/task5/bitcoin-chart/fixed-tests.json",
   "fixed_test_ids": [
-    "T05-BTC01",
-    "T05-BTC02",
-    "T05-BTC03",
-    "T05-BTC04",
-    "T05-BTC05",
-    "T05-BTC06",
-    "T05-BTC07",
-    "T05-BTC08",
-    "T05-BTC09",
-    "T05-BTC10"
+    "T05-BCH01",
+    "T05-BCH02",
+    "T05-BCH03",
+    "T05-BCH04",
+    "T05-BCH05",
+    "T05-BCH06",
+    "T05-BCH07",
+    "T05-BCH08",
+    "T05-BCH09",
+    "T05-BCH10"
   ],
-  "config": "handoff/config.json",
-  "runtime_report": "handoff/latest.json",
-  "archive": "handoff/archive/copper/HANDOFF.json",
+  "config": "docs/task5/bitcoin-chart/fixed-tests.json",
+  "runtime_report": "handoff/chart/latest.json",
+  "archive": "docs/task5/bitcoin-chart/previous-quote-HANDOFF.json",
   "commands": {
     "resume": "npm run handoff:resume",
     "finish": "npm run handoff:finish",
-    "run_fixed_tests": "npm run task5:check"
+    "run_fixed_tests": "npm run chart:check"
   },
-  "source_commit": "549b5176e83d878b92779055686d82e5968846b9",
-  "verified_source_digest": "361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09",
-  "last_run_id": "2026-10-16T03-30-42-768Z-6701907c",
-  "next_action": "사용자가 업로드한 커밋의 배포 완료 후 재실행한다. 로컬 수정과 배포 완료는 별개다."
+  "source_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "next_action": "Read handoff/chart/latest.json and NEXT.md; fix first failure, record unverified items",
+  "last_run_id": "2026-10-16T12-24-27-941Z"
 }

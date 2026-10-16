@@ -1,41 +1,42 @@
-# 현재 인수인계 — 비트코인
+# 현재 인수인계 — 반복 재개
 
 ## 1. 목표
-구리 화면 제거 후 BTC 현재가 한 기능 완성. 구리 과거 실패/고정검사는 보존.
+BTC 차트 한 기능. docs/task5/bitcoin-chart/NEXT.md와 고정10개를 따른다.
 
 ## 2. 현재 상태
-BLOCKED. 소스 기준 커밋 549b5176e83d878b92779055686d82e5968846b9; 작업트리 SHA-256 361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09.
-시작 2026-10-16T03:30:42.768Z; 종료 2026-10-16T03:30:55.426Z; 실행 2026-10-16T03-30-42-768Z-6701907c; 이전 2026-10-16T03-16-47-777Z-49fd9549.
-BTC 전송·오류·상태·화면 연결 구현됨. 실제 배포 확인과 전체 gate 판정은 아래 결과를 따른다. 추가 변경·수동 관찰: docs/handoff/bitcoin-b-work.md.
+BLOCKED; 기준 커밋 8f8614f4b807596aeb5370537a3340505eb368c5; 소스 해시 9927accb182279e34941b7523e04d4a94824bd4d5b6a7567c0747805c6eda9c7. 세션 2026-10-16T12-24-27-641Z; 이전 세션 2026-10-16T12-18-04-003Z. 업로드 종료 커밋 미확인.
+변경: 사용자의 정정에 따라 일회성 역할 지정 제거. 열린 세션 시간/요청 유지, 종료 세션 보존·부모 연결, 7항목 인계 자동 생성과 원문 해시 저장 추가. 과제 비교는 실제 세션 두 개를 별도로 지정. 차트 구현/환율 변경 없음.
 
 ## 3. 실행 명령
-Node 24 + Git. npm ci → npx playwright install chromium → npm run handoff:resume. 수정 후 npm run handoff:finish. 종료 코드 1은 미완료이므로 첫 실패를 수정한다. 2는 설정 오류.
+npm ci → npx playwright install chromium → npm run handoff:resume → npm run chart:check. 실패 조사/수정 후 npm run handoff:finish. 같은 열린 세션의 resume은 시간/요청 수를 초기화하지 않는다.
 
 ## 4. 통과 검사
-- integrity: PASS — Frozen bytes match first committed baseline 549b5176e83d878b92779055686d82e5968846b9
-- fixed_tests: PASS
+- integrity: UNVERIFIED
+- chart_fixed: UNVERIFIED
+- quote_fixed: PASS
 - regression: PASS
 - build: PASS
-- live_api: PASS
-- deployment: FAIL — Deployment mismatch index.html
-- site: UNVERIFIED — {"PASS":0,"FAIL":0,"UNVERIFIED":1}
-- manual: UNVERIFIED — Manual evidence stale/source mismatch
-- submission: UNVERIFIED — Current BTC submission not reviewed
-실제 전체 출력: handoff/history/2026-10-16T03-30-42-768Z-6701907c.json. 모의 고정검사 결과는 실제 시세 성공 증거가 아니다.
+- site: UNVERIFIED
+- live_chart: UNVERIFIED
+- deployment_match: UNVERIFIED
+- manual_all_functions: UNVERIFIED
+- submission: UNVERIFIED
+- usage: PASS
+원본: handoff/chart/history/2026-10-16T12-24-27-941Z.json. 모의검사는 실제 사이트 성공 증거가 아니다.
 
 ## 5. 남은 문제
-- deployment: 사용자가 업로드한 커밋의 배포 완료 후 재실행한다. 로컬 수정과 배포 완료는 별개다.
-- site: site 보고서의 FAIL/UNVERIFIED를 수정하고 모든 항목을 재검사한다.
-- manual: SITE-CHECK.md의 자동화 밖 항목을 실제 실행하고 source_digest와 증거 경로를 manual.json에 기록한다.
-- submission: 비트코인 A/B 시작·종료 커밋, 동일 인수인계, 실제 사용량·모델 차이·학생 판단과 공개 비교 보고서를 완성한다. 과거 구리 기록을 재사용하지 않는다.
-사이트 원본 증거: test-output/handoff/2026-10-16T03-30-42-768Z-6701907c/site/ (Actions artifact 포함). 실행할 수 없는 항목은 미확인.
+차트 미구현. Chromium 설치 실패로 실제 차트 및 사이트 기능은 미확인. 업로드/배포/공개 비교 증빙 미완료. 고정 원문과 과거 증거의 A/B 표현은 원본 보존 때문에 남아 있으나 현재 작업 역할 지정에는 사용하지 않는다.
+- integrity: Local freeze valid; upload Git anchor required
+- chart_fixed: 실행 로그 확인
+- site: 실행 로그 확인
+- live_chart: ENOENT: no such file or directory, open 'handoff/chart/review.json'
+- deployment_match: ENOENT: no such file or directory, open 'handoff/chart/review.json'
+- manual_all_functions: ENOENT: no such file or directory, open 'handoff/chart/review.json'
+- submission: ENOENT: no such file or directory, open 'handoff/chart/review.json'
 
 ## 6. 다음 행동
-사용자가 업로드한 커밋의 배포 완료 후 재실행한다. 로컬 수정과 배포 완료는 별개다.
-고정 검사 통과 여부는 이번 결과를 따른다. docs/handoff/bitcoin-b-work.md의 미확인 항목을 먼저 확인한다. 새 AI를 자동 호출하지 않으며 사용자가 별도 모델/서비스에서 저장소를 제공한다.
+역할명을 지정하지 않고 AGENTS.md와 현재 인계를 읽어 같은 기능을 이어간다. 정상 브라우저 환경에서 차트 고정10개를 실행하고 차트 구현 후 모든 실제 사이트 기능을 실행·수정·재검사한다. 종료마다 notes.json을 갱신하고 finish 및 업로드 ZIP 제공.
+담당 역할 이름 없이 이 문서와 세션 기록으로 이어간다. 종료 전 handoff/chart/notes.json에 changes/problems/next_action을 실제 내용으로 적고 finish 실행.
 
 ## 7. 건드리지 말 것
-금·은·환율·Supabase 및 T04 증빙; 두 실험의 고정 검사·freeze 원본; 구리 이력; 비밀값. 이전 대화 전문을 다음 AI에게 요구하지 않는다.
-
-### 이번 작업 종료 집계
-구현 시작 2026-10-16T03:16:47.777Z, 종료 2026-10-16T03:30:55.426Z, 847.649초(약14분8초), 사용자 지시1건. 공통30분/10건 이내. 고정10개 총3회 중 FAIL1회, 최종10/10. 추가 회귀 포함44/44, 빌드·실제BTC API PASS. 직접 운영 점검62 PASS / 1 FAIL / 8 UNVERIFIED: docs/handoff/site-check-2026-10-16.md. 최종 상태 BLOCKED. 사용자 업로드 종료 커밋은 아직 없으므로 session.end_commit=null.
+고정10개/기대값/freeze, 금·은·환율·DB·T04 증빙, 과거 세션. 사용자가 GitHub에 직접 업로드. AI 대화 자동 호출 없음.

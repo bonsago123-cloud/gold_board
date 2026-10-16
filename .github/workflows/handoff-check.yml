@@ -49,6 +49,8 @@ jobs:
             docs/handoff/current.md
             public/handoff-status.json
             test-output/handoff/
+            test-output/chart-fixed.json
+            docs/task5/bitcoin-chart/
       - name: Keep full site test evidence even when blocked
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,0 +1,89 @@
+{
+  "id": "2026-10-16T12-24-27-941Z",
+  "started_at": "2026-10-16T12:24:27.941Z",
+  "source_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "source_digest": "9927accb182279e34941b7523e04d4a94824bd4d5b6a7567c0747805c6eda9c7",
+  "mode": "finish",
+  "gates": [
+    {
+      "id": "integrity",
+      "status": "UNVERIFIED",
+      "reason": "Local freeze valid; upload Git anchor required"
+    },
+    {
+      "id": "chart_fixed",
+      "status": "UNVERIFIED",
+      "exit_code": 1,
+      "output": "UNVERIFIED T05-BCH01\nUNVERIFIED T05-BCH02\nUNVERIFIED T05-BCH03\nUNVERIFIED T05-BCH04\nUNVERIFIED T05-BCH05\nUNVERIFIED T05-BCH06\nUNVERIFIED T05-BCH07\nUNVERIFIED T05-BCH08\nUNVERIFIED T05-BCH09\nUNVERIFIED T05-BCH10\nRESULT 0/10\n"
+    },
+    {
+      "id": "quote_fixed",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "PASS T05-BTC01\nPASS T05-BTC02\nPASS T05-BTC03\nPASS T05-BTC04\nPASS T05-BTC05\nPASS T05-BTC06\nPASS T05-BTC07\nPASS T05-BTC08\nPASS T05-BTC09\nPASS T05-BTC10\nRESULT 10/10\n"
+    },
+    {
+      "id": "regression",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "\n> gold-information-board@3.2.0 test\n> node --test tests/*.test.mjs\n\n✔ Missing DB configuration is not fake success or a fake price (2.069315ms)\n✔ Untrusted cross-site refresh is rejected (0.240547ms)\n✔ Cron without secret cannot collect or expose anything (0.389228ms)\n✔ Client cannot choose a method that deletes records (0.186336ms)\n✔ BTC completion requires every gate, rejects missing/duplicate/unverified (1.511386ms)\n✔ Site unavailable or incomplete never counts as live success (0.326615ms)\n✔ BTC deadline aborts a stalled body even when fetch ignores cancellation (6.159882ms)\n✔ BTC concurrent clicks share one request and views cannot mutate the saved quote (4.193391ms)\n✔ BTC Retry-After HTTP date sets the retry boundary after failure (1.018924ms)\n✔ only gold and silver remain; neither oil API nor secret required (7.762314ms)\n✔ silver failure does not discard gold success (2.073721ms)\n✔ metal synthetic checks preserve values and recover (11.218429ms)\n✔ Repeated resume preserves usage; subsequent sessions archive and link prior handoff (277.765216ms)\n✔ Retry-After seconds: blocks before boundary, recovers at boundary (2.551341ms)\n✔ Retry-After HTTP date and missing/invalid fallback (0.65938ms)\n✔ timeout aborts stalled request and stalled response body (21.803125ms)\n✔ concurrent clicks send one request; first failure leaves no fabricated price (0.826588ms)\n✔ malformed JSON and interrupted body have distinct errors (0.43749ms)\n✔ KST midnight changes at UTC 15:00, not UTC midnight (1.907765ms)\n✔ Same day three successes stay one row, new date adds exactly one (17.622976ms)\n✔ LOCAL-SLOW: exact failure, last good retained, no failed day, recovery clears error (304.138928ms)\n✔ LOCAL-DENIED: exact failure, last good retained, no failed day, recovery clears error (1.291238ms)\n✔ LOCAL-LIMIT: exact failure, last good retained, no failed day, recovery clears error (0.799458ms)\n✔ LOCAL-OFFLINE: exact failure, last good retained, no failed day, recovery clears error (1.00957ms)\n✔ LOCAL-SCHEMA: exact failure, last good retained, no failed day, recovery clears error (0.8074ms)\n✔ HTTP 401 and 403 share explicit rejection, 429 uses Retry-After (1.092223ms)\n✔ Broken JSON, wrong currency, string price and future source time rejected (0.587613ms)\n✔ Stale source is honestly labeled even after a successful fetch (0.319604ms)\n✔ Nonconsecutive records are not called yesterday (0.296761ms)\n✔ Chart changes real data interval and keeps XAUUSD/KST for every option (1.249246ms)\n✔ Polling obeys 30 seconds, upstream Retry-After and failure backoff (0.785857ms)\n✔ Official package ID and all 17 publisher manifest file hashes/lengths match (19.538831ms)\n✔ All original official fixtures: same-ID daily update, 5 failures, last good, recovery once (22.705186ms)\n✔ USD to KRW multiplies the unrounded original and keeps unit quantity unchanged (1.410025ms)\n✔ gold evidence uses server earliest dates, independent of other assets and recent 90 days (6.484194ms)\n✔ gold failure suite uses the gold fetch pipeline and preserves daily records (158.645097ms)\n✔ Every required gate must pass; mocks alone never complete (1.30529ms)\n✔ Different source, stale/future time and unfinished evidence are rejected (0.694381ms)\n✔ Fixed result must contain all ten unique PASS IDs and no FAIL (0.501966ms)\n✔ HTTP 404 blocks completion even with all simulated checks PASS (2.496519ms)\n✔ Network denial is UNVERIFIED rather than HTTP 404 or PASS (0.37043ms)\n✔ Real check rejects HTML, invalid schema and missing CORS (2.418153ms)\n✔ Metal quotes keep symbol, unit and source; reject wrong symbol/currency and invalid values (1.342124ms)\n✔ Metal endpoint allowlists symbols, uses no DB/key, and preserves upstream rate limit (3.679918ms)\n✔ silver uses latest two real distinct KST dates; no gold or synthetic substitute (11.868755ms)\nℹ tests 45\nℹ suites 0\nℹ pass 45\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 467.181753\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    },
+    {
+      "id": "build",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "\n> gold-information-board@3.2.0 build\n> node scripts/build.mjs\n\nBuilt public assets only; server credentials are never bundled.\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    },
+    {
+      "id": "site",
+      "status": "UNVERIFIED",
+      "exit_code": 1,
+      "output": "\n> gold-information-board@3.2.0 site:check\n> node scripts/site-check.mjs\n\nSITE CHECK: {\"PASS\":0,\"FAIL\":0,\"UNVERIFIED\":1}. Evidence: test-output/site-check/report.md\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\nBrowser setup or site check interrupted: browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n"
+    },
+    {
+      "id": "live_chart",
+      "status": "UNVERIFIED",
+      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
+    },
+    {
+      "id": "deployment_match",
+      "status": "UNVERIFIED",
+      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
+    },
+    {
+      "id": "manual_all_functions",
+      "status": "UNVERIFIED",
+      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
+    },
+    {
+      "id": "submission",
+      "status": "UNVERIFIED",
+      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
+    },
+    {
+      "id": "usage",
+      "status": "PASS",
+      "reason": "Full session must be closed within 1800 seconds and 10 user requests"
+    }
+  ],
+  "phase": "BLOCKED",
+  "submission_ready": false,
+  "finished_at": "2026-10-16T12:24:30.040Z",
+  "session": {
+    "id": "2026-10-16T12-24-27-641Z",
+    "parent_session_id": "2026-10-16T12-18-04-003Z",
+    "parent_session_sha256": "253ac96bd7dcdb3d47d1339a43ea7d9665a39c3510366eb0ea0247a528f880f8",
+    "started_at": "2026-10-16T12:24:27.641Z",
+    "start_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+    "received_handoff_sha256": "66cb3c81173a33fb92448cecfab1d5694aa1e37c2c0f315b77b31e9e49ad5272",
+    "handoff_equal": null,
+    "user_work_requests": 1,
+    "service": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "closed_at": "2026-10-16T12:24:30.040Z",
+    "elapsed_seconds": 2.399,
+    "end_base_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+    "end_commit": null,
+    "within_limits": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "2026-10-16T12-18-04-003Z",
+  "started_at": "2026-10-16T12:18:04.004Z",
+  "start_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "received_handoff_sha256": "f4038d32049da7eaf7b36418ffde4dbef1d9007e58d5586c877970bcc663b77a",
+  "user_work_requests": 1,
+  "service": "ChatGPT",
+  "model": "UNVERIFIED",
+  "closed_at": "2026-10-16T12:18:05.927Z",
+  "elapsed_seconds": 1.923,
+  "end_base_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "end_commit": null,
+  "within_limits": true,
+  "role": "A_AUTOMATION_SMOKE_TEST",
+  "note": "Not B usage, not A whole work duration. See a-end.json."
+}

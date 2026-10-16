@@ -1,0 +1,22 @@
+{
+  "source": "real-browser-no-mocks",
+  "base": "https://goldboard-omega.vercel.app",
+  "started": "2026-10-16T12:19:02.398Z",
+  "finished": "2026-10-16T12:19:02.447Z",
+  "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 1
+  },
+  "rows": [
+    {
+      "id": "SETUP",
+      "screen": "all",
+      "action": "Launch/navigate browser",
+      "expect": "Browser available",
+      "status": "UNVERIFIED",
+      "observed": "Error: browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+      "at": "2026-10-16T12:19:02.447Z"
+    }
+  ]
+}

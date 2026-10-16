@@ -1,0 +1,36 @@
+{
+  "schema_version": 3,
+  "protocol": "repository-handoff-v3",
+  "phase": "BLOCKED",
+  "submission_ready": false,
+  "current_feature": {
+    "id": "task5-bitcoin-v1",
+    "title": "BTC 현재가 조회"
+  },
+  "handoff_document": "docs/handoff/current.md",
+  "fixed_tests_document": "docs/task5/bitcoin/fixed-tests.json",
+  "fixed_test_ids": [
+    "T05-BTC01",
+    "T05-BTC02",
+    "T05-BTC03",
+    "T05-BTC04",
+    "T05-BTC05",
+    "T05-BTC06",
+    "T05-BTC07",
+    "T05-BTC08",
+    "T05-BTC09",
+    "T05-BTC10"
+  ],
+  "config": "handoff/config.json",
+  "runtime_report": "handoff/latest.json",
+  "archive": "handoff/archive/copper/HANDOFF.json",
+  "commands": {
+    "resume": "npm run handoff:resume",
+    "finish": "npm run handoff:finish",
+    "run_fixed_tests": "npm run task5:check"
+  },
+  "source_commit": "549b5176e83d878b92779055686d82e5968846b9",
+  "verified_source_digest": "361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09",
+  "last_run_id": "2026-10-16T03-30-42-768Z-6701907c",
+  "next_action": "사용자가 업로드한 커밋의 배포 완료 후 재실행한다. 로컬 수정과 배포 완료는 별개다."
+}

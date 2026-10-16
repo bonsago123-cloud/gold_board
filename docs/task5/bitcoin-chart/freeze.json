@@ -1,0 +1,8 @@
+{
+  "frozen_at": "2026-10-16T12:16:01.471541+00:00",
+  "files": {
+    "docs/task5/bitcoin-chart/fixed-tests.json": "2bd9ebca0ec30b9ff7b83ab39e79d586d4783dfb3ec35605ee1299f8c4854ea1",
+    "scripts/task5-chart-check.mjs": "98f6a695bffa80426964a540a5015ba7a10eb95e9f4724b2f31719f28695a751",
+    "docs/task5/bitcoin-chart/initial-request.txt": "0b88defd7181b4d1c3075a485b30ae825cfa7aa0759696ca0e09e554557d989a"
+  }
+}

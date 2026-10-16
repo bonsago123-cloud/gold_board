@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-16T12-24-27-641Z",
+  "parent_session_id": "2026-10-16T12-18-04-003Z",
+  "parent_session_sha256": "253ac96bd7dcdb3d47d1339a43ea7d9665a39c3510366eb0ea0247a528f880f8",
+  "started_at": "2026-10-16T12:24:27.641Z",
+  "start_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "received_handoff_sha256": "66cb3c81173a33fb92448cecfab1d5694aa1e37c2c0f315b77b31e9e49ad5272",
+  "handoff_equal": null,
+  "user_work_requests": 1,
+  "service": "UNVERIFIED",
+  "model": "UNVERIFIED",
+  "closed_at": "2026-10-16T12:24:30.040Z",
+  "elapsed_seconds": 2.399,
+  "end_base_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "end_commit": null,
+  "within_limits": true,
+  "outgoing_handoff_sha256": "c33459c6a3f3e2ee527aa5bdf83b7dde364483799055ec742dac37525654bd1c"
+}

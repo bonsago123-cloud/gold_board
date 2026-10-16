@@ -1,0 +1,28 @@
+{
+  "ended_at": "2026-10-16T12:20:55.124717+00:00",
+  "measurement_started_at": "2026-10-16T12:13:02+00:00",
+  "measurement_rule": "사용자 요청 수신 시각부터 인계 패키지 작성까지. 준비/검사 포함 보수적 경과시간.",
+  "elapsed_seconds": 473.124717,
+  "user_work_requests": 1,
+  "limits": {
+    "seconds": 1800,
+    "user_work_requests": 10
+  },
+  "within_limits": true,
+  "end_commit": null,
+  "end_base_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "handoff_sha256": "66cb3c81173a33fb92448cecfab1d5694aa1e37c2c0f315b77b31e9e49ad5272",
+  "chart_fixed": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 10
+  },
+  "fixed_failure_rounds": 0,
+  "quote_fixed_pass": 10,
+  "regression_pass": 44,
+  "build": "PASS",
+  "site": "UNVERIFIED",
+  "feature_implemented": false,
+  "submission_ready": false,
+  "next_action": "B implements BTC chart after user upload. Check actual commit and handoff hash."
+}

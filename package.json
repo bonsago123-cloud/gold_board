@@ -20,7 +20,13 @@
     "handoff:status": "node scripts/handoff.mjs status",
     "handoff:ci": "node scripts/handoff.mjs ci",
     "site:check": "node scripts/site-check.mjs",
-    "task5:copper:archive": "node scripts/task5-copper-check.mjs"
+    "task5:copper:archive": "node scripts/task5-copper-check.mjs",
+    "chart:check": "node scripts/task5-chart-check.mjs",
+    "chart:resume": "node scripts/handoff-chart.mjs resume",
+    "chart:finish": "node scripts/handoff-chart.mjs finish",
+    "chart:status": "node scripts/handoff-chart.mjs status",
+    "chart:ci": "node scripts/handoff-chart.mjs ci",
+    "chart:request": "node scripts/handoff-chart.mjs request"
   },
   "devDependencies": {
     "playwright": "1.62.1"

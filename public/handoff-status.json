@@ -1,22 +1,22 @@
 {
-  "schema_version": 3,
-  "id": "2026-10-16T03-30-42-768Z-6701907c",
-  "feature_id": "task5-bitcoin-v1",
+  "id": "2026-10-16T12-24-27-941Z",
+  "started_at": "2026-10-16T12:24:27.941Z",
+  "source_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "source_digest": "9927accb182279e34941b7523e04d4a94824bd4d5b6a7567c0747805c6eda9c7",
   "mode": "finish",
-  "started_at": "2026-10-16T03:30:42.768Z",
-  "finished_at": "2026-10-16T03:30:55.426Z",
-  "source_commit": "549b5176e83d878b92779055686d82e5968846b9",
-  "source_digest": "361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09",
-  "parent_run_id": "2026-10-16T03-16-47-777Z-49fd9549",
-  "parent_report_sha256": "e03c8e1587d0a365a9e6a4301f2ccbe01a6910f59910f8e9f6ab65defb332ef5",
   "gates": [
     {
       "id": "integrity",
-      "status": "PASS",
-      "reason": "Frozen bytes match first committed baseline 549b5176e83d878b92779055686d82e5968846b9"
+      "status": "UNVERIFIED",
+      "reason": "Local freeze valid; upload Git anchor required"
     },
     {
-      "id": "fixed_tests",
+      "id": "chart_fixed",
+      "status": "UNVERIFIED",
+      "exit_code": 1
+    },
+    {
+      "id": "quote_fixed",
       "status": "PASS",
       "exit_code": 0
     },
@@ -31,61 +31,65 @@
       "exit_code": 0
     },
     {
-      "id": "live_api",
-      "status": "PASS",
-      "http_status": 200,
-      "quote": {
-        "symbol": "BTC",
-        "value": 81944.203125,
-        "unit": "USD/BTC",
-        "source_url": "https://api.gold-api.com/price/BTC",
-        "source_at": "2026-10-16T03:30:18Z",
-        "fetched_at": "2026-10-16T03:30:49.813Z",
-        "timezone": "Asia/Seoul"
-      }
-    },
-    {
-      "id": "deployment",
-      "status": "FAIL",
-      "reason": "Deployment mismatch index.html"
-    },
-    {
       "id": "site",
       "status": "UNVERIFIED",
-      "exit_code": 1,
-      "reason": "{\"PASS\":0,\"FAIL\":0,\"UNVERIFIED\":1}"
+      "exit_code": 1
     },
     {
-      "id": "manual",
+      "id": "live_chart",
       "status": "UNVERIFIED",
-      "reason": "Manual evidence stale/source mismatch"
+      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
+    },
+    {
+      "id": "deployment_match",
+      "status": "UNVERIFIED",
+      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
+    },
+    {
+      "id": "manual_all_functions",
+      "status": "UNVERIFIED",
+      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
     },
     {
       "id": "submission",
       "status": "UNVERIFIED",
-      "reason": "Current BTC submission not reviewed"
+      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
+    },
+    {
+      "id": "usage",
+      "status": "PASS",
+      "reason": "Full session must be closed within 1800 seconds and 10 user requests"
     }
   ],
   "phase": "BLOCKED",
-  "blockers": [
-    "deployment",
-    "site",
-    "manual",
-    "submission"
-  ],
-  "next_action": "사용자가 업로드한 커밋의 배포 완료 후 재실행한다. 로컬 수정과 배포 완료는 별개다.",
+  "submission_ready": false,
+  "finished_at": "2026-10-16T12:24:30.040Z",
   "session": {
-    "id": "2026-10-16T03-16-47-777Z-49fd9549",
-    "started_at": "2026-10-16T03:16:47.777Z",
-    "closed_at": "2026-10-16T03:30:55.426Z",
-    "start_commit": "549b5176e83d878b92779055686d82e5968846b9",
-    "start_digest": "13e214ea610fbf155496c703d0ab4b2db5f89a62df56dcaca3978524944ee30b",
-    "received_handoff_sha256": "95f20aa83eabe6c931c0ac849a2738494fe6fffc5d4badb02fc92877e2040f98",
-    "inherited_session": "2026-10-14T07-00-00-539Z-bbfa2792",
+    "id": "2026-10-16T12-24-27-641Z",
+    "parent_session_id": "2026-10-16T12-18-04-003Z",
+    "parent_session_sha256": "253ac96bd7dcdb3d47d1339a43ea7d9665a39c3510366eb0ea0247a528f880f8",
+    "started_at": "2026-10-16T12:24:27.641Z",
+    "start_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
+    "received_handoff_sha256": "66cb3c81173a33fb92448cecfab1d5694aa1e37c2c0f315b77b31e9e49ad5272",
+    "handoff_equal": null,
+    "user_work_requests": 1,
+    "service": "UNVERIFIED",
+    "model": "UNVERIFIED",
+    "closed_at": "2026-10-16T12:24:30.040Z",
+    "elapsed_seconds": 2.399,
+    "end_base_commit": "8f8614f4b807596aeb5370537a3340505eb368c5",
     "end_commit": null,
-    "end_base_commit": "549b5176e83d878b92779055686d82e5968846b9",
-    "end_commit_note": "Uncommitted upload package; user GitHub upload commit still required",
-    "end_digest": "361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09",
-    "elapsed_seconds": 847.649
-  }
+    "within_limits": true
+  },
+  "feature_id": "task5-bitcoin-chart-v1",
+  "next_action": "Read handoff/chart/latest.json and NEXT.md; fix first failure, record unverified items",
+  "blockers": [
+    "integrity",
+    "chart_fixed",
+    "site",
+    "live_chart",
+    "deployment_match",
+    "manual_all_functions",
+    "submission"
+  ]
 }
