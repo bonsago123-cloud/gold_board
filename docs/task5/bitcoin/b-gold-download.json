@@ -1,0 +1,452 @@
+{
+  "version": 3,
+  "timezone": "Asia/Seoul",
+  "exported_at": "2026-10-16T03:22:15.561Z",
+  "actual": {
+    "gold": {
+      "status": "fresh",
+      "error_code": "none",
+      "last_good": {
+        "raw": {
+          "price": 4174,
+          "symbol": "XAU",
+          "currency": "USD",
+          "updatedAt": "2026-10-16T03:18:47Z"
+        },
+        "unit": "USD / 트로이온스",
+        "value": 4174,
+        "symbol": "XAU",
+        "date_kst": "2026-10-16",
+        "timezone": "Asia/Seoul",
+        "source_at": "2026-10-16T03:18:47Z",
+        "synthetic": false,
+        "fetched_at": "2026-10-16T03:19:03.516Z",
+        "source_url": "https://api.gold-api.com/price/XAU"
+      },
+      "daily": [
+        {
+          "raw": {
+            "price": 4202.100098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-09-30T08:38:47Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4202.100098,
+          "symbol": "XAU",
+          "date_kst": "2026-09-30",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-09-30T08:38:47Z",
+          "synthetic": false,
+          "fetched_at": "2026-09-30T08:39:03.792Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4163,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-01T07:37:49Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4163,
+          "symbol": "XAU",
+          "date_kst": "2026-10-01",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-01T07:37:49Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-01T07:38:05.584Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4159.600098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-02T00:52:21Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4159.600098,
+          "symbol": "XAU",
+          "date_kst": "2026-10-02",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-02T00:52:21Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-02T00:52:24.615Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4141.799805,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-03T00:51:58Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4141.799805,
+          "symbol": "XAU",
+          "date_kst": "2026-10-03",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-03T00:51:58Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-03T00:52:24.624Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4141.799805,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-04T13:38:35Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4141.799805,
+          "symbol": "XAU",
+          "date_kst": "2026-10-04",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-04T13:38:35Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-04T13:38:53.345Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4145.600098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-05T13:40:07Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4145.600098,
+          "symbol": "XAU",
+          "date_kst": "2026-10-05",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-05T13:40:07Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-05T13:40:23.928Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4147.200195,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-06T00:52:08Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4147.200195,
+          "symbol": "XAU",
+          "date_kst": "2026-10-06",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-06T00:52:08Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-06T00:52:24.563Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4159,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-07T00:52:11Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4159,
+          "symbol": "XAU",
+          "date_kst": "2026-10-07",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-07T00:52:11Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-07T00:52:24.290Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4117.200195,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-08T00:52:24Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4117.200195,
+          "symbol": "XAU",
+          "date_kst": "2026-10-08",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-08T00:52:24Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-08T00:52:24.541Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4144.100098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-09T00:52:09Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4144.100098,
+          "symbol": "XAU",
+          "date_kst": "2026-10-09",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-09T00:52:09Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-09T00:52:24.646Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4195.600098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-10T00:52:15Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4195.600098,
+          "symbol": "XAU",
+          "date_kst": "2026-10-10",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-10T00:52:15Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-10T00:52:24.766Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4195.600098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-11T00:52:05Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4195.600098,
+          "symbol": "XAU",
+          "date_kst": "2026-10-11",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-11T00:52:05Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-11T00:52:24.484Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4207.5,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-12T00:52:08Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4207.5,
+          "symbol": "XAU",
+          "date_kst": "2026-10-12",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-12T00:52:08Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-12T00:52:24.511Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4199.299805,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-13T05:20:42Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4199.299805,
+          "symbol": "XAU",
+          "date_kst": "2026-10-13",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-13T05:20:42Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-13T05:21:05.022Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4166.600098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-14T02:59:46Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4166.600098,
+          "symbol": "XAU",
+          "date_kst": "2026-10-14",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-14T02:59:46Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-14T02:59:52.730Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4140.299805,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-15T00:51:57Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4140.299805,
+          "symbol": "XAU",
+          "date_kst": "2026-10-15",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-15T00:51:57Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-15T00:52:24.558Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4174,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-16T03:18:47Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4174,
+          "symbol": "XAU",
+          "date_kst": "2026-10-16",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-16T03:18:47Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-16T03:19:03.516Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        }
+      ],
+      "evidence": [
+        {
+          "raw": {
+            "price": 4202.100098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-09-30T08:38:47Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4202.100098,
+          "symbol": "XAU",
+          "date_kst": "2026-09-30",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-09-30T08:38:47Z",
+          "synthetic": false,
+          "fetched_at": "2026-09-30T08:39:03.792Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        {
+          "raw": {
+            "price": 4163,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-01T07:37:49Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4163,
+          "symbol": "XAU",
+          "date_kst": "2026-10-01",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-01T07:37:49Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-01T07:38:05.584Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        }
+      ],
+      "server_at": "2026-10-16T03:21:51.599353+00:00",
+      "total_days": 17,
+      "last_attempt_at": "2026-10-16T03:19:03.211359+00:00",
+      "next_attempt_at": "2026-10-16T03:19:33.650023+00:00",
+      "mode": "live",
+      "configured": true
+    },
+    "evidence": [
+      {
+        "date_kst": "2026-09-30",
+        "records": {
+          "XAU": {
+            "raw": {
+              "price": 4202.100098,
+              "symbol": "XAU",
+              "currency": "USD",
+              "updatedAt": "2026-09-30T08:38:47Z"
+            },
+            "unit": "USD / 트로이온스",
+            "value": 4202.100098,
+            "symbol": "XAU",
+            "date_kst": "2026-09-30",
+            "timezone": "Asia/Seoul",
+            "source_at": "2026-09-30T08:38:47Z",
+            "synthetic": false,
+            "fetched_at": "2026-09-30T08:39:03.792Z",
+            "source_url": "https://api.gold-api.com/price/XAU"
+          }
+        }
+      },
+      {
+        "date_kst": "2026-10-01",
+        "records": {
+          "XAU": {
+            "raw": {
+              "price": 4163,
+              "symbol": "XAU",
+              "currency": "USD",
+              "updatedAt": "2026-10-01T07:37:49Z"
+            },
+            "unit": "USD / 트로이온스",
+            "value": 4163,
+            "symbol": "XAU",
+            "date_kst": "2026-10-01",
+            "timezone": "Asia/Seoul",
+            "source_at": "2026-10-01T07:37:49Z",
+            "synthetic": false,
+            "fetched_at": "2026-10-01T07:38:05.584Z",
+            "source_url": "https://api.gold-api.com/price/XAU"
+          }
+        }
+      }
+    ]
+  },
+  "synthetic": null,
+  "checks": {
+    "XAU": {
+      "record_matches": true,
+      "two_date_delta": {
+        "from": {
+          "raw": {
+            "price": 4202.100098,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-09-30T08:38:47Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4202.100098,
+          "symbol": "XAU",
+          "date_kst": "2026-09-30",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-09-30T08:38:47Z",
+          "synthetic": false,
+          "fetched_at": "2026-09-30T08:39:03.792Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        "to": {
+          "raw": {
+            "price": 4163,
+            "symbol": "XAU",
+            "currency": "USD",
+            "updatedAt": "2026-10-01T07:37:49Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 4163,
+          "symbol": "XAU",
+          "date_kst": "2026-10-01",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-01T07:37:49Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-01T07:38:05.584Z",
+          "source_url": "https://api.gold-api.com/price/XAU"
+        },
+        "value": -39.10009799999989,
+        "percent": -0.9304894478503659
+      }
+    }
+  },
+  "note": "합성 검사는 실제 날짜 증빙이 아님. 공식 T04 결과와 과정 발급 t04_day 영수증은 별도 대조."
+}

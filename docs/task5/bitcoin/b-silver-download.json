@@ -1,0 +1,182 @@
+{
+  "version": 4,
+  "symbol": "XAG",
+  "timezone": "Asia/Seoul",
+  "exported_at": "2026-10-16T03:22:59.921Z",
+  "actual": {
+    "silver": {
+      "daily": [
+        {
+          "raw": {
+            "price": 61.335999,
+            "symbol": "XAG",
+            "currency": "USD",
+            "updatedAt": "2026-10-05T13:55:07Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 61.335999,
+          "symbol": "XAG",
+          "batch_id": "584a7c90-0cf9-40bc-8b7c-9d88505eb0ef",
+          "date_kst": "2026-10-05",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-05T13:55:07Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-05T13:55:20.211Z",
+          "source_url": "https://api.gold-api.com/price/XAG"
+        },
+        {
+          "raw": {
+            "price": 59.354,
+            "symbol": "XAG",
+            "currency": "USD",
+            "updatedAt": "2026-10-14T02:57:45Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 59.354,
+          "symbol": "XAG",
+          "batch_id": "6743edb7-e961-482a-aa75-1a198a912e72",
+          "date_kst": "2026-10-14",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-14T02:57:45Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-14T02:57:46.072Z",
+          "source_url": "https://api.gold-api.com/price/XAG"
+        },
+        {
+          "raw": {
+            "price": 57.799,
+            "symbol": "XAG",
+            "currency": "USD",
+            "updatedAt": "2026-10-16T03:20:46Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 57.799,
+          "symbol": "XAG",
+          "batch_id": "59e51396-8a21-4666-b3a8-666b58ae5aad",
+          "date_kst": "2026-10-16",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-16T03:20:46Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-16T03:20:55.308Z",
+          "source_url": "https://api.gold-api.com/price/XAG"
+        }
+      ],
+      "status": "fresh",
+      "last_good": {
+        "raw": {
+          "price": 57.799,
+          "symbol": "XAG",
+          "currency": "USD",
+          "updatedAt": "2026-10-16T03:20:46Z"
+        },
+        "unit": "USD / 트로이온스",
+        "value": 57.799,
+        "symbol": "XAG",
+        "batch_id": "59e51396-8a21-4666-b3a8-666b58ae5aad",
+        "date_kst": "2026-10-16",
+        "timezone": "Asia/Seoul",
+        "source_at": "2026-10-16T03:20:46Z",
+        "synthetic": false,
+        "fetched_at": "2026-10-16T03:20:55.308Z",
+        "source_url": "https://api.gold-api.com/price/XAG"
+      },
+      "error_code": "none"
+    },
+    "evidence": [
+      {
+        "date_kst": "2026-10-14",
+        "records": {
+          "XAG": {
+            "raw": {
+              "price": 59.354,
+              "symbol": "XAG",
+              "currency": "USD",
+              "updatedAt": "2026-10-14T02:57:45Z"
+            },
+            "unit": "USD / 트로이온스",
+            "value": 59.354,
+            "symbol": "XAG",
+            "batch_id": "6743edb7-e961-482a-aa75-1a198a912e72",
+            "date_kst": "2026-10-14",
+            "timezone": "Asia/Seoul",
+            "source_at": "2026-10-14T02:57:45Z",
+            "synthetic": false,
+            "fetched_at": "2026-10-14T02:57:46.072Z",
+            "source_url": "https://api.gold-api.com/price/XAG"
+          }
+        }
+      },
+      {
+        "date_kst": "2026-10-16",
+        "records": {
+          "XAG": {
+            "raw": {
+              "price": 57.799,
+              "symbol": "XAG",
+              "currency": "USD",
+              "updatedAt": "2026-10-16T03:20:46Z"
+            },
+            "unit": "USD / 트로이온스",
+            "value": 57.799,
+            "symbol": "XAG",
+            "batch_id": "59e51396-8a21-4666-b3a8-666b58ae5aad",
+            "date_kst": "2026-10-16",
+            "timezone": "Asia/Seoul",
+            "source_at": "2026-10-16T03:20:46Z",
+            "synthetic": false,
+            "fetched_at": "2026-10-16T03:20:55.308Z",
+            "source_url": "https://api.gold-api.com/price/XAG"
+          }
+        }
+      }
+    ]
+  },
+  "synthetic": null,
+  "checks": {
+    "XAG": {
+      "record_matches": true,
+      "two_date_delta": {
+        "from": {
+          "raw": {
+            "price": 59.354,
+            "symbol": "XAG",
+            "currency": "USD",
+            "updatedAt": "2026-10-14T02:57:45Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 59.354,
+          "symbol": "XAG",
+          "batch_id": "6743edb7-e961-482a-aa75-1a198a912e72",
+          "date_kst": "2026-10-14",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-14T02:57:45Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-14T02:57:46.072Z",
+          "source_url": "https://api.gold-api.com/price/XAG"
+        },
+        "to": {
+          "raw": {
+            "price": 57.799,
+            "symbol": "XAG",
+            "currency": "USD",
+            "updatedAt": "2026-10-16T03:20:46Z"
+          },
+          "unit": "USD / 트로이온스",
+          "value": 57.799,
+          "symbol": "XAG",
+          "batch_id": "59e51396-8a21-4666-b3a8-666b58ae5aad",
+          "date_kst": "2026-10-16",
+          "timezone": "Asia/Seoul",
+          "source_at": "2026-10-16T03:20:46Z",
+          "synthetic": false,
+          "fetched_at": "2026-10-16T03:20:55.308Z",
+          "source_url": "https://api.gold-api.com/price/XAG"
+        },
+        "value": -1.5549999999999997,
+        "percent": -2.619873976480102
+      }
+    }
+  },
+  "two_dates_complete": true,
+  "note": "합성 검사는 실제 날짜 증빙이 아님. 공식 T04 결과와 과정 발급 t04_day 영수증은 별도 대조."
+}

@@ -12,11 +12,11 @@
 <aside class="context"><h2>가격의 맥락</h2><dl><div><dt>출처</dt><dd><a id="quote-source" href="https://api.gold-api.com/price/XAU" target="_blank" rel="noopener noreferrer">Gold API · XAU</a></dd></div><div><dt>원천 관측 시각</dt><dd id="source-at">—</dd></div><div><dt>실제 조회 시각</dt><dd id="fetched-at">—</dd></div><div><dt>기준 시간대</dt><dd>Asia/Seoul · KST (UTC+9)</dd></div></dl><p id="source-description">원천 관측 시각은 제공자가 돌려준 updatedAt입니다. 조회 시각과 다를 수 있으며, 휴장 때는 이전 가격이 유지될 수 있습니다.</p></aside>
 </section>
 <section id="bitcoin-live" class="proof">
-<div class="section-heading"><div><p class="eyebrow">BITCOIN / BTC</p><h2>비트코인 시세</h2></div><button id="bitcoin-refresh" class="secondary" disabled>비트코인 조회 준비 중</button></div>
-<p class="section-note">비트코인 조회 기능을 준비하고 있습니다. 아직 실제 가격 조회는 연결되지 않았습니다. <a href="/task5.html">과제5 비교 보고서</a></p>
+<div class="section-heading"><div><p class="eyebrow">BITCOIN / BTC</p><h2>비트코인 시세</h2></div><button id="bitcoin-refresh" class="secondary" disabled>비트코인 모듈 불러오는 중</button></div>
+<p class="section-note">비트코인 1개당 미국 달러 가격입니다. 조회 후 최소 30초 대기하며, 실패하면 마지막 정상값을 보존합니다. <a href="/task5.html">과제5 비교 보고서</a></p>
 <div class="proof-grid">
 <div class="proof-cell"><h3>현재 비트코인 가격</h3><strong id="bitcoin-price">—</strong><p id="bitcoin-unit">USD/BTC</p></div>
-<div class="proof-cell"><h3>상태</h3><strong id="bitcoin-status">구현 중</strong><p id="bitcoin-error">조회 기능 준비 중</p></div>
+<div class="proof-cell"><h3>상태</h3><strong id="bitcoin-status" role="status">조회 전</strong><p id="bitcoin-error">조회 버튼을 눌러 주세요.</p></div>
 <div class="proof-cell"><h3>원천 관측 시각 · KST</h3><strong id="bitcoin-source-at">—</strong><h3>조회 시각 · KST</h3><strong id="bitcoin-fetched-at">—</strong><p><a id="bitcoin-source" href="https://api.gold-api.com/price/BTC" target="_blank" rel="noopener noreferrer">Gold API · BTC</a></p></div>
 </div></section>
 <section class="fx-panel"><p id="fx-status" role="status">환율 확인 중…</p><p class="section-note">최신 제공 USD/KRW 환율 · 하루 1회 갱신, 실시간 환율이 아닙니다. <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a></p><button id="fx-refresh" class="secondary">환율 다시 확인</button></section>

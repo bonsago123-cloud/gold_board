@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-16T03:18:50.853Z",
+  "kind": "real API using implemented transport",
+  "quote": {
+    "symbol": "BTC",
+    "value": 82073.726562,
+    "unit": "USD/BTC",
+    "source_url": "https://api.gold-api.com/price/BTC",
+    "source_at": "2026-10-16T03:18:48Z",
+    "fetched_at": "2026-10-16T03:18:55.433Z",
+    "timezone": "Asia/Seoul"
+  }
+}

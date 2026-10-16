@@ -29,8 +29,8 @@
     "finish": "npm run handoff:finish",
     "run_fixed_tests": "npm run task5:check"
   },
-  "source_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
-  "verified_source_digest": "496305a1a3e53556e7df680986fd8a0e6ede18f35a72afbe02da4fdd87b8b428",
-  "last_run_id": "2026-10-14T07-07-29-329Z-fbcbdff4",
-  "next_action": "test-output/bitcoin-fixed.json 첫 FAIL부터 bitcoin-core/client를 구현하고 화면을 연결한다."
+  "source_commit": "549b5176e83d878b92779055686d82e5968846b9",
+  "verified_source_digest": "361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09",
+  "last_run_id": "2026-10-16T03-30-42-768Z-6701907c",
+  "next_action": "사용자가 업로드한 커밋의 배포 완료 후 재실행한다. 로컬 수정과 배포 완료는 별개다."
 }

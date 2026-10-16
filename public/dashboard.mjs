@@ -1,3 +1,4 @@
+import {createBitcoinClient} from './bitcoin-client.mjs';
 import {METALS} from './metals.mjs';
 import {initMarket} from './market.mjs';
 import {createBundleClient} from './bundle-client.mjs';
@@ -44,3 +45,21 @@ $('auto-refresh').onchange=()=>{auto=$('auto-refresh').checked;controls();};
 render(client.view());chart=initMarket(()=>asset);client.request(false);fxClient.request();$('fx-refresh').onclick=()=>fxClient.request();
 let fxWasStale=fxClient.view().stale;
 const timer=setInterval(()=>{const view=client.view(),fxStale=fxClient.view().stale;if(fxStale!==fxWasStale||$('status').className!==`badge ${view.data.assets[asset].status}`)render(view);else controls(view);fxWasStale=fxStale;if(auto&&!document.hidden){client.request(true);fxClient.request();}},1000);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
+
+// BTC owns its own state and never writes metal daily records.
+const bitcoinClient=createBitcoinClient(renderBitcoin);
+function renderBitcoin(v=bitcoinClient.view()){
+ const q=v.last_good,wait=Math.max(0,Math.ceil((v.due-Date.now())/1000));
+ $('bitcoin-price').textContent=q?formatValue(q.value):'—';
+ $('bitcoin-unit').textContent=q?.unit??'USD/BTC';
+ $('bitcoin-source-at').textContent=time(q?.source_at);
+ $('bitcoin-fetched-at').textContent=time(q?.fetched_at);
+ $('bitcoin-status').textContent=v.busy?'조회 중…':({empty:'조회 전',fresh:'정상',stale:'오래된 값',error:'조회 실패'})[v.status];
+ const reasons={offline:'서버에 연결하지 못했습니다.',timeout:'응답 대기 시간을 초과했습니다.',rate_limited:'제공자가 요청을 제한했습니다.',schema_changed:'가격 응답 형식이 올바르지 않습니다.',server_error:'제공자 서버 오류입니다.',auth_error:'제공자가 접근을 거부했습니다.',http_error:'가격 요청이 거부되었습니다.'};
+ $('bitcoin-error').textContent=[reasons[v.error_code]??(q?'실제 원천값 조회 성공.':'조회 버튼을 눌러 주세요.'),v.status==='stale'?'마지막 정상 가격과 두 시각을 유지합니다.':'',wait?`${wait}초 후 다시 조회할 수 있습니다.`:''].filter(Boolean).join(' ');
+ $('bitcoin-refresh').disabled=v.busy||wait>0;
+ $('bitcoin-refresh').textContent=v.busy?'비트코인 조회 중…':wait?`${wait}초 후 비트코인 조회`:'비트코인 조회';
+}
+$('bitcoin-refresh').onclick=()=>bitcoinClient.request();renderBitcoin();
+const bitcoinTimer=setInterval(()=>renderBitcoin(),1000);
+window.addEventListener('pagehide',()=>clearInterval(bitcoinTimer),{once:true});

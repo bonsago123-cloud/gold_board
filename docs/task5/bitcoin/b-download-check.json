@@ -1,0 +1,24 @@
+[
+  {
+    "metal": "gold",
+    "status": "PASS",
+    "bytes": 14385,
+    "sha256": "224b4c7669225ccd99df599208bd56f0ff43cb03260c96895ef54b20df2bdade",
+    "symbol": "XAU",
+    "daily_count": 17,
+    "distinct_dates": 17,
+    "exported_at": "2026-10-16T03:22:15.561Z",
+    "evidence": "docs/task5/bitcoin/b-gold-download.json"
+  },
+  {
+    "metal": "silver",
+    "status": "PASS",
+    "bytes": 5747,
+    "sha256": "7e56d6376a4bea280f41fb92da174eb8ab83f401a95f2931e2e9ebee85f1794c",
+    "symbol": "XAG",
+    "daily_count": 3,
+    "distinct_dates": 3,
+    "exported_at": "2026-10-16T03:22:59.921Z",
+    "evidence": "docs/task5/bitcoin/b-silver-download.json"
+  }
+]

@@ -1,0 +1,511 @@
+{
+  "date_kst": "2026-10-16",
+  "observed_window_kst": "12:17–12:28",
+  "base": "https://goldboard-omega.vercel.app",
+  "source_commit": "549b5176e83d878b92779055686d82e5968846b9",
+  "kind": "manual cloud Chrome observations; production source before upload",
+  "counts": {
+    "PASS": 62,
+    "FAIL": 1,
+    "UNVERIFIED": 8
+  },
+  "rows": [
+    {
+      "id": "HOME",
+      "page": "/",
+      "action": "무로그인 정보판 열기",
+      "status": "PASS",
+      "observed": "금·은·BTC 영역 표시. 당시 배포는 시작 커밋과 파일 바이트 일치(resume)."
+    },
+    {
+      "id": "GOLD",
+      "page": "/",
+      "action": "금 조회 버튼",
+      "status": "PASS",
+      "observed": "4174.799805 USD/트로이온스, 5605675 KRW, source 12:17:47/fetched 12:18:09 KST 정상."
+    },
+    {
+      "id": "SILVER",
+      "page": "/",
+      "action": "은 탭 전환 및 실제 조회",
+      "status": "PASS",
+      "observed": "57.833 USD/트로이온스, 77655 KRW, source 12:18:16/fetched 12:18:20 KST 정상."
+    },
+    {
+      "id": "GOLD-TAB",
+      "page": "/",
+      "action": "금 탭/홈 복귀",
+      "status": "PASS",
+      "observed": "금 제목, 금 기록, XAU 차트 표시."
+    },
+    {
+      "id": "AUTO-ON",
+      "page": "/",
+      "action": "자동 조회 켜기 및 대기",
+      "status": "PASS",
+      "observed": "12:24:25와 12:24:57 조회시각, 32초 차이. 요청 패킷 계측은 하지 않음."
+    },
+    {
+      "id": "AUTO-OFF",
+      "page": "/",
+      "action": "12:25:10 끈 뒤 12:26:19 확인",
+      "status": "PASS",
+      "observed": "자동 갱신 꺼짐. fetched_at 12:24:57 유지. 이후 수동 재시도는 별도."
+    },
+    {
+      "id": "BTC-LIVE",
+      "page": "/",
+      "action": "BTC 조회 버튼 상태 확인",
+      "status": "FAIL",
+      "observed": "비트코인 조회 준비 중(disabled), 구현 중, 가격 —. 수정본 업로드 전."
+    },
+    {
+      "id": "BTC-COOLDOWN",
+      "page": "/",
+      "action": "BTC 클릭 후 30초 제한",
+      "status": "UNVERIFIED",
+      "observed": "운영 BTC 버튼이 비활성이라 실행 불가. 합성 고정검사 성공으로 대신하지 않음."
+    },
+    {
+      "id": "BTC-ERROR",
+      "page": "/",
+      "action": "BTC 실제 오류 표시",
+      "status": "UNVERIFIED",
+      "observed": "운영 BTC 버튼이 비활성이라 실행 불가. 합성 고정검사 성공으로 대신하지 않음."
+    },
+    {
+      "id": "BTC-RECOVER",
+      "page": "/",
+      "action": "BTC 실패 후 재시도/복구",
+      "status": "UNVERIFIED",
+      "observed": "운영 BTC 버튼이 비활성이라 실행 불가. 합성 고정검사 성공으로 대신하지 않음."
+    },
+    {
+      "id": "FX",
+      "page": "/",
+      "action": "환율 다시 확인",
+      "status": "PASS",
+      "observed": "1 USD=1342.7411 KRW; 기준 09:02:31, 조회12:17:22. 기존 환율 캐시가 유지되어 새 네트워크 요청까지 증명하지 않음."
+    },
+    {
+      "id": "RETRY",
+      "page": "/",
+      "action": "일반 다시 시도",
+      "status": "PASS",
+      "observed": "버튼 실행 후 정상, 조회시각12:26:20으로 변경."
+    },
+    {
+      "id": "RECORDS",
+      "page": "/",
+      "action": "금/은 저장 기록 읽기",
+      "status": "PASS",
+      "observed": "금17일, 은 실제 저장값 확인. 다운로드 원본에서 금17/은3개 서로 다른 날짜 검증."
+    },
+    {
+      "id": "CHART-1",
+      "page": "/",
+      "action": "은 차트 간격 1 선택",
+      "status": "PASS",
+      "observed": "OANDA:XAGUSD와 해당 간격 안내로 변경. 모든 외부 캔들 데이터의 개별 완전 로딩은 별도 미확인."
+    },
+    {
+      "id": "CHART-5",
+      "page": "/",
+      "action": "은 차트 간격 5 선택",
+      "status": "PASS",
+      "observed": "OANDA:XAGUSD와 해당 간격 안내로 변경. 모든 외부 캔들 데이터의 개별 완전 로딩은 별도 미확인."
+    },
+    {
+      "id": "CHART-15",
+      "page": "/",
+      "action": "은 차트 간격 15 선택",
+      "status": "PASS",
+      "observed": "OANDA:XAGUSD와 해당 간격 안내로 변경. 모든 외부 캔들 데이터의 개별 완전 로딩은 별도 미확인."
+    },
+    {
+      "id": "CHART-60",
+      "page": "/",
+      "action": "은 차트 간격 60 선택",
+      "status": "PASS",
+      "observed": "OANDA:XAGUSD와 해당 간격 안내로 변경. 모든 외부 캔들 데이터의 개별 완전 로딩은 별도 미확인."
+    },
+    {
+      "id": "CHART-240",
+      "page": "/",
+      "action": "은 차트 간격 240 선택",
+      "status": "PASS",
+      "observed": "OANDA:XAGUSD와 해당 간격 안내로 변경. 모든 외부 캔들 데이터의 개별 완전 로딩은 별도 미확인."
+    },
+    {
+      "id": "CHART-D",
+      "page": "/",
+      "action": "은 차트 간격 D 선택",
+      "status": "PASS",
+      "observed": "OANDA:XAGUSD와 해당 간격 안내로 변경. 모든 외부 캔들 데이터의 개별 완전 로딩은 별도 미확인."
+    },
+    {
+      "id": "CHART-W",
+      "page": "/",
+      "action": "은 차트 간격 W 선택",
+      "status": "PASS",
+      "observed": "OANDA:XAGUSD와 해당 간격 안내로 변경. 모든 외부 캔들 데이터의 개별 완전 로딩은 별도 미확인."
+    },
+    {
+      "id": "CHART-M",
+      "page": "/",
+      "action": "은 차트 간격 M 선택",
+      "status": "PASS",
+      "observed": "OANDA:XAGUSD와 해당 간격 안내로 변경. 모든 외부 캔들 데이터의 개별 완전 로딩은 별도 미확인."
+    },
+    {
+      "id": "CHART-RELOAD",
+      "page": "/",
+      "action": "차트 다시 불러오기",
+      "status": "PASS",
+      "observed": "금 1시간 실제 그래프 표시. OANDA:XAUUSD 가격선 화면 확인."
+    },
+    {
+      "id": "CHART-ZOOM",
+      "page": "/",
+      "action": "차트 위 휠 및 1D 범위 클릭",
+      "status": "UNVERIFIED",
+      "observed": "클릭/휠을 시도했으나 x축 범위 변화가 확실하지 않음. 확대·축소 성공으로 판정하지 않음."
+    },
+    {
+      "id": "G-OPEN",
+      "page": "/verify.html",
+      "action": "검증 링크 이동",
+      "status": "PASS",
+      "observed": "해당 종목 검증 페이지 열림."
+    },
+    {
+      "id": "G-COLLECT",
+      "page": "/verify.html",
+      "action": "조회·기록·검증",
+      "status": "PASS",
+      "observed": "fresh/none, 원자료·저장·표시 일치. 금12:19:03, 은12:20:55 KST."
+    },
+    {
+      "id": "G-READ",
+      "page": "/verify.html",
+      "action": "저장 기록 새로 읽기",
+      "status": "PASS",
+      "observed": "조회 뒤 기록 다시 표시."
+    },
+    {
+      "id": "G-TWO-DAYS",
+      "page": "/verify.html",
+      "action": "실제 이틀 표와 변화값",
+      "status": "PASS",
+      "observed": "금 09-30→10-01, 4202.100098→4163, -39.100098. 은 10-14→10-16, 59.354→57.833, -1.521000(첫 관측); 이후 갱신 원본은 다운로드에 보존."
+    },
+    {
+      "id": "G-DOWNLOAD",
+      "page": "/verify.html",
+      "action": "JSON 다운로드 및 내용 파싱",
+      "status": "PASS",
+      "observed": "실제 download 이벤트 경로 확보, JSON 파싱·실제 종목·양수·synthetic=false 검증. docs/task5/bitcoin/b-download-check.json. 다운로드 표시 파일명은 도구가 제공하지 않아 별도 미확인."
+    },
+    {
+      "id": "G-FAILURE-SUITE",
+      "page": "/verify.html",
+      "action": "5종 실패·복구 전체 검사",
+      "status": "PASS",
+      "observed": "5/5 통과, 정상값 보존·같은 날짜1행·복구2행."
+    },
+    {
+      "id": "G-OFFICIAL-SUITE",
+      "page": "/verify.html",
+      "action": "공식 전체 순서 검사",
+      "status": "PASS",
+      "observed": "정상 날짜 갱신/추가, 5종 실패→복구 모두 통과 표시."
+    },
+    {
+      "id": "G-NORMAL-D1-A",
+      "page": "/verify.html",
+      "action": "공식 T04-NORMAL-D1-A 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-NORMAL-D1-B",
+      "page": "/verify.html",
+      "action": "공식 T04-NORMAL-D1-B 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-NORMAL-D2",
+      "page": "/verify.html",
+      "action": "공식 T04-NORMAL-D2 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-TIMEOUT",
+      "page": "/verify.html",
+      "action": "공식 T04-TIMEOUT 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-AUTH-401",
+      "page": "/verify.html",
+      "action": "공식 T04-AUTH-401 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-RATE-429",
+      "page": "/verify.html",
+      "action": "공식 T04-RATE-429 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-OFFLINE",
+      "page": "/verify.html",
+      "action": "공식 T04-OFFLINE 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-SCHEMA-BREAK",
+      "page": "/verify.html",
+      "action": "공식 T04-SCHEMA-BREAK 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-RECOVER-D2",
+      "page": "/verify.html",
+      "action": "공식 T04-RECOVER-D2 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "G-RESET",
+      "page": "/verify.html",
+      "action": "합성 상태 초기화",
+      "status": "PASS",
+      "observed": "합성 상태만 초기화했습니다."
+    },
+    {
+      "id": "G-RETRY",
+      "page": "/verify.html",
+      "action": "공식 실패 뒤 다시 시도",
+      "status": "PASS",
+      "observed": "T04-RECOVER-D2 · 2행 · fixture 예상 결과 일치."
+    },
+    {
+      "id": "G-DETAILS",
+      "page": "/verify.html",
+      "action": "안내/파일별 검증/현재 JSON/원자료 펼치기",
+      "status": "PASS",
+      "observed": "4개 details 열림. 금 원자료4174와 표시4174.00 및 시각 일치, 17/17 원본 파일 SHA-256 일치."
+    },
+    {
+      "id": "S-OPEN",
+      "page": "/silver-verify.html",
+      "action": "검증 링크 이동",
+      "status": "PASS",
+      "observed": "해당 종목 검증 페이지 열림."
+    },
+    {
+      "id": "S-COLLECT",
+      "page": "/silver-verify.html",
+      "action": "조회·기록·검증",
+      "status": "PASS",
+      "observed": "fresh/none, 원자료·저장·표시 일치. 금12:19:03, 은12:20:55 KST."
+    },
+    {
+      "id": "S-READ",
+      "page": "/silver-verify.html",
+      "action": "저장 기록 새로 읽기",
+      "status": "PASS",
+      "observed": "조회 뒤 기록 다시 표시."
+    },
+    {
+      "id": "S-TWO-DAYS",
+      "page": "/silver-verify.html",
+      "action": "실제 이틀 표와 변화값",
+      "status": "PASS",
+      "observed": "금 09-30→10-01, 4202.100098→4163, -39.100098. 은 10-14→10-16, 59.354→57.833, -1.521000(첫 관측); 이후 갱신 원본은 다운로드에 보존."
+    },
+    {
+      "id": "S-DOWNLOAD",
+      "page": "/silver-verify.html",
+      "action": "JSON 다운로드 및 내용 파싱",
+      "status": "PASS",
+      "observed": "실제 download 이벤트 경로 확보, JSON 파싱·실제 종목·양수·synthetic=false 검증. docs/task5/bitcoin/b-download-check.json. 다운로드 표시 파일명은 도구가 제공하지 않아 별도 미확인."
+    },
+    {
+      "id": "S-FAILURE-SUITE",
+      "page": "/silver-verify.html",
+      "action": "5종 실패·복구 전체 검사",
+      "status": "PASS",
+      "observed": "5/5 통과, 정상값 보존·같은 날짜1행·복구2행."
+    },
+    {
+      "id": "S-OFFICIAL-SUITE",
+      "page": "/silver-verify.html",
+      "action": "공식 전체 순서 검사",
+      "status": "PASS",
+      "observed": "정상 날짜 갱신/추가, 5종 실패→복구 모두 통과 표시."
+    },
+    {
+      "id": "S-NORMAL-D1-A",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-NORMAL-D1-A 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-NORMAL-D1-B",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-NORMAL-D1-B 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-NORMAL-D2",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-NORMAL-D2 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-TIMEOUT",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-TIMEOUT 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-AUTH-401",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-AUTH-401 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-RATE-429",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-RATE-429 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-OFFLINE",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-OFFLINE 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-SCHEMA-BREAK",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-SCHEMA-BREAK 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-RECOVER-D2",
+      "page": "/silver-verify.html",
+      "action": "공식 T04-RECOVER-D2 버튼",
+      "status": "PASS",
+      "observed": "fixture 예상 결과 일치. 정상 D1-A/D1-B 기준 설정 후 실패/복구. 금 첫 긴 호출은 도구 시간초과되어 짧게 재실행한 결과로 판정."
+    },
+    {
+      "id": "S-RESET",
+      "page": "/silver-verify.html",
+      "action": "합성 상태 초기화",
+      "status": "PASS",
+      "observed": "합성 상태만 초기화했습니다."
+    },
+    {
+      "id": "S-RETRY",
+      "page": "/silver-verify.html",
+      "action": "공식 실패 뒤 다시 시도",
+      "status": "PASS",
+      "observed": "T04-RECOVER-D2 · 2행 · fixture 예상 결과 일치."
+    },
+    {
+      "id": "S-DETAILS",
+      "page": "/silver-verify.html",
+      "action": "안내/파일별 검증/현재 JSON/원자료 펼치기",
+      "status": "PASS",
+      "observed": "4개 details 열림. 금 원자료4174와 표시4174.00 및 시각 일치, 17/17 원본 파일 SHA-256 일치."
+    },
+    {
+      "id": "OFFICIAL-REDIRECT",
+      "page": "/official.html",
+      "action": "공식 안내 주소 열기",
+      "status": "UNVERIFIED",
+      "observed": "금 검증 h1까지 확인했으나 URL을 읽은 순간 /official.html 상태. 최종 #official-tests URL은 재확인 필요."
+    },
+    {
+      "id": "REPORT",
+      "page": "/task5.html",
+      "action": "비교 보고서 열기",
+      "status": "PASS",
+      "observed": "기존 구리 보관 보고서 확인. 새 BTC 보고서는 로컬 수정이며 업로드 전."
+    },
+    {
+      "id": "HANDOFF",
+      "page": "/handoff.html",
+      "action": "보고서→인계 링크",
+      "status": "PASS",
+      "observed": "UNVERIFIED·재검증 필요, 이전 검사시각/다음 행동 표시. main 선택자 오류 후 실제 body 구조로 확인."
+    },
+    {
+      "id": "HOME-LINK",
+      "page": "/handoff.html",
+      "action": "정보판 링크",
+      "status": "PASS",
+      "observed": "정보판으로 복귀."
+    },
+    {
+      "id": "EXTERNAL-DOC",
+      "page": "/",
+      "action": "Gold API 문서 출처 접속",
+      "status": "PASS",
+      "observed": "https://gold-api.com/docs, API Documentation :: Gold API."
+    },
+    {
+      "id": "EXTERNAL-FX",
+      "page": "/",
+      "action": "환율 제공자 링크 접속",
+      "status": "PASS",
+      "observed": "https://www.exchangerate-api.com/, Currency Converter API 페이지."
+    },
+    {
+      "id": "EXTERNAL-CHART",
+      "page": "/",
+      "action": "TradingView 출처 접속",
+      "status": "PASS",
+      "observed": "/symbols/XAUUSD/로 리다이렉트, XAUUSD Chart — Gold Spot Price Today."
+    },
+    {
+      "id": "EXTERNAL-BTC",
+      "page": "/",
+      "action": "BTC 원천 링크 직접 접속",
+      "status": "UNVERIFIED",
+      "observed": "cloud browser ERR_BLOCKED_BY_CLIENT. Node GET 성공과 구분."
+    },
+    {
+      "id": "EXTERNAL-OTHER",
+      "page": "all",
+      "action": "나머지 원천/증거/파일 링크 목적지",
+      "status": "UNVERIFIED",
+      "observed": "일부 href/로컬 원본은 확인했으나 모든 외부 링크별 직접 접속은 완료하지 못함."
+    },
+    {
+      "id": "LOCAL-BTC-UI",
+      "page": "local",
+      "action": "수정된 로컬 BTC 화면 브라우저 실행",
+      "status": "UNVERIFIED",
+      "observed": "Chromium 및 headless-shell 손상 ZIP 설치 실패. cloud browser→127.0.0.1:3000 CONNECTION_REFUSED."
+    }
+  ]
+}

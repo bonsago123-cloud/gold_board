@@ -1,12 +1,14 @@
 {
-  "id": "2026-10-14T07-00-00-539Z-bbfa2792",
-  "started_at": "2026-10-14T07:00:00.539Z",
-  "closed_at": "2026-10-14T07:02:45.912Z",
-  "start_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
-  "start_digest": "fbb03e40e268d44bd02375eae81c04f9ab7129ea752d6846ede79061f4e3cd40",
-  "received_handoff_sha256": "04e4f142c76def83471fc1da57b40efd9eed468cd849369d7c7930dedca576a7",
-  "inherited_session": "2026-10-14T01-25-14-283Z-38478763",
-  "end_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
-  "end_digest": "b6162af28a2246113c1b6c6926a98878c176c3eb8a07f9e2924f3bfcdb50830e",
-  "elapsed_seconds": 165.373
+  "id": "2026-10-16T03-16-47-777Z-49fd9549",
+  "started_at": "2026-10-16T03:16:47.777Z",
+  "closed_at": "2026-10-16T03:30:55.426Z",
+  "start_commit": "549b5176e83d878b92779055686d82e5968846b9",
+  "start_digest": "13e214ea610fbf155496c703d0ab4b2db5f89a62df56dcaca3978524944ee30b",
+  "received_handoff_sha256": "95f20aa83eabe6c931c0ac849a2738494fe6fffc5d4badb02fc92877e2040f98",
+  "inherited_session": "2026-10-14T07-00-00-539Z-bbfa2792",
+  "end_commit": null,
+  "end_base_commit": "549b5176e83d878b92779055686d82e5968846b9",
+  "end_commit_note": "Uncommitted upload package; user GitHub upload commit still required",
+  "end_digest": "361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09",
+  "elapsed_seconds": 847.649
 }

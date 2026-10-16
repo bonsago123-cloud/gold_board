@@ -1,24 +1,24 @@
 {
   "schema_version": 3,
-  "id": "2026-10-14T07-07-29-329Z-fbcbdff4",
+  "id": "2026-10-16T03-30-42-768Z-6701907c",
   "feature_id": "task5-bitcoin-v1",
-  "mode": "ci",
-  "started_at": "2026-10-14T07:07:29.329Z",
-  "finished_at": "2026-10-14T07:08:29.132Z",
-  "source_commit": "ef03f512cf265d55240452acb8743b487b466c9b",
-  "source_digest": "496305a1a3e53556e7df680986fd8a0e6ede18f35a72afbe02da4fdd87b8b428",
-  "parent_run_id": "2026-10-14T07-04-21-248Z-36980ee4",
-  "parent_report_sha256": "8954dfc3028e2682b5125277495b9996e4c8cee4dd9d900552a54639789549e0",
+  "mode": "finish",
+  "started_at": "2026-10-16T03:30:42.768Z",
+  "finished_at": "2026-10-16T03:30:55.426Z",
+  "source_commit": "549b5176e83d878b92779055686d82e5968846b9",
+  "source_digest": "361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09",
+  "parent_run_id": "2026-10-16T03-16-47-777Z-49fd9549",
+  "parent_report_sha256": "e03c8e1587d0a365a9e6a4301f2ccbe01a6910f59910f8e9f6ab65defb332ef5",
   "gates": [
     {
       "id": "integrity",
-      "status": "UNVERIFIED",
-      "reason": "Local freeze valid; initial upload commit not yet available. Next AI validates Git anchor."
+      "status": "PASS",
+      "reason": "Frozen bytes match first committed baseline 549b5176e83d878b92779055686d82e5968846b9"
     },
     {
       "id": "fixed_tests",
-      "status": "FAIL",
-      "exit_code": 1
+      "status": "PASS",
+      "exit_code": 0
     },
     {
       "id": "regression",
@@ -36,11 +36,11 @@
       "http_status": 200,
       "quote": {
         "symbol": "BTC",
-        "value": 83404.460938,
+        "value": 81944.203125,
         "unit": "USD/BTC",
         "source_url": "https://api.gold-api.com/price/BTC",
-        "source_at": "2026-10-14T07:07:50Z",
-        "fetched_at": "2026-10-14T07:08:18.129Z",
+        "source_at": "2026-10-16T03:30:18Z",
+        "fetched_at": "2026-10-16T03:30:49.813Z",
         "timezone": "Asia/Seoul"
       }
     },
@@ -68,12 +68,24 @@
   ],
   "phase": "BLOCKED",
   "blockers": [
-    "integrity",
-    "fixed_tests",
     "deployment",
     "site",
     "manual",
     "submission"
   ],
-  "next_action": "test-output/bitcoin-fixed.json 첫 FAIL부터 bitcoin-core/client를 구현하고 화면을 연결한다."
+  "next_action": "사용자가 업로드한 커밋의 배포 완료 후 재실행한다. 로컬 수정과 배포 완료는 별개다.",
+  "session": {
+    "id": "2026-10-16T03-16-47-777Z-49fd9549",
+    "started_at": "2026-10-16T03:16:47.777Z",
+    "closed_at": "2026-10-16T03:30:55.426Z",
+    "start_commit": "549b5176e83d878b92779055686d82e5968846b9",
+    "start_digest": "13e214ea610fbf155496c703d0ab4b2db5f89a62df56dcaca3978524944ee30b",
+    "received_handoff_sha256": "95f20aa83eabe6c931c0ac849a2738494fe6fffc5d4badb02fc92877e2040f98",
+    "inherited_session": "2026-10-14T07-00-00-539Z-bbfa2792",
+    "end_commit": null,
+    "end_base_commit": "549b5176e83d878b92779055686d82e5968846b9",
+    "end_commit_note": "Uncommitted upload package; user GitHub upload commit still required",
+    "end_digest": "361c362a0da9d18c654da1a1312bb9cee2c225252c6eee6c140159f5a6a32b09",
+    "elapsed_seconds": 847.649
+  }
 }
