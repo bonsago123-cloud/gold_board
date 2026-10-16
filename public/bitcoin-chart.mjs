@@ -32,4 +32,5 @@ export function initBitcoinChart() {
     el('reload').removeEventListener('click', update);
   }, {once: true});
   update();
+  return {update};
 }

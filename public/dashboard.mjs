@@ -10,6 +10,7 @@ import {createFxClient,toWon} from './fx.mjs';
 
 const $=id=>document.getElementById(id),requested=new URLSearchParams(location.search).get('asset');
 let asset=Object.hasOwn(METALS,requested)?requested:'XAU',auto=false,chart;
+let selectedAsset=requested==='BTC'?'BTC':asset;
 const goldClient=createGoldClient(()=>render(client.view()));
 const bundleClient=createBundleClient(()=>render(client.view()));
 const client={view:()=> (asset==='XAU'?goldClient:bundleClient).view(),request:collect=>(asset==='XAU'?goldClient:bundleClient).request(collect)};
@@ -28,10 +29,10 @@ function render({data,busy,cached,due}){
  $('status').className=`badge ${state.status}`;$('status').textContent=({fresh:'정상',stale:'오래된 값',error:'조회 오류',empty:'조회 전'})[state.status];
  // Source-age details belong to the verification page; retain the stale price badge.
  $('notice').hidden=state.error_code==='source_stale'&&!cached;
- const error=ERRORS[state.error_code];$('notice').className=`notice ${error?'warning':'good'}`;$('notice-title').textContent=error?error[0]:'가격과 적용 환율을 함께 확인하세요.';$('notice-body').textContent=error?`${error[1]} ${q?'마지막 정상값을 유지합니다. ':''}${error[2]}`:(asset==='XAU'?'조회 성공 시 금 일별 기록을 저장합니다.':'조회 성공 시 금·은 일별 기록을 저장합니다.');
+ const error=state.error_code==='source_stale'?null:ERRORS[state.error_code];$('notice').className=`notice ${error?'warning':'good'}`;$('notice-title').textContent=error?error[0]:'가격과 적용 환율을 함께 확인하세요.';$('notice-body').textContent=error?`${error[1]} ${q?'마지막 정상값을 유지합니다. ':''}${error[2]}`:(asset==='XAU'?'조회 성공 시 금 일별 기록을 저장합니다.':'조회 성공 시 금·은 일별 기록을 저장합니다.');
  if(cached)$('notice-body').textContent+=' 서버 확인 실패 · 보관된 기록입니다.';
  const c=safeDelta(state.daily);$('change').textContent=c?`${Date.parse(c.to.date_kst)-Date.parse(c.from.date_kst)===86400000?'어제':'이전 기록'} 대비 ${c.value>=0?'+':''}${c.value.toFixed(6)} ${q.unit} (${c.percent.toFixed(4)}%)`:'비교할 같은 출처·단위의 일별 기록이 없습니다.';
- $('asset-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.symbol===asset)));
+ $('asset-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.symbol===selectedAsset)));
  $('records-title').textContent=`${meta.name} 일별 기록`;$('row-count').textContent=`${state.daily.length}일`;$('daily-rows').replaceChildren();
  for(const row of [...state.daily].reverse()){const tr=document.createElement('tr');for(const val of [row.date_kst,`${formatValue(row.value)} ${row.unit}`,toWon(row.value,fx.quote)===null?'—':`${Math.round(toWon(row.value,fx.quote)).toLocaleString('ko-KR')} ${row.unit.replace(/^USD/,'KRW')}${fx.stale?' (이전 환율)':''}`,time(row.source_at),time(row.fetched_at)]){const td=document.createElement('td');td.textContent=val;tr.append(td);}$('daily-rows').append(tr);}
  if(!state.daily.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=5;td.textContent='정상 조회 후 종목별 날짜 기록이 저장됩니다.';td.className='empty';tr.append(td);$('daily-rows').append(tr);}
@@ -43,11 +44,11 @@ function controls(v=client.view()){
  $('batch-status').textContent=asset==='XAU'?'금 일별 기록 · 한국 날짜 기준':v.data.last_run?`최근 묶음 수집 ${v.data.last_run.success_count}/2 성공 · ${time(v.data.last_run.finished_at)} KST`:'선택한 원자재의 가격과 원천 시각을 확인하세요.';
 }
 $('refresh').onclick=$('retry').onclick=()=>{client.request(true);fxClient.request();};
-$('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{asset=b.dataset.symbol;render(client.view());chart.update();client.request(false);fxClient.request();});
+
 $('auto-refresh').onchange=()=>{auto=$('auto-refresh').checked;controls();};
 render(client.view());chart=initMarket(()=>asset);client.request(false);fxClient.request();$('fx-refresh').onclick=()=>fxClient.request();
 let fxWasStale=fxClient.view().stale;
-const timer=setInterval(()=>{const view=client.view(),fxStale=fxClient.view().stale;if(fxStale!==fxWasStale||$('status').className!==`badge ${view.data.assets[asset].status}`)render(view);else controls(view);fxWasStale=fxStale;if(auto&&!document.hidden){client.request(true);fxClient.request();}},1000);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
+const timer=setInterval(()=>{const view=client.view(),fxStale=fxClient.view().stale;if(fxStale!==fxWasStale||$('status').className!==`badge ${view.data.assets[asset].status}`)render(view);else controls(view);fxWasStale=fxStale;if(auto&&selectedAsset!=='BTC'&&!document.hidden){client.request(true);fxClient.request();}},1000);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
 
 // BTC owns its own state and never writes metal daily records.
 const bitcoinClient=createBitcoinClient(renderBitcoin);
@@ -67,4 +68,26 @@ $('bitcoin-refresh').onclick=()=>bitcoinClient.request();renderBitcoin();
 const bitcoinTimer=setInterval(()=>renderBitcoin(),1000);
 window.addEventListener('pagehide',()=>clearInterval(bitcoinTimer),{once:true});
 
-initBitcoinChart();
+const bitcoinChart=initBitcoinChart();
+function showAsset(symbol, request=false) {
+ selectedAsset=symbol;
+ const bitcoin=symbol==='BTC';
+ $('metal-panel').hidden=bitcoin;
+ $('bitcoin-live').hidden=!bitcoin;
+ $('asset-tabs').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.symbol===symbol)));
+ if(bitcoin){
+  // Stop metal auto-collection when its panel is no longer selected.
+  auto=false;$('auto-refresh').checked=false;controls();
+  bitcoinChart.update();
+ }else{
+  asset=symbol;
+  $('metal-panel').setAttribute('aria-labelledby','tab-'+symbol);
+  render(client.view());
+  chart.update();
+  if(request){client.request(false);fxClient.request();}
+ }
+ const url=new URL(location.href);url.searchParams.set('asset',symbol);
+ history.replaceState(null,'',url);
+}
+$('asset-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>showAsset(b.dataset.symbol,true));
+showAsset(selectedAsset);

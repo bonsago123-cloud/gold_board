@@ -1,0 +1,76 @@
+{
+  "kind": "synthetic-browser",
+  "at": "2026-10-16T12:40:00.312Z",
+  "rows": [
+    {
+      "id": "T05-BCH01",
+      "input": "페이지 열기",
+      "expected": "비트코인 차트 제목·호스트·간격 선택·다시 불러오기 표시",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH02",
+      "input": "처음 열기",
+      "expected": "기본 1시간, BTCUSD 차트 설정, Asia/Seoul",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH03",
+      "input": "간격 1/5/15/60/240/D/W/M 순서로 선택",
+      "expected": "각 선택이 위젯 설정에 반영되고 BTCUSD 유지",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH04",
+      "input": "다시 불러오기",
+      "expected": "선택 간격 유지, 차트 새 요청",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH05",
+      "input": "출처 링크 확인",
+      "expected": "TradingView HTTPS 출처 링크 표시",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH06",
+      "input": "차트 설명 읽기",
+      "expected": "USD/BTC, 차트와 현재가의 출처 차이, 참고가격 안내",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH07",
+      "input": "차트 제공 스크립트 요청 실패 후 다시 불러오기",
+      "expected": "실패 안내 표시, 재시도 버튼 사용 가능",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH08",
+      "input": "실패 뒤 제공 스크립트 복구 후 다시 불러오기",
+      "expected": "새 차트 프레임 표시, 이전 실패 안내 해제",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH09",
+      "input": "간격 변경·새로고침 5회 반복",
+      "expected": "차트 프레임 정확히 1개, 중복 위젯 없음",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    },
+    {
+      "id": "T05-BCH10",
+      "input": "차트 간격 변경·새로고침",
+      "expected": "현재가와 두 시각 유지, BTC 조회 또는 DB 저장 추가 요청 없음",
+      "status": "UNVERIFIED",
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    }
+  ]
+}
