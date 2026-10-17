@@ -1,0 +1,5 @@
+{
+  "changes": "기존 완성 차트 모듈을 보관 후 제거. 새 고정10개를 먼저 고정하고 차트 제거 상태 0/10 기록. 새 부분 구현은 제목·간격 선택 UI·버튼·출처·단위 안내만 제공하며 외부 차트는 연결하지 않음. 반복 인계 엔진과 Actions를 새 사이클에 연결.",
+  "problems": "BTCUSD 위젯 연결, 기본 설정, 간격 변경, 새로 불러오기, 실패·복구·중복 정리 미구현. 현재가·원화·금·은은 유지. 모델 정보와 업로드 커밋 미확인. 과거 완료 보고서는 이전 사이클의 기록임.",
+  "next_action": "public/bitcoin-chart.mjs에서 market.mjs의 mountWidget과 CHART_INTERVALS를 이용해 BTCUSD 위젯을 연결한다. 간격 change/reload와 dispose·오류/복구 처리 구현. npm run chart:check의 동일10개를 실행. 완료하거나 상한 전 notes 작성 후 finish. 차트 외 새 기능을 만들지 말 것."
+}

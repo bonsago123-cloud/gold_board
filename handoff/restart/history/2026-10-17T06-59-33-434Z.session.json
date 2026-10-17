@@ -1,0 +1,30 @@
+{
+  "id": "2026-10-17T06-59-33-434Z",
+  "parent_session_id": null,
+  "parent_session_sha256": null,
+  "started_at": "2026-10-17T06:59:33.435Z",
+  "start_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
+  "start_source_digest": "69b5609860a36bdc623de5f28457935af82d1683268c18e53a8e05d6881a2748",
+  "received_handoff_sha256": "f7851cca71c3985270bf2144de4e1e9936ba358b3ccb8fc8ae883674562e44d0",
+  "handoff_equal": null,
+  "user_work_requests": 1,
+  "service": "ChatGPT",
+  "model": "UNVERIFIED",
+  "runs": [
+    "2026-10-17T06-59-42-862Z",
+    "2026-10-17T07-00-32-117Z",
+    "2026-10-17T07-01-06-404Z",
+    "2026-10-17T07-02-18-079Z"
+  ],
+  "closed_at": "2026-10-17T07:02:23.239Z",
+  "interrupted": false,
+  "end_commit": null,
+  "end_base_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
+  "end_source_digest": "6b7c0018be391cd9294cfc78f500a84692b13e9a94ef5bdf6cc057e2e1250371",
+  "elapsed_seconds": 169.804,
+  "within_limits": true,
+  "failed_rounds": 4,
+  "passed": 4,
+  "outgoing_handoff_sha256": "3f05ae10a55da6209928f036b57e1b21e7992eedce4416bf08a8dd1b5ac9280a",
+  "finalization_note": "전달 전 중단 notes 보존 보강 및 새 폴더 재현; 최초 시간과 요청 수 유지"
+}

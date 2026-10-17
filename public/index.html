@@ -38,12 +38,13 @@
 <div><dt>기준 시간대</dt><dd>Asia/Seoul · KST (UTC+9)</dd></div></dl><p>원천 시각은 제공자의 updatedAt입니다. 실제 조회 시각과 다를 수 있습니다.</p></aside>
 </section>
 <section class="fx-panel"><p id="bitcoin-fx-status" role="status">환율 확인 중…</p><p class="section-note">최신 제공 USD/KRW 환율 · 하루 1회 갱신, 실시간 환율이 아닙니다. <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a></p><button id="bitcoin-fx-refresh" class="secondary">환율 다시 확인</button></section>
-<section id="bitcoin-notice" class="notice" aria-live="polite"><div><strong>가격과 적용 환율을 함께 확인하세요.</strong><p id="bitcoin-error">조회 버튼을 눌러 주세요.</p></div></section>
 <section class="market-card" aria-labelledby="bitcoin-chart-title">
 <div class="market-toolbar"><h3 id="bitcoin-chart-title">비트코인 과거 시세 차트</h3><div><label for="bitcoin-chart-interval">시간 간격</label><select id="bitcoin-chart-interval"><option value="1">1분</option><option value="5">5분</option><option value="15">15분</option><option value="60" selected>1시간</option><option value="240">4시간</option><option value="D">1일</option><option value="W">1주</option><option value="M">1개월</option></select><button id="bitcoin-chart-reload" class="secondary" type="button">다시 불러오기</button></div></div>
-<p id="bitcoin-chart-note" class="widget-note">TradingView / Bitstamp · BTCUSD · USD/BTC 참고가격. 현재가(Gold API)와 출처·관측 시각·가격이 다를 수 있습니다. 시간대: Asia/Seoul. 차트를 확대·축소해 기간을 조절하세요.</p>
-<div id="bitcoin-chart-host" class="widget-host"></div><p id="bitcoin-chart-status" class="widget-status" role="status" aria-live="polite"></p>
-</section></section>
+<p id="bitcoin-chart-note" class="widget-note">TradingView / Bitstamp · BTCUSD · USD/BTC 참고가격. 현재가(Gold API)와 출처·관측 시각·가격이 다를 수 있습니다. 시간대: Asia/Seoul. 차트 연결 기능은 구현 중입니다.</p>
+<div id="bitcoin-chart-host" class="widget-host"><a href="https://www.tradingview.com/symbols/BTCUSD/" target="_blank" rel="noopener noreferrer">TradingView에서 BTCUSD 보기</a></div><p id="bitcoin-chart-status" class="widget-status" role="status" aria-live="polite"></p>
+</section>
+<section id="bitcoin-notice" class="notice" aria-live="polite"><div><strong>가격과 적용 환율을 함께 확인하세요.</strong><p id="bitcoin-error">조회 버튼을 눌러 주세요.</p></div></section>
+</section>
 <footer><a href="/verify.html">과제 검증</a><a href="/task5.html">과제5 비교 보고서</a><span>METAL / NOTE</span><span>공개 시장 데이터만 저장 · 로그인 없이 열람</span><a href="https://gold-api.com/docs" target="_blank" rel="noopener noreferrer">데이터 출처 문서</a></footer>
 </main>
 </body></html>

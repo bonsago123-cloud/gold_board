@@ -1,2 +1,2 @@
-// Active chart cycle; quote runner and historical evidence remain intact.
-await import('./handoff-chart.mjs');
+// Active cycle only; historical runners and evidence stay archived.
+await import('./handoff-cycle.mjs');

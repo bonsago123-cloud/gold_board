@@ -1,0 +1,14 @@
+{
+  "scope": "Same tool local fresh-folder reproduction; not another AI/model assignment evidence",
+  "checks": {
+    "fresh_folder_fixed_tests": "4/10 identical",
+    "received_handoff_equal": true,
+    "interrupted_session_preserved": true,
+    "parent_link_preserved": true,
+    "regression": "46/46",
+    "quote_fixed": "10/10",
+    "build": "PASS"
+  },
+  "browser": "Existing Chromium executable; npm dependency installation not independently repeated",
+  "source_commits": "Upload commit IDs still pending"
+}

@@ -1,104 +1,59 @@
 {
-  "id": "2026-10-17T01-16-10-905Z",
-  "started_at": "2026-10-17T01:16:10.906Z",
+  "phase": "IN_PROGRESS",
+  "finished_at": "2026-10-17T07:02:23.239Z",
   "source_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
-  "source_digest": "644c2870054271d8214687538a0c54632672869324b421912bc176b3e2ed2329",
-  "mode": "finish",
+  "next_action": "public/bitcoin-chart.mjs에서 market.mjs의 mountWidget과 CHART_INTERVALS를 이용해 BTCUSD 위젯을 연결한다. 간격 change/reload와 dispose·오류/복구 처리 구현. npm run chart:check의 동일10개를 실행. 완료하거나 상한 전 notes 작성 후 finish. 차트 외 새 기능을 만들지 말 것.",
   "gates": [
     {
-      "id": "integrity",
+      "id": "BTC-R01",
       "status": "PASS",
-      "anchor": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce"
+      "reason": ""
     },
     {
-      "id": "chart_fixed",
+      "id": "BTC-R02",
       "status": "FAIL",
-      "exit_code": 1
+      "reason": "The input did not match the regular expression /(^|:)BTCUSD$/. Input:\n\n''\n"
     },
     {
-      "id": "chart_current",
+      "id": "BTC-R03",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly equal:\n\nundefined !== '1'\n"
+    },
+    {
+      "id": "BTC-R04",
+      "status": "FAIL",
+      "reason": "The expression evaluated to a falsy value:\n\n  assert.ok(configs.length>n)\n"
+    },
+    {
+      "id": "BTC-R05",
       "status": "PASS",
-      "exit_code": 0
+      "reason": ""
     },
     {
-      "id": "bitcoin_ui",
+      "id": "BTC-R06",
       "status": "PASS",
-      "exit_code": 0
+      "reason": ""
     },
     {
-      "id": "quote_fixed",
+      "id": "BTC-R07",
+      "status": "FAIL",
+      "reason": "page.waitForFunction: Timeout 2500ms exceeded."
+    },
+    {
+      "id": "BTC-R08",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "id": "BTC-R09",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "id": "BTC-R10",
       "status": "PASS",
-      "exit_code": 0
-    },
-    {
-      "id": "regression",
-      "status": "PASS",
-      "exit_code": 0
-    },
-    {
-      "id": "build",
-      "status": "PASS",
-      "exit_code": 0
-    },
-    {
-      "id": "site",
-      "status": "UNVERIFIED",
-      "exit_code": 1
-    },
-    {
-      "id": "live_chart",
-      "status": "UNVERIFIED",
-      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
-    },
-    {
-      "id": "deployment_match",
-      "status": "UNVERIFIED",
-      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
-    },
-    {
-      "id": "manual_all_functions",
-      "status": "UNVERIFIED",
-      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
-    },
-    {
-      "id": "submission",
-      "status": "UNVERIFIED",
-      "reason": "ENOENT: no such file or directory, open 'handoff/chart/review.json'"
-    },
-    {
-      "id": "usage",
-      "status": "PASS",
-      "reason": "Full session must be closed within 1800 seconds and 10 user requests"
+      "reason": ""
     }
   ],
-  "phase": "BLOCKED",
-  "submission_ready": false,
-  "finished_at": "2026-10-17T01:16:35.241Z",
-  "session": {
-    "id": "2026-10-17T01-15-17-221Z",
-    "parent_session_id": "2026-10-16T23-32-44-215Z",
-    "parent_session_sha256": "97731bbc9f135c72516ea41bffd49a425e64dce1da6437f32090844dfed4bc13",
-    "started_at": "2026-10-17T01:15:17.221Z",
-    "start_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
-    "received_handoff_sha256": "e1bda66abca1b8f5ef5ff861d9c0a926bace587f8785b629685e346bd3c027f4",
-    "handoff_equal": true,
-    "user_work_requests": 1,
-    "service": "ChatGPT",
-    "model": "UNVERIFIED",
-    "closed_at": "2026-10-17T01:16:35.241Z",
-    "elapsed_seconds": 78.02,
-    "end_base_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
-    "end_commit": null,
-    "within_limits": true
-  },
-  "feature_id": "task5-bitcoin-chart-v1",
-  "next_action": "Read handoff/chart/latest.json and NEXT.md; fix first failure, record unverified items",
-  "blockers": [
-    "chart_fixed",
-    "site",
-    "live_chart",
-    "deployment_match",
-    "manual_all_functions",
-    "submission"
-  ]
+  "submission_ready": false
 }

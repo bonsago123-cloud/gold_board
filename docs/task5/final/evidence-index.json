@@ -1,0 +1,20 @@
+{
+  "report_basis_commit": "554410117018d1015e4a9aa257f0fc1a685dd604",
+  "primary_feature": "task5-bitcoin-v1",
+  "a_start": "ef03f512cf265d55240452acb8743b487b466c9b",
+  "a_end_b_start": "549b5176e83d878b92779055686d82e5968846b9",
+  "b_upload": "8f8614f4b807596aeb5370537a3340505eb368c5",
+  "a_seconds": 863.048034,
+  "b_seconds": 847.649,
+  "a_requests": 1,
+  "b_requests": 1,
+  "a_failed_runs": 4,
+  "b_failed_runs": 1,
+  "a_pass": 2,
+  "b_pass": 10,
+  "handoff_sha256": "95f20aa83eabe6c931c0ac849a2738494fe6fffc5d4badb02fc92877e2040f98",
+  "different_models": "UNVERIFIED",
+  "strict_context_isolation": "UNVERIFIED",
+  "student_tool_criterion": "AWAITING_CONFIRMATION",
+  "original_chart_result_replaced": false
+}

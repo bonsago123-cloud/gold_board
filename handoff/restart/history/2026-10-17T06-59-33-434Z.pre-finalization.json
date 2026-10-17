@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-17T06-59-33-434Z",
+  "parent_session_id": null,
+  "parent_session_sha256": null,
+  "started_at": "2026-10-17T06:59:33.435Z",
+  "start_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
+  "start_source_digest": "69b5609860a36bdc623de5f28457935af82d1683268c18e53a8e05d6881a2748",
+  "received_handoff_sha256": "f7851cca71c3985270bf2144de4e1e9936ba358b3ccb8fc8ae883674562e44d0",
+  "handoff_equal": null,
+  "user_work_requests": 1,
+  "service": "ChatGPT",
+  "model": "UNVERIFIED",
+  "runs": [
+    "2026-10-17T06-59-42-862Z",
+    "2026-10-17T07-00-32-117Z",
+    "2026-10-17T07-01-06-404Z"
+  ],
+  "closed_at": "2026-10-17T07:01:11.518Z",
+  "interrupted": false,
+  "end_commit": null,
+  "end_base_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
+  "end_source_digest": "ff803f21c51abf921472ff8322047a0af3248412bbbe15054c52beb39668abee",
+  "elapsed_seconds": 98.083,
+  "within_limits": true,
+  "failed_rounds": 3,
+  "passed": 4,
+  "outgoing_handoff_sha256": "e4cf61e4e8972d22fe10a25e3e992bcb8dfa7432790c4c8d42fcac46db31617d"
+}

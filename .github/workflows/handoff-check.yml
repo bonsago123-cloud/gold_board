@@ -1,21 +1,15 @@
 name: Continuous handoff verification
-
 on:
   push:
   pull_request:
   workflow_dispatch:
-  deployment_status:
-
 permissions:
   contents: read
-
 concurrency:
-  group: handoff-${{ github.ref }}-${{ github.event_name }}
-  cancel-in-progress: true
-
+  group: handoff-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   verify:
-    if: github.event_name != 'deployment_status' || github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -27,17 +21,16 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - name: Install real browser
-        id: browser-install
-        continue-on-error: true
-        run: npx playwright install --with-deps chromium
-      - name: Reproduce, validate and write next handoff
+      - run: npx playwright install --with-deps chromium
+      - name: Active cycle fixed ten checks
         run: npm run handoff:ci
-      - name: Exercise all site functions if orchestration was interrupted
+      - name: Regression checks
         if: always()
-        run: |
-          if [ ! -f test-output/site-check/result.json ]; then npm run site:check; fi
-      - name: Keep evidence even when blocked
+        run: npm test
+      - name: Build
+        if: always()
+        run: npm run build
+      - name: Preserve evidence including unfinished work
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -45,23 +38,7 @@ jobs:
           retention-days: 30
           path: |
             HANDOFF.json
-            handoff/
             docs/handoff/current.md
-            public/handoff-status.json
-            test-output/handoff/
-            test-output/chart-fixed.json
-            test-output/chart-current.json
-            test-output/bitcoin-ui.json
-            test-output/bitcoin-ui-*.png
-            docs/task5/bitcoin-chart/
-      - name: Keep full site test evidence even when blocked
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-check-evidence-${{ github.run_id }}
-          retention-days: 30
-          if-no-files-found: warn
-          path: test-output/site-check/
-      - name: Explain setup interruption
-        if: failure()
-        run: echo 'A failed/unfinished run is not completion. Download both handoff-evidence and site-check-evidence artifacts; missing real-site proof is UNVERIFIED.' >> "$GITHUB_STEP_SUMMARY"
+            docs/task5/chart-restart/
+            handoff/restart/
+            test-output/chart-restart.json

@@ -1,0 +1,8 @@
+{
+  "frozen_at": "2026-10-17T06:58:11.098190+00:00",
+  "files": {
+    "docs/task5/chart-restart/fixed-tests.json": "2788d9e6ad57c17339cd328e8e87482f0f84b7611c50dae6b8c33b59593ff595",
+    "docs/task5/chart-restart/REQUEST.txt": "4a0d9c5f0a80acb83198d559ffc0c4b960475855b565750239f8385cd8f2f7ed",
+    "scripts/chart-restart-check.mjs": "f125bf4a81dc47325d064653ced4358a308fe49cfab123931fb8e3c222b61f86"
+  }
+}
