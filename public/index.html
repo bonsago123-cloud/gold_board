@@ -22,19 +22,28 @@
 <div class="table-wrap"><table><thead><tr><th>조회 날짜 · KST</th><th>달러 저장값</th><th>현재 적용 환율로 환산 · 원화</th><th>원천 관측 시각 · KST</th><th>조회 시각 · KST</th></tr></thead><tbody id="daily-rows"><tr><td colspan="5" class="empty">기록을 불러오는 중입니다.</td></tr></tbody></table></div>
 </section>
 </section>
-<section id="bitcoin-live" class="proof" aria-labelledby="tab-BTC" hidden>
-<div class="section-heading"><div><p class="eyebrow">BITCOIN / BTC</p><h2>비트코인 시세</h2></div><button id="bitcoin-refresh" class="secondary" disabled>비트코인 모듈 불러오는 중</button></div>
-<p class="section-note">비트코인 1개당 미국 달러 가격입니다. 조회 후 최소 30초 대기하며, 실패하면 마지막 정상값을 보존합니다. <a href="/task5.html">과제5 비교 보고서</a></p>
-<div class="proof-grid">
-<div class="proof-cell"><h3>현재 비트코인 가격</h3><strong id="bitcoin-price">—</strong><p id="bitcoin-unit">USD/BTC</p></div>
-<div class="proof-cell"><h3>상태</h3><strong id="bitcoin-status" role="status">조회 전</strong><p id="bitcoin-error">조회 버튼을 눌러 주세요.</p></div>
-<div class="proof-cell"><h3>원천 관측 시각 · KST</h3><strong id="bitcoin-source-at">—</strong><h3>조회 시각 · KST</h3><strong id="bitcoin-fetched-at">—</strong><p><a id="bitcoin-source" href="https://api.gold-api.com/price/BTC" target="_blank" rel="noopener noreferrer">Gold API · BTC</a></p></div>
+<section id="bitcoin-live" aria-labelledby="tab-BTC" hidden>
+<div class="heading"><div><p class="eyebrow">TODAY’S OBSERVATION</p><h1>오늘의 비트코인 시세</h1><p class="muted">비트코인 · USD/BTC</p></div><div class="live-controls"><button id="bitcoin-refresh" class="primary" disabled>비트코인 모듈 불러오는 중</button><label class="auto-label"><input id="bitcoin-auto-refresh" type="checkbox"> 자동 조회</label><small id="bitcoin-auto-status" aria-live="off">자동 갱신 꺼짐</small></div></div>
+<p class="section-note">비트코인 1개 기준 · 한국 시간</p>
+<section class="dashboard" aria-label="비트코인 시세 현황">
+<div class="quote">
+<div class="quote-head"><span class="small-label">비트코인 · 실제 원천값</span><span id="bitcoin-status" class="badge" role="status">조회 전</span></div>
+<div class="price-line"><span class="currency">$</span><strong id="bitcoin-price">—</strong></div><p id="bitcoin-unit" class="unit">USD/BTC</p>
+<div class="krw-price"><span>원화 환산 · KRW</span><div class="price-line"><span class="currency">₩</span><strong id="bitcoin-price-krw">—</strong></div><p class="unit">KRW/BTC · 환산 참고값</p><p id="bitcoin-fx-price-note" class="section-note">달러 원천값 × 적용 환율. 국내 거래소 가격·수수료·세금은 포함하지 않습니다.</p></div>
 </div>
+<aside class="context"><h2>가격의 맥락</h2><dl>
+<div><dt>출처</dt><dd><a id="bitcoin-source" href="https://api.gold-api.com/price/BTC" target="_blank" rel="noopener noreferrer">Gold API · BTC</a></dd></div>
+<div><dt>원천 관측 시각</dt><dd id="bitcoin-source-at">—</dd></div>
+<div><dt>실제 조회 시각</dt><dd id="bitcoin-fetched-at">—</dd></div>
+<div><dt>기준 시간대</dt><dd>Asia/Seoul · KST (UTC+9)</dd></div></dl><p>원천 시각은 제공자의 updatedAt입니다. 실제 조회 시각과 다를 수 있습니다.</p></aside>
+</section>
+<section class="fx-panel"><p id="bitcoin-fx-status" role="status">환율 확인 중…</p><p class="section-note">최신 제공 USD/KRW 환율 · 하루 1회 갱신, 실시간 환율이 아닙니다. <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener">Rates By Exchange Rate API</a></p><button id="bitcoin-fx-refresh" class="secondary">환율 다시 확인</button></section>
+<section id="bitcoin-notice" class="notice" aria-live="polite"><div><strong>가격과 적용 환율을 함께 확인하세요.</strong><p id="bitcoin-error">조회 버튼을 눌러 주세요.</p></div></section>
 <section class="market-card" aria-labelledby="bitcoin-chart-title">
 <div class="market-toolbar"><h3 id="bitcoin-chart-title">비트코인 과거 시세 차트</h3><div><label for="bitcoin-chart-interval">시간 간격</label><select id="bitcoin-chart-interval"><option value="1">1분</option><option value="5">5분</option><option value="15">15분</option><option value="60" selected>1시간</option><option value="240">4시간</option><option value="D">1일</option><option value="W">1주</option><option value="M">1개월</option></select><button id="bitcoin-chart-reload" class="secondary" type="button">다시 불러오기</button></div></div>
 <p id="bitcoin-chart-note" class="widget-note">TradingView / Bitstamp · BTCUSD · USD/BTC 참고가격. 현재가(Gold API)와 출처·관측 시각·가격이 다를 수 있습니다. 시간대: Asia/Seoul. 차트를 확대·축소해 기간을 조절하세요.</p>
 <div id="bitcoin-chart-host" class="widget-host"></div><p id="bitcoin-chart-status" class="widget-status" role="status" aria-live="polite"></p>
 </section></section>
-<footer><a href="/verify.html">과제 검증</a><span>METAL / NOTE</span><span>공개 시장 데이터만 저장 · 로그인 없이 열람</span><a href="https://gold-api.com/docs" target="_blank" rel="noopener noreferrer">데이터 출처 문서</a></footer>
+<footer><a href="/verify.html">과제 검증</a><a href="/task5.html">과제5 비교 보고서</a><span>METAL / NOTE</span><span>공개 시장 데이터만 저장 · 로그인 없이 열람</span><a href="https://gold-api.com/docs" target="_blank" rel="noopener noreferrer">데이터 출처 문서</a></footer>
 </main>
 </body></html>

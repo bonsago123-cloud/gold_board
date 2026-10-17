@@ -1,0 +1,76 @@
+{
+  "kind": "synthetic-browser",
+  "at": "2026-10-16T23:33:29.484Z",
+  "rows": [
+    {
+      "id": "T05-BCH01",
+      "input": "페이지 열기",
+      "expected": "비트코인 차트 제목·호스트·간격 선택·다시 불러오기 표시",
+      "status": "FAIL",
+      "reason": "title"
+    },
+    {
+      "id": "T05-BCH02",
+      "input": "처음 열기",
+      "expected": "기본 1시간, BTCUSD 차트 설정, Asia/Seoul",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "T05-BCH03",
+      "input": "간격 1/5/15/60/240/D/W/M 순서로 선택",
+      "expected": "각 선택이 위젯 설정에 반영되고 BTCUSD 유지",
+      "status": "FAIL",
+      "reason": "locator.selectOption: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#bitcoin-chart-interval')\u001b[22m\n\u001b[2m    - locator resolved to <select id=\"bitcoin-chart-interval\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "id": "T05-BCH04",
+      "input": "다시 불러오기",
+      "expected": "선택 간격 유지, 차트 새 요청",
+      "status": "FAIL",
+      "reason": "locator.click: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#bitcoin-chart-reload')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"secondary\" id=\"bitcoin-chart-reload\">다시 불러오기</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "id": "T05-BCH05",
+      "input": "출처 링크 확인",
+      "expected": "TradingView HTTPS 출처 링크 표시",
+      "status": "FAIL",
+      "reason": "The expression evaluated to a falsy value:\n\n  assert.ok(await link.first().isVisible())\n"
+    },
+    {
+      "id": "T05-BCH06",
+      "input": "차트 설명 읽기",
+      "expected": "USD/BTC, 차트와 현재가의 출처 차이, 참고가격 안내",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "T05-BCH07",
+      "input": "차트 제공 스크립트 요청 실패 후 다시 불러오기",
+      "expected": "실패 안내 표시, 재시도 버튼 사용 가능",
+      "status": "FAIL",
+      "reason": "locator.click: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#bitcoin-chart-reload')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"secondary\" id=\"bitcoin-chart-reload\">다시 불러오기</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "id": "T05-BCH08",
+      "input": "실패 뒤 제공 스크립트 복구 후 다시 불러오기",
+      "expected": "새 차트 프레임 표시, 이전 실패 안내 해제",
+      "status": "FAIL",
+      "reason": "locator.click: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#bitcoin-chart-reload')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"secondary\" id=\"bitcoin-chart-reload\">다시 불러오기</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "id": "T05-BCH09",
+      "input": "간격 변경·새로고침 5회 반복",
+      "expected": "차트 프레임 정확히 1개, 중복 위젯 없음",
+      "status": "FAIL",
+      "reason": "locator.selectOption: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#bitcoin-chart-interval')\u001b[22m\n\u001b[2m    - locator resolved to <select id=\"bitcoin-chart-interval\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+    },
+    {
+      "id": "T05-BCH10",
+      "input": "차트 간격 변경·새로고침",
+      "expected": "현재가와 두 시각 유지, BTC 조회 또는 DB 저장 추가 요청 없음",
+      "status": "FAIL",
+      "reason": "locator.selectOption: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#bitcoin-chart-interval')\u001b[22m\n\u001b[2m    - locator resolved to <select id=\"bitcoin-chart-interval\">…</select>\u001b[22m\n\u001b[2m  - attempting select option action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible and enabled\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying select option action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+    }
+  ]
+}

@@ -35,3 +35,10 @@ npm: Node 패키지 관리 도구. ci: clean install(잠금 파일대로 설치)
 
 ## 횟수 제한 없는 인계
 작업자 이름 없이 resume → 상태 확인 → 수정 → 검사 → notes.json → finish → 업로드 → 다음 실행을 반복한다. 열린 세션은 시간을 재설정하지 않는다. 종료 세션은 history에 보존하고 새 세션에 부모 ID/해시를 연결한다. finish는 current.md 7항목과 outgoing 원문/해시를 생성한다. comparison.json의 session_ids에는 과제 비교 대상인 실제 종료 세션 두 개를 명시한다. 현재 세션을 무조건 두 번째 비교 대상으로 간주하지 않는다. 고정 initial-request.txt는 역사 증거이며 현재 요청은 RESUME.txt를 사용한다.
+
+## 최신 사용자 추가 요구: 같은 UI와 원화 표시
+비트코인은 금·은과 같은 탭 및 남색 가격 카드/맥락 패널을 사용한다. 같은 FX 클라이언트의 실제 USD/KRW 환율로 USD 원값을 곱한 후 표시할 때만 반올림한다. 환율 없으면 —, 오래된 환율이면 이전 환율 안내. BTC 자동 조회는 자체 클라이언트의 대기 시간을 준수하며 다른 종목 탭으로 이동하면 중지한다. BTC는 DB에 저장하지 않는다.
+
+추가 검사 `npm run bitcoin:ui:check`: mock 응답 기반 탭/공통 UI/원화/차트 간격·격리/오류복구/가격보존/자동조회중지/모바일/환율없음·오래됨/런타임 오류. 결과는 test-output/bitcoin-ui.json, finish/ci에서 bitcoin_ui gate와 실행별 .ui.json으로 보존된다. 실데이터 검사와 구분한다.
+
+기존 고정 차트 검사에는 현재 요구와 충돌하는 초기 가시성 가정 및 mock script의 전역 const s 재선언 문제가 있다. 원본은 보존한다. 별도 추가 검사는 IIFE로 mock script 범위를 격리했지만 원본 고정검사 결과를 대체하거나 PASS로 바꾸지 않는다. 기존 과제 실험과 새 UI 요구의 분리/합의 전에는 submission BLOCKED를 유지한다.

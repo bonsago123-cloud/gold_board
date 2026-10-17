@@ -50,6 +50,8 @@ jobs:
             public/handoff-status.json
             test-output/handoff/
             test-output/chart-fixed.json
+            test-output/bitcoin-ui.json
+            test-output/bitcoin-ui-*.png
             docs/task5/bitcoin-chart/
       - name: Keep full site test evidence even when blocked
         if: always()

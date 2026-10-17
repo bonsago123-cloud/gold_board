@@ -11,7 +11,7 @@ const base=process.env.SITE_URL??'https://goldboard-omega.vercel.app';
 const dest='test-output/site-check';
 const started=new Date().toISOString();
 const rows=[];
-let browser,page;
+let browser,page,navigationError=null;
 await mkdir(dest,{recursive:true});
 
 class NotVerified extends Error {}
@@ -28,6 +28,7 @@ async function test(id,screen,action,check,options={}){
   rows.push(item);
   try{
     if(!page)throw new NotVerified('Browser unavailable');
+    if(navigationError&&action!=='Open anonymous page')throw new NotVerified('Page navigation unavailable: '+navigationError);
     const outcome=await options.run();
     item.status='PASS';item.observed=String(outcome??'Visible expected result confirmed').slice(0,500);
   }catch(error){
@@ -38,7 +39,9 @@ async function test(id,screen,action,check,options={}){
   console.log(`${item.status} ${id} — ${item.observed}`);
 }
 async function open(path){
-  const response=await page.goto(new URL(path,base).href,{waitUntil:'domcontentloaded',timeout:22000});
+  let response;
+  try{response=await page.goto(new URL(path,base).href,{waitUntil:'domcontentloaded',timeout:22000});navigationError=null;}
+  catch(error){navigationError=error.message;throw new NotVerified('Unable to navigate: '+error.message);}
   expect(response?.ok(),`HTTP ${response?.status()??'no response'} at ${path}`);
   await page.locator('body').waitFor({state:'visible'});
   await page.waitForTimeout(800);
@@ -200,6 +203,7 @@ try{
     const status=await text('#auto-status');expect(status.includes('꺼짐'),'Auto-refresh still on');return status;
   }});
   await test('S08','/','Click bitcoin live refresh','Real positive price, USD/BTC, timestamp and provider',{run:async()=>{
+    await click('[data-symbol="BTC"]');
     await click('#bitcoin-refresh');
     await page.waitForFunction(()=>['정상','조회 실패','오래된 값'].includes(document.querySelector('#bitcoin-status')?.textContent),{},{timeout:16000});
     const status=await text('#bitcoin-status');
@@ -217,6 +221,7 @@ try{
     return `${await text('#bitcoin-error')}`;
   }});
   await test('S10','/','Refresh exchange rate','Exchange rate status updated',{run:async()=>{
+    await click('[data-symbol="XAU"]');
     await click('#fx-refresh');
     await page.waitForTimeout(1500);
     const s=await text('#fx-status');

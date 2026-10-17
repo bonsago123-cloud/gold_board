@@ -1,0 +1,51 @@
+{
+  "kind": "synthetic-browser",
+  "started_at": "2026-10-16T23:34:03.557Z",
+  "finished_at": "2026-10-16T23:34:14.919Z",
+  "browser": "153.0.8010.0",
+  "rows": [
+    {
+      "id": "BTC-UI01-tabs",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI02-matching-layout-and-KRW",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI03-chart-isolation-and-intervals",
+      "status": "FAIL",
+      "reason": "page.waitForFunction: Timeout 5000ms exceeded."
+    },
+    {
+      "id": "BTC-UI04-chart-failure-and-recovery",
+      "status": "FAIL",
+      "reason": "locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#bitcoin-chart-host iframe') to be visible\u001b[22m\n"
+    },
+    {
+      "id": "BTC-UI05-price-failure-preserves-KRW",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI06-auto-query-and-tab-stop",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI07-mobile",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI08-missing-FX",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI09-stale-FX",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI10-no-runtime-errors",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\",\n+   \"Identifier 's' has already been declared\"\n+ ]\n- []\n"
+    }
+  ]
+}

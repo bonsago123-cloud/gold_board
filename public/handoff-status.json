@@ -1,8 +1,8 @@
 {
-  "id": "2026-10-16T12-39-59-863Z",
-  "started_at": "2026-10-16T12:39:59.863Z",
+  "id": "2026-10-16T23-39-35-529Z",
+  "started_at": "2026-10-16T23:39:35.530Z",
   "source_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
-  "source_digest": "e35f7953c8be2f9c86864f6814ddb8dd2c7d6a50fff15845562cf1b9c5d575af",
+  "source_digest": "1010e3c5a32e67865be422ba6c71bd866ae32e233575995b47f5c51305c3b786",
   "mode": "finish",
   "gates": [
     {
@@ -12,8 +12,13 @@
     },
     {
       "id": "chart_fixed",
-      "status": "UNVERIFIED",
+      "status": "FAIL",
       "exit_code": 1
+    },
+    {
+      "id": "bitcoin_ui",
+      "status": "PASS",
+      "exit_code": 0
     },
     {
       "id": "quote_fixed",
@@ -63,20 +68,20 @@
   ],
   "phase": "BLOCKED",
   "submission_ready": false,
-  "finished_at": "2026-10-16T12:40:02.047Z",
+  "finished_at": "2026-10-16T23:39:55.512Z",
   "session": {
-    "id": "2026-10-16T12-39-14-011Z",
-    "parent_session_id": "2026-10-16T12-29-22-763Z",
-    "parent_session_sha256": "2e5bfe3776fe1a5995215cc10563834d8ea799f4d10badbd287539ed6d048237",
-    "started_at": "2026-10-16T12:39:14.011Z",
+    "id": "2026-10-16T23-32-44-215Z",
+    "parent_session_id": "2026-10-16T12-51-21-882Z",
+    "parent_session_sha256": "1ec4b10f97ba361d1e2d62590c9ebc465556dc85f7714e6eea5be35259a4388f",
+    "started_at": "2026-10-16T23:32:44.216Z",
     "start_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
-    "received_handoff_sha256": "b3a0f8393bf20cfe1dfb96d9b37cf9c90137f4087afe121dc8870c675c932861",
-    "handoff_equal": true,
+    "received_handoff_sha256": "9e2bedeccad52550b3927ae1e24a171727451b6af291131d27604aeee56654d7",
+    "handoff_equal": null,
     "user_work_requests": 1,
     "service": "ChatGPT",
     "model": "UNVERIFIED",
-    "closed_at": "2026-10-16T12:40:02.047Z",
-    "elapsed_seconds": 48.036,
+    "closed_at": "2026-10-16T23:39:55.512Z",
+    "elapsed_seconds": 431.296,
     "end_base_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
     "end_commit": null,
     "within_limits": true

@@ -1,0 +1,18 @@
+{
+  "id": "2026-10-16T12-51-21-882Z",
+  "parent_session_id": "2026-10-16T12-39-14-011Z",
+  "parent_session_sha256": "1d766d90426ad9d636781606ead21a1323f554ffe317c63b399688f12f2372f5",
+  "started_at": "2026-10-16T12:51:21.882Z",
+  "start_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
+  "received_handoff_sha256": "9e2bedeccad52550b3927ae1e24a171727451b6af291131d27604aeee56654d7",
+  "handoff_equal": true,
+  "user_work_requests": 1,
+  "service": "UNVERIFIED",
+  "model": "UNVERIFIED",
+  "closed_at": "2026-10-16T23:32:43.945958+00:00",
+  "elapsed_seconds": 38482.063958,
+  "within_limits": false,
+  "interrupted": true,
+  "end_commit": null,
+  "interruption_reason": "User resumed after interrupted turn; wall-clock interval retained, not claimed as active work time or within assignment limit."
+}

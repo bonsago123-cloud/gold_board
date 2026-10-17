@@ -11,10 +11,11 @@ import {createFxClient,toWon} from './fx.mjs';
 const $=id=>document.getElementById(id),requested=new URLSearchParams(location.search).get('asset');
 let asset=Object.hasOwn(METALS,requested)?requested:'XAU',auto=false,chart;
 let selectedAsset=requested==='BTC'?'BTC':asset;
+let bitcoinClient,bitcoinAuto=false;
 const goldClient=createGoldClient(()=>render(client.view()));
 const bundleClient=createBundleClient(()=>render(client.view()));
 const client={view:()=> (asset==='XAU'?goldClient:bundleClient).view(),request:collect=>(asset==='XAU'?goldClient:bundleClient).request(collect)};
-const fxClient=createFxClient(()=>render(client.view()));
+const fxClient=createFxClient(()=>{render(client.view());if(bitcoinClient)renderBitcoin();});
 function render({data,busy,cached,due}){
  const state=data.assets[asset],q=state.last_good,meta=METALS[asset];
  $('board-title').textContent=`오늘의 국제 ${meta.name} 시세`;$('board-description').textContent=`${meta.name} · ${q?.unit??meta.unit}`;
@@ -51,11 +52,18 @@ let fxWasStale=fxClient.view().stale;
 const timer=setInterval(()=>{const view=client.view(),fxStale=fxClient.view().stale;if(fxStale!==fxWasStale||$('status').className!==`badge ${view.data.assets[asset].status}`)render(view);else controls(view);fxWasStale=fxStale;if(auto&&selectedAsset!=='BTC'&&!document.hidden){client.request(true);fxClient.request();}},1000);window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
 
 // BTC owns its own state and never writes metal daily records.
-const bitcoinClient=createBitcoinClient(renderBitcoin);
+bitcoinClient=createBitcoinClient(renderBitcoin);
 function renderBitcoin(v=bitcoinClient.view()){
  const q=v.last_good,wait=Math.max(0,Math.ceil((v.due-Date.now())/1000));
  $('bitcoin-price').textContent=q?formatValue(q.value):'—';
  $('bitcoin-unit').textContent=q?.unit??'USD/BTC';
+ const fx=fxClient.view(),won=toWon(q?.value,fx.quote);
+ $('bitcoin-price-krw').textContent=won===null?'—':new Intl.NumberFormat('ko-KR',{maximumFractionDigits:0}).format(won);
+ $('bitcoin-fx-status').textContent=fx.quote?`${fx.stale?'이전 환율 사용 · ':''}1 USD = ${fx.quote.rate.toLocaleString('ko-KR',{maximumFractionDigits:4})} KRW · 환율 기준 ${time(fx.quote.source_at)} KST · 조회 ${time(fx.quote.fetched_at)} KST`:(fx.busy?'환율 조회 중…':'환율 조회 실패 · 원화 환산 불가');
+ $('bitcoin-fx-price-note').textContent=!q?'달러 원천값이 없어 원화도 표시할 수 없습니다.':!fx.quote?'환율을 확인하지 못해 원화 환산값을 표시할 수 없습니다.':`${v.status==='stale'?'오래된 달러 가격 · ':''}${fx.stale?'이전 환율 사용 · ':''}달러 원천값 × 적용 환율. 국내 거래소 가격·수수료·세금은 포함하지 않습니다.`;
+ $('bitcoin-status').className=`badge ${v.status}`;
+ $('bitcoin-notice').className=`notice ${v.error_code!=='none'?'warning':'good'}`;
+ $('bitcoin-auto-status').textContent=!bitcoinAuto?'자동 갱신 꺼짐':document.hidden?'다른 탭을 보는 동안 일시정지':`${wait}초 후 자동 조회 · 서버 대기 시간 준수`;
  $('bitcoin-source-at').textContent=time(q?.source_at);
  $('bitcoin-fetched-at').textContent=time(q?.fetched_at);
  $('bitcoin-status').textContent=v.busy?'조회 중…':({empty:'조회 전',fresh:'정상',stale:'오래된 값',error:'조회 실패'})[v.status];
@@ -64,8 +72,11 @@ function renderBitcoin(v=bitcoinClient.view()){
  $('bitcoin-refresh').disabled=v.busy||wait>0;
  $('bitcoin-refresh').textContent=v.busy?'비트코인 조회 중…':wait?`${wait}초 후 비트코인 조회`:'비트코인 조회';
 }
-$('bitcoin-refresh').onclick=()=>bitcoinClient.request();renderBitcoin();
-const bitcoinTimer=setInterval(()=>renderBitcoin(),1000);
+$('bitcoin-refresh').onclick=()=>{bitcoinClient.request();fxClient.request();};
+$('bitcoin-fx-refresh').onclick=()=>fxClient.request();
+$('bitcoin-auto-refresh').onchange=()=>{bitcoinAuto=$('bitcoin-auto-refresh').checked;renderBitcoin();};
+renderBitcoin();
+const bitcoinTimer=setInterval(()=>{renderBitcoin();if(bitcoinAuto&&selectedAsset==='BTC'&&!document.hidden){bitcoinClient.request();fxClient.request();}},1000);
 window.addEventListener('pagehide',()=>clearInterval(bitcoinTimer),{once:true});
 
 const bitcoinChart=initBitcoinChart();
@@ -80,6 +91,7 @@ function showAsset(symbol, request=false) {
   auto=false;$('auto-refresh').checked=false;controls();
   bitcoinChart.update();
  }else{
+  bitcoinAuto=false;$('bitcoin-auto-refresh').checked=false;renderBitcoin();
   asset=symbol;
   $('metal-panel').setAttribute('aria-labelledby','tab-'+symbol);
   render(client.view());
