@@ -42,3 +42,8 @@ npm: Node 패키지 관리 도구. ci: clean install(잠금 파일대로 설치)
 추가 검사 `npm run bitcoin:ui:check`: mock 응답 기반 탭/공통 UI/원화/차트 간격·격리/오류복구/가격보존/자동조회중지/모바일/환율없음·오래됨/런타임 오류. 결과는 test-output/bitcoin-ui.json, finish/ci에서 bitcoin_ui gate와 실행별 .ui.json으로 보존된다. 실데이터 검사와 구분한다.
 
 기존 고정 차트 검사에는 현재 요구와 충돌하는 초기 가시성 가정 및 mock script의 전역 const s 재선언 문제가 있다. 원본은 보존한다. 별도 추가 검사는 IIFE로 mock script 범위를 격리했지만 원본 고정검사 결과를 대체하거나 PASS로 바꾸지 않는다. 기존 과제 실험과 새 UI 요구의 분리/합의 전에는 submission BLOCKED를 유지한다.
+
+## 차트 검사 오류 수정
+`npm run chart:current:check`는 scripts/bitcoin-chart-check.mjs의 수정본을 실행한다. 비트코인 탭을 먼저 선택하고 mock 위젯을 IIFE 함수로 감싸 재실행 시 전역 변수 충돌을 방지한다. 기존 10개 검증의 기대값은 유지하며 별도 BTC-CHART01~10 ID와 원본 ID를 기록한다. 처음 두 입력에는 탭 선택을 명시한다. 원본 고정 검사·freeze는 변경하지 않았고 수정본은 원본 과제 결과를 대체하지 않는다.
+finish/ci는 chart_fixed와 chart_current를 모두 실행하고 각각 .fixed.json/.current.json으로 보존한다. 과제 검증 페이지에도 별도 상태를 표시한다. 원본 검사 FAIL 때문에 전체 과제 판정은 BLOCKED일 수 있다. 이 경우 동일한 검사 오류를 다시 고치거나 현재 UI를 되돌리지 말고 수정본 결과와 남은 실제 배포/제출 증빙을 확인한다.
+명령의 current는 현재 화면에 맞춘 검사, check는 검사를 뜻한다.

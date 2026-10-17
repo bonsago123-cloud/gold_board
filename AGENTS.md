@@ -50,3 +50,8 @@ npx는 패키지 실행 도구. resume=재개, finish=종료·인계, check=검�
 - 종료 전 handoff/chart/notes.json에 changes/problems/next_action을 적는다. finish가 검사와 7항목 인수인계, 나가는 원문·해시를 자동 보존한다. 누락 설명은 미기록으로 표시한다.
 - 완료 전까지 다음 실행에서도 동일한 절차를 반복한다. 과제 A/B 비교는 별도 comparison.json에서 실제 종료 세션 두 개를 선택하며 실행 순서를 두 번으로 제한하지 않는다.
 - frozen initial-request.txt의 A/B 표현은 과거 고정 원문이다. 현재 운영 요청은 docs/task5/bitcoin-chart/RESUME.txt. 고정 원문을 몰래 고치지 않는다.
+
+## 차트 검사 오류 수정
+`npm run chart:current:check`는 scripts/bitcoin-chart-check.mjs의 수정본을 실행한다. 비트코인 탭을 먼저 선택하고 mock 위젯을 IIFE 함수로 감싸 재실행 시 전역 변수 충돌을 방지한다. 기존 10개 검증의 기대값은 유지하며 별도 BTC-CHART01~10 ID와 원본 ID를 기록한다. 처음 두 입력에는 탭 선택을 명시한다. 원본 고정 검사·freeze는 변경하지 않았고 수정본은 원본 과제 결과를 대체하지 않는다.
+finish/ci는 chart_fixed와 chart_current를 모두 실행하고 각각 .fixed.json/.current.json으로 보존한다. 과제 검증 페이지에도 별도 상태를 표시한다. 원본 검사 FAIL 때문에 전체 과제 판정은 BLOCKED일 수 있다. 이 경우 동일한 검사 오류를 다시 고치거나 현재 UI를 되돌리지 말고 수정본 결과와 남은 실제 배포/제출 증빙을 확인한다.
+명령의 current는 현재 화면에 맞춘 검사, check는 검사를 뜻한다.

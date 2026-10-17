@@ -27,7 +27,8 @@
     "chart:status": "node scripts/handoff-chart.mjs status",
     "chart:ci": "node scripts/handoff-chart.mjs ci",
     "chart:request": "node scripts/handoff-chart.mjs request",
-    "bitcoin:ui:check": "node scripts/bitcoin-ui-check.mjs"
+    "bitcoin:ui:check": "node scripts/bitcoin-ui-check.mjs",
+    "chart:current:check": "node scripts/bitcoin-chart-check.mjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

@@ -1,0 +1,483 @@
+{
+  "source": "real-browser-no-mocks",
+  "base": "https://goldboard-omega.vercel.app",
+  "started": "2026-10-17T01:16:34.051Z",
+  "finished": "2026-10-17T01:16:35.215Z",
+  "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 47
+  },
+  "rows": [
+    {
+      "id": "S01",
+      "screen": "/",
+      "action": "Open anonymous page",
+      "expect": "HTTP 200 and expected page displayed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Unable to navigate: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.130Z",
+      "screenshot": "S01.png"
+    },
+    {
+      "id": "S02",
+      "screen": "/",
+      "action": "Switch to silver tab",
+      "expect": "Silver title and selected tab",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.196Z",
+      "screenshot": "S02.png"
+    },
+    {
+      "id": "S03",
+      "screen": "/",
+      "action": "Switch to gold tab",
+      "expect": "Gold title and selected tab",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.226Z",
+      "screenshot": "S03.png"
+    },
+    {
+      "id": "S04",
+      "screen": "/",
+      "action": "Click gold live refresh",
+      "expect": "Real positive price, unit, and timestamp",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.242Z",
+      "screenshot": "S04.png"
+    },
+    {
+      "id": "S05",
+      "screen": "/",
+      "action": "Click silver live refresh",
+      "expect": "Real positive price, unit, and timestamp",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.260Z",
+      "screenshot": "S05.png"
+    },
+    {
+      "id": "S06",
+      "screen": "/",
+      "action": "Enable auto refresh",
+      "expect": "Auto-status changes to enabled",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.275Z",
+      "screenshot": "S06.png"
+    },
+    {
+      "id": "S07",
+      "screen": "/",
+      "action": "Disable auto refresh",
+      "expect": "Auto-status indicates disabled",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.292Z",
+      "screenshot": "S07.png"
+    },
+    {
+      "id": "S08",
+      "screen": "/",
+      "action": "Click bitcoin live refresh",
+      "expect": "Real positive price, USD/BTC, timestamp and provider",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.309Z",
+      "screenshot": "S08.png"
+    },
+    {
+      "id": "S09",
+      "screen": "/",
+      "action": "Click bitcoin again during cooldown",
+      "expect": "Retry delay enforced, previous price unchanged",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.325Z",
+      "screenshot": "S09.png"
+    },
+    {
+      "id": "S10",
+      "screen": "/",
+      "action": "Refresh exchange rate",
+      "expect": "Exchange rate status updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.342Z",
+      "screenshot": "S10.png"
+    },
+    {
+      "id": "S11",
+      "screen": "/",
+      "action": "Read daily records",
+      "expect": "Row counter and data/empty-state are displayed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.359Z",
+      "screenshot": "S11.png"
+    },
+    {
+      "id": "S12",
+      "screen": "/",
+      "action": "Click general retry",
+      "expect": "Retry button handles request",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.375Z",
+      "screenshot": "S12.png"
+    },
+    {
+      "id": "S13-1",
+      "screen": "/",
+      "action": "Choose chart interval 1",
+      "expect": "Chart interval config and chart host updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.391Z",
+      "screenshot": "S13-1.png"
+    },
+    {
+      "id": "S13-5",
+      "screen": "/",
+      "action": "Choose chart interval 5",
+      "expect": "Chart interval config and chart host updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.408Z",
+      "screenshot": "S13-5.png"
+    },
+    {
+      "id": "S13-15",
+      "screen": "/",
+      "action": "Choose chart interval 15",
+      "expect": "Chart interval config and chart host updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.425Z",
+      "screenshot": "S13-15.png"
+    },
+    {
+      "id": "S13-60",
+      "screen": "/",
+      "action": "Choose chart interval 60",
+      "expect": "Chart interval config and chart host updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.442Z",
+      "screenshot": "S13-60.png"
+    },
+    {
+      "id": "S13-240",
+      "screen": "/",
+      "action": "Choose chart interval 240",
+      "expect": "Chart interval config and chart host updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.459Z",
+      "screenshot": "S13-240.png"
+    },
+    {
+      "id": "S13-D",
+      "screen": "/",
+      "action": "Choose chart interval D",
+      "expect": "Chart interval config and chart host updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.476Z",
+      "screenshot": "S13-D.png"
+    },
+    {
+      "id": "S13-W",
+      "screen": "/",
+      "action": "Choose chart interval W",
+      "expect": "Chart interval config and chart host updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.493Z",
+      "screenshot": "S13-W.png"
+    },
+    {
+      "id": "S13-M",
+      "screen": "/",
+      "action": "Choose chart interval M",
+      "expect": "Chart interval config and chart host updated",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.526Z",
+      "screenshot": "S13-M.png"
+    },
+    {
+      "id": "S14",
+      "screen": "/",
+      "action": "Click #chart-reload",
+      "expect": "Response in #chart-status",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.543Z",
+      "screenshot": "S14.png"
+    },
+    {
+      "id": "S15",
+      "screen": "/",
+      "action": "Follow a[href=\"/verify.html\"]",
+      "expect": "Navigates to /verify.html",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.559Z",
+      "screenshot": "S15.png"
+    },
+    {
+      "id": "S16",
+      "screen": "/",
+      "action": "Follow a[href=\"/task5.html\"]",
+      "expect": "Navigates to /task5.html",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.575Z",
+      "screenshot": "S16.png"
+    },
+    {
+      "id": "G01",
+      "screen": "/verify.html",
+      "action": "Open anonymous page",
+      "expect": "HTTP 200 and expected page displayed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Unable to navigate: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.592Z",
+      "screenshot": "G01.png"
+    },
+    {
+      "id": "G02",
+      "screen": "/verify.html",
+      "action": "Click #bundle-collect",
+      "expect": "Response in #bundle-result",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.643Z",
+      "screenshot": "G02.png"
+    },
+    {
+      "id": "G03",
+      "screen": "/verify.html",
+      "action": "Click #bundle-read",
+      "expect": "Response in #bundle-result",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.659Z",
+      "screenshot": "G03.png"
+    },
+    {
+      "id": "G04",
+      "screen": "/verify.html",
+      "action": "Run 금 recovery suite",
+      "expect": "All five synthetic failure cases pass",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.675Z",
+      "screenshot": "G04.png"
+    },
+    {
+      "id": "G05",
+      "screen": "/verify.html",
+      "action": "Open verification guide",
+      "expect": "Guide expands",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.692Z",
+      "screenshot": "G05.png"
+    },
+    {
+      "id": "G06",
+      "screen": "/verify.html",
+      "action": "Download evidence JSON",
+      "expect": "Filename, parseable JSON, correct symbol",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.708Z",
+      "screenshot": "G06.png"
+    },
+    {
+      "id": "G07",
+      "screen": "/verify.html",
+      "action": "Click official complete suite",
+      "expect": "Actual fixture results appear",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.725Z",
+      "screenshot": "G07.png"
+    },
+    {
+      "id": "G08-fixtures-discovery",
+      "screen": "/verify.html",
+      "action": "Discover all fixture buttons",
+      "expect": "At least one official fixture available",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.742Z",
+      "screenshot": "G08-fixtures-discovery.png"
+    },
+    {
+      "id": "A01",
+      "screen": "/silver-verify.html",
+      "action": "Open anonymous page",
+      "expect": "HTTP 200 and expected page displayed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Unable to navigate: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/silver-verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/silver-verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.762Z",
+      "screenshot": "A01.png"
+    },
+    {
+      "id": "A02",
+      "screen": "/silver-verify.html",
+      "action": "Click #bundle-collect",
+      "expect": "Response in #bundle-result",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/silver-verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/silver-verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.810Z",
+      "screenshot": "A02.png"
+    },
+    {
+      "id": "A03",
+      "screen": "/silver-verify.html",
+      "action": "Click #bundle-read",
+      "expect": "Response in #bundle-result",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/silver-verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/silver-verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.825Z",
+      "screenshot": "A03.png"
+    },
+    {
+      "id": "A04",
+      "screen": "/silver-verify.html",
+      "action": "Run 은 recovery suite",
+      "expect": "All five synthetic failure cases pass",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/silver-verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/silver-verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.842Z",
+      "screenshot": "A04.png"
+    },
+    {
+      "id": "A05",
+      "screen": "/silver-verify.html",
+      "action": "Open verification guide",
+      "expect": "Guide expands",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/silver-verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/silver-verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.859Z",
+      "screenshot": "A05.png"
+    },
+    {
+      "id": "A06",
+      "screen": "/silver-verify.html",
+      "action": "Download evidence JSON",
+      "expect": "Filename, parseable JSON, correct symbol",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/silver-verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/silver-verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.875Z",
+      "screenshot": "A06.png"
+    },
+    {
+      "id": "A07",
+      "screen": "/silver-verify.html",
+      "action": "Click official complete suite",
+      "expect": "Actual fixture results appear",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/silver-verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/silver-verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.892Z",
+      "screenshot": "A07.png"
+    },
+    {
+      "id": "A08-fixtures-discovery",
+      "screen": "/silver-verify.html",
+      "action": "Discover all fixture buttons",
+      "expect": "At least one official fixture available",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/silver-verify.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/silver-verify.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.909Z",
+      "screenshot": "A08-fixtures-discovery.png"
+    },
+    {
+      "id": "O01",
+      "screen": "/official.html",
+      "action": "Open anonymous page",
+      "expect": "HTTP 200 and expected page displayed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Unable to navigate: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/official.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/official.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.928Z",
+      "screenshot": "O01.png"
+    },
+    {
+      "id": "O02",
+      "screen": "/official.html",
+      "action": "Follow official page redirect",
+      "expect": "URL points to /verify.html#official-tests",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/official.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/official.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.977Z",
+      "screenshot": "O02.png"
+    },
+    {
+      "id": "T01",
+      "screen": "/task5.html",
+      "action": "Open anonymous page",
+      "expect": "HTTP 200 and expected page displayed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Unable to navigate: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/task5.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/task5.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:34.993Z",
+      "screenshot": "T01.png"
+    },
+    {
+      "id": "T02",
+      "screen": "/task5.html",
+      "action": "Open linked handoff status",
+      "expect": "Navigate to /handoff.html",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/task5.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/task5.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:35.043Z",
+      "screenshot": "T02.png"
+    },
+    {
+      "id": "H01",
+      "screen": "/handoff.html",
+      "action": "Open anonymous page",
+      "expect": "HTTP 200 and expected page displayed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Unable to navigate: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/handoff.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/handoff.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:35.059Z",
+      "screenshot": "H01.png"
+    },
+    {
+      "id": "H02",
+      "screen": "/handoff.html",
+      "action": "Inspect live handoff report",
+      "expect": "Shows status and next action",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/handoff.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/handoff.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:35.110Z",
+      "screenshot": "H02.png"
+    },
+    {
+      "id": "H03",
+      "screen": "/handoff.html",
+      "action": "Follow home link",
+      "expect": "Main board displayed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/handoff.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/handoff.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:35.125Z",
+      "screenshot": "H03.png"
+    },
+    {
+      "id": "META",
+      "screen": "all",
+      "action": "Capture browser JavaScript errors",
+      "expect": "No pageerror observed",
+      "status": "UNVERIFIED",
+      "observed": "Error: Page navigation unavailable: page.goto: net::ERR_EMPTY_RESPONSE at https://goldboard-omega.vercel.app/handoff.html\nCall log:\n\u001b[2m  - navigating to \"https://goldboard-omega.vercel.app/handoff.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "at": "2026-10-17T01:16:35.162Z",
+      "screenshot": "META.png"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "id": "2026-10-16T23-39-35-529Z",
-  "started_at": "2026-10-16T23:39:35.530Z",
+  "id": "2026-10-17T01-16-10-905Z",
+  "started_at": "2026-10-17T01:16:10.906Z",
   "source_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
-  "source_digest": "1010e3c5a32e67865be422ba6c71bd866ae32e233575995b47f5c51305c3b786",
+  "source_digest": "644c2870054271d8214687538a0c54632672869324b421912bc176b3e2ed2329",
   "mode": "finish",
   "gates": [
     {
@@ -15,6 +15,12 @@
       "status": "FAIL",
       "exit_code": 1,
       "output": "FAIL T05-BCH01\nFAIL T05-BCH02\nFAIL T05-BCH03\nFAIL T05-BCH04\nFAIL T05-BCH05\nPASS T05-BCH06\nFAIL T05-BCH07\nFAIL T05-BCH08\nFAIL T05-BCH09\nFAIL T05-BCH10\nRESULT 1/10\n"
+    },
+    {
+      "id": "chart_current",
+      "status": "PASS",
+      "exit_code": 0,
+      "output": "PASS BTC-CHART01\nPASS BTC-CHART02\nPASS BTC-CHART03\nPASS BTC-CHART04\nPASS BTC-CHART05\nPASS BTC-CHART06\nPASS BTC-CHART07\nPASS BTC-CHART08\nPASS BTC-CHART09\nPASS BTC-CHART10\nRESULT 10/10\n"
     },
     {
       "id": "bitcoin_ui",
@@ -32,7 +38,7 @@
       "id": "regression",
       "status": "PASS",
       "exit_code": 0,
-      "output": "\n> gold-information-board@3.2.0 test\n> node --test tests/*.test.mjs\n\n✔ Missing DB configuration is not fake success or a fake price (1.385068ms)\n✔ Untrusted cross-site refresh is rejected (0.170883ms)\n✔ Cron without secret cannot collect or expose anything (0.28391ms)\n✔ Client cannot choose a method that deletes records (0.12157ms)\n✔ BTC completion requires every gate, rejects missing/duplicate/unverified (1.08154ms)\n✔ Site unavailable or incomplete never counts as live success (0.171003ms)\n✔ BTC deadline aborts a stalled body even when fetch ignores cancellation (6.528734ms)\n✔ BTC concurrent clicks share one request and views cannot mutate the saved quote (3.494518ms)\n✔ BTC Retry-After HTTP date sets the retry boundary after failure (2.072534ms)\n✔ only gold and silver remain; neither oil API nor secret required (6.02585ms)\n✔ silver failure does not discard gold success (1.660135ms)\n✔ metal synthetic checks preserve values and recover (9.340052ms)\n✔ Repeated resume preserves usage; subsequent sessions archive and link prior handoff (233.531774ms)\n✔ Retry-After seconds: blocks before boundary, recovers at boundary (2.460599ms)\n✔ Retry-After HTTP date and missing/invalid fallback (0.847804ms)\n✔ timeout aborts stalled request and stalled response body (21.703784ms)\n✔ concurrent clicks send one request; first failure leaves no fabricated price (0.677101ms)\n✔ malformed JSON and interrupted body have distinct errors (0.447993ms)\n✔ KST midnight changes at UTC 15:00, not UTC midnight (1.528701ms)\n✔ Same day three successes stay one row, new date adds exactly one (17.145634ms)\n✔ LOCAL-SLOW: exact failure, last good retained, no failed day, recovery clears error (302.986699ms)\n✔ LOCAL-DENIED: exact failure, last good retained, no failed day, recovery clears error (1.266513ms)\n✔ LOCAL-LIMIT: exact failure, last good retained, no failed day, recovery clears error (0.828485ms)\n✔ LOCAL-OFFLINE: exact failure, last good retained, no failed day, recovery clears error (0.657642ms)\n✔ LOCAL-SCHEMA: exact failure, last good retained, no failed day, recovery clears error (0.655759ms)\n✔ HTTP 401 and 403 share explicit rejection, 429 uses Retry-After (0.896856ms)\n✔ Broken JSON, wrong currency, string price and future source time rejected (0.481702ms)\n✔ Stale source is honestly labeled even after a successful fetch (0.311571ms)\n✔ Nonconsecutive records are not called yesterday (0.284701ms)\n✔ Chart changes real data interval and keeps XAUUSD/KST for every option (1.241075ms)\n✔ Polling obeys 30 seconds, upstream Retry-After and failure backoff (0.895244ms)\n✔ Official package ID and all 17 publisher manifest file hashes/lengths match (25.138423ms)\n✔ All original official fixtures: same-ID daily update, 5 failures, last good, recovery once (23.64872ms)\n✔ USD to KRW multiplies the unrounded original and keeps unit quantity unchanged (1.81899ms)\n✔ gold evidence uses server earliest dates, independent of other assets and recent 90 days (10.453538ms)\n✔ gold failure suite uses the gold fetch pipeline and preserves daily records (159.156979ms)\n✔ Every required gate must pass; mocks alone never complete (1.373821ms)\n✔ Different source, stale/future time and unfinished evidence are rejected (0.578045ms)\n✔ Fixed result must contain all ten unique PASS IDs and no FAIL (0.509614ms)\n✔ HTTP 404 blocks completion even with all simulated checks PASS (2.343045ms)\n✔ Network denial is UNVERIFIED rather than HTTP 404 or PASS (0.339813ms)\n✔ Real check rejects HTML, invalid schema and missing CORS (2.76613ms)\n✔ Metal quotes keep symbol, unit and source; reject wrong symbol/currency and invalid values (1.320022ms)\n✔ Metal endpoint allowlists symbols, uses no DB/key, and preserves upstream rate limit (3.513826ms)\n✔ silver uses latest two real distinct KST dates; no gold or synthetic substitute (11.144971ms)\nℹ tests 45\nℹ suites 0\nℹ pass 45\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 431.985558\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+      "output": "\n> gold-information-board@3.2.0 test\n> node --test tests/*.test.mjs\n\n✔ Missing DB configuration is not fake success or a fake price (1.433639ms)\n✔ Untrusted cross-site refresh is rejected (0.141991ms)\n✔ Cron without secret cannot collect or expose anything (0.248399ms)\n✔ Client cannot choose a method that deletes records (0.122602ms)\n✔ BTC completion requires every gate, rejects missing/duplicate/unverified (1.347741ms)\n✔ Site unavailable or incomplete never counts as live success (0.254768ms)\n✔ BTC deadline aborts a stalled body even when fetch ignores cancellation (6.162617ms)\n✔ BTC concurrent clicks share one request and views cannot mutate the saved quote (4.027278ms)\n✔ BTC Retry-After HTTP date sets the retry boundary after failure (1.936144ms)\n✔ only gold and silver remain; neither oil API nor secret required (6.46751ms)\n✔ silver failure does not discard gold success (1.760263ms)\n✔ metal synthetic checks preserve values and recover (10.38128ms)\n✔ Repeated resume preserves usage; subsequent sessions archive and link prior handoff (222.185349ms)\n✔ Retry-After seconds: blocks before boundary, recovers at boundary (2.617405ms)\n✔ Retry-After HTTP date and missing/invalid fallback (0.602083ms)\n✔ timeout aborts stalled request and stalled response body (22.004453ms)\n✔ concurrent clicks send one request; first failure leaves no fabricated price (1.550031ms)\n✔ malformed JSON and interrupted body have distinct errors (0.500894ms)\n✔ KST midnight changes at UTC 15:00, not UTC midnight (1.174704ms)\n✔ Same day three successes stay one row, new date adds exactly one (10.652592ms)\n✔ LOCAL-SLOW: exact failure, last good retained, no failed day, recovery clears error (302.549636ms)\n✔ LOCAL-DENIED: exact failure, last good retained, no failed day, recovery clears error (1.439066ms)\n✔ LOCAL-LIMIT: exact failure, last good retained, no failed day, recovery clears error (0.783643ms)\n✔ LOCAL-OFFLINE: exact failure, last good retained, no failed day, recovery clears error (0.671076ms)\n✔ LOCAL-SCHEMA: exact failure, last good retained, no failed day, recovery clears error (0.717285ms)\n✔ HTTP 401 and 403 share explicit rejection, 429 uses Retry-After (0.905745ms)\n✔ Broken JSON, wrong currency, string price and future source time rejected (0.57885ms)\n✔ Stale source is honestly labeled even after a successful fetch (0.3167ms)\n✔ Nonconsecutive records are not called yesterday (0.285293ms)\n✔ Chart changes real data interval and keeps XAUUSD/KST for every option (0.949309ms)\n✔ Polling obeys 30 seconds, upstream Retry-After and failure backoff (0.560051ms)\n✔ Official package ID and all 17 publisher manifest file hashes/lengths match (14.559312ms)\n✔ All original official fixtures: same-ID daily update, 5 failures, last good, recovery once (21.65222ms)\n✔ USD to KRW multiplies the unrounded original and keeps unit quantity unchanged (1.100654ms)\n✔ gold evidence uses server earliest dates, independent of other assets and recent 90 days (6.043961ms)\n✔ gold failure suite uses the gold fetch pipeline and preserves daily records (158.6684ms)\n✔ Every required gate must pass; mocks alone never complete (1.078731ms)\n✔ Different source, stale/future time and unfinished evidence are rejected (0.614002ms)\n✔ Fixed result must contain all ten unique PASS IDs and no FAIL (0.516026ms)\n✔ HTTP 404 blocks completion even with all simulated checks PASS (1.885208ms)\n✔ Network denial is UNVERIFIED rather than HTTP 404 or PASS (0.422517ms)\n✔ Real check rejects HTML, invalid schema and missing CORS (2.428024ms)\n✔ Metal quotes keep symbol, unit and source; reject wrong symbol/currency and invalid values (1.318647ms)\n✔ Metal endpoint allowlists symbols, uses no DB/key, and preserves upstream rate limit (4.18305ms)\n✔ silver uses latest two real distinct KST dates; no gold or synthetic substitute (8.321722ms)\nℹ tests 45\nℹ suites 0\nℹ pass 45\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 415.322298\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
     },
     {
       "id": "build",
@@ -74,20 +80,20 @@
   ],
   "phase": "BLOCKED",
   "submission_ready": false,
-  "finished_at": "2026-10-16T23:39:55.512Z",
+  "finished_at": "2026-10-17T01:16:35.241Z",
   "session": {
-    "id": "2026-10-16T23-32-44-215Z",
-    "parent_session_id": "2026-10-16T12-51-21-882Z",
-    "parent_session_sha256": "1ec4b10f97ba361d1e2d62590c9ebc465556dc85f7714e6eea5be35259a4388f",
-    "started_at": "2026-10-16T23:32:44.216Z",
+    "id": "2026-10-17T01-15-17-221Z",
+    "parent_session_id": "2026-10-16T23-32-44-215Z",
+    "parent_session_sha256": "97731bbc9f135c72516ea41bffd49a425e64dce1da6437f32090844dfed4bc13",
+    "started_at": "2026-10-17T01:15:17.221Z",
     "start_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
-    "received_handoff_sha256": "9e2bedeccad52550b3927ae1e24a171727451b6af291131d27604aeee56654d7",
-    "handoff_equal": null,
+    "received_handoff_sha256": "e1bda66abca1b8f5ef5ff861d9c0a926bace587f8785b629685e346bd3c027f4",
+    "handoff_equal": true,
     "user_work_requests": 1,
     "service": "ChatGPT",
     "model": "UNVERIFIED",
-    "closed_at": "2026-10-16T23:39:55.512Z",
-    "elapsed_seconds": 431.296,
+    "closed_at": "2026-10-17T01:16:35.241Z",
+    "elapsed_seconds": 78.02,
     "end_base_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
     "end_commit": null,
     "within_limits": true

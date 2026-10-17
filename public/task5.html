@@ -8,6 +8,7 @@
 <p><a href="https://github.com/bonsago123-cloud/gold_board/blob/main/docs/task5/bitcoin-chart/fixed-tests.json">차트 고정 검사 10개</a> · <a href="https://github.com/bonsago123-cloud/gold_board/tree/main/handoff/chart/history">실행별 원본·인계 해시·시작 커밋</a> · <a href="/handoff.html">전체 검증 상태</a></p>
 <p><strong>위치:</strong> 정보판의 비트코인 과거 시세 차트.</p><p><strong>행동:</strong> 비트코인 탭 선택 → 시간 간격 선택 → 다시 불러오기.</p><p><strong>통과 모습:</strong> 선택 간격의 BTCUSD 차트 한 개, USD/BTC·출처·한국 시간대, 현재가·두 시각 유지.</p><p><strong>안 될 때:</strong> 차트 연결 실패 안내와 다시 불러오기. 외부 화면 연결만으로 실제 가격 표시 성공을 판정하지 않습니다.</p>
 <p><strong>AI에게 맡긴 일:</strong> 저장소 인계에 따른 차트 구현·검사와 원천 갱신 지연 안내 이동.</p><p><strong>직접 판단한 일:</strong> 학생 작성 필요.</p><p><strong>AI 제안을 따르지 않은 일 또는 이유:</strong> 학생 작성 필요.</p><p><strong>다음 도구 선택 기준:</strong> 학생 작성 필요.</p></section>
+<section><h2>현재 화면에 맞춘 차트 검사</h2><p>수정 검사: <strong id="chart-current-tests">미확인</strong> · UI·원화 검사: <strong id="bitcoin-ui-tests">미확인</strong></p><p>비트코인 탭을 선택한 뒤 차트를 검사하고, 검사용 위젯 코드의 변수 충돌을 수정했습니다. 합성 검사 결과이며 실제 시세 확인과는 별개입니다. 위의 원본 고정 검사와 과거 실패 기록은 그대로 보존합니다.</p></section>
 <hr><h2>이전 비트코인 현재가 실험 보관</h2>
 <aside class="notice"><strong>로컬 구현 검사 10/10 · 배포 후 재검증 필요</strong><p>실제 BTC API 수신 성공과 로컬 검사 통과를 확인했습니다. 업로드 전 운영 화면은 조회 준비 중입니다. 전체 기능 완료·과제 제출 가능 판정은 아직 BLOCKED입니다. <a href="/handoff.html">현재 검증 상태</a></p></aside>
 <section><h2>비트코인 익명 측정표</h2><p>공통 상한: 각 30분 / 사용자 작업 지시 10건. 도구/API 호출은 요청 수에 포함하지 않습니다.</p>
@@ -27,6 +28,8 @@ try {
  document.getElementById('chart-summary').textContent=`최신 전체 상태: ${r.phase} · 실제 배포·제출 증빙은 전체 검증 상태에서 확인하세요.`;
  document.getElementById('chart-time').textContent=r.session?.closed_at?`${r.session.elapsed_seconds}초`:'종료 미확인';
  document.getElementById('chart-requests').textContent=r.session?`${r.session.user_work_requests}건`:'미확인';
+ document.getElementById('chart-current-tests').textContent=r.gates.find(g=>g.id==='chart_current')?.status??'UNVERIFIED';
+ document.getElementById('bitcoin-ui-tests').textContent=r.gates.find(g=>g.id==='bitcoin_ui')?.status??'UNVERIFIED';
  document.getElementById('chart-tests').textContent=r.gates.find(g=>g.id==='chart_fixed')?.status??'UNVERIFIED';
 } catch {document.getElementById('chart-summary').textContent='최신 기록을 불러오지 못했습니다. 저장소 실행 기록을 확인하세요.';}
 </script>

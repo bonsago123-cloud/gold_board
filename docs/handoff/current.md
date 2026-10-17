@@ -4,8 +4,8 @@
 BTC 차트 한 기능. docs/task5/bitcoin-chart/NEXT.md와 고정10개를 따른다.
 
 ## 2. 현재 상태
-BLOCKED; 기준 커밋 b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce; 소스 해시 1010e3c5a32e67865be422ba6c71bd866ae32e233575995b47f5c51305c3b786. 세션 2026-10-16T23-32-44-215Z; 이전 세션 2026-10-16T12-51-21-882Z. 업로드 종료 커밋 미확인.
-변경: 비트코인에 금은 공통 heading/dashboard/quote/context/krw-price UI 적용. 동일 FX 클라이언트로 USD 원값×환율을 계산해 원화 표시, 환율 없음 및 이전 환율 안내. BTC 자동조회와 탭 이동 중지 추가. 추가 UI 브라우저 검사 10개 구현, finish/ci의 bitcoin_ui gate 및 Actions artifact에 연결. 실제 site 검사도 BTC 탭 선택 후 조회하도록 갱신. 기존 수정 누적 포함. 실제 사이트 탐색 실패 후 존재하지 않는 화면의 버튼을 계속 기다리던 자동화 문제 수정: 다음 독립 페이지 탐색은 계속하고 해당 화면의 미실행 동작은 UNVERIFIED로 기록.
+BLOCKED; 기준 커밋 b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce; 소스 해시 644c2870054271d8214687538a0c54632672869324b421912bc176b3e2ed2329. 세션 2026-10-17T01-15-17-221Z; 이전 세션 2026-10-16T23-32-44-215Z. 업로드 종료 커밋 미확인.
+변경: 차트 수정 검사 scripts/bitcoin-chart-check.mjs 추가: BTC 탭 선택 후 검사, mock 위젯 IIFE로 전역 const 충돌 제거. 기대값 유지, 별도 ID/입력 및 원본 ID 명시. finish/ci chart_current gate와 결과 artifact 연결. 과제 검증 페이지에 원본/수정본/UI 결과 구분 표시. 이전 UI·원화 변경 누적 포함.
 
 ## 3. 실행 명령
 npm ci → npx playwright install chromium → npm run handoff:resume → npm run chart:check. 실패 조사/수정 후 npm run handoff:finish. 같은 열린 세션의 resume은 시간/요청 수를 초기화하지 않는다.
@@ -13,6 +13,7 @@ npm ci → npx playwright install chromium → npm run handoff:resume → npm ru
 ## 4. 통과 검사
 - integrity: PASS
 - chart_fixed: FAIL
+- chart_current: PASS
 - bitcoin_ui: PASS
 - quote_fixed: PASS
 - regression: PASS
@@ -23,10 +24,10 @@ npm ci → npx playwright install chromium → npm run handoff:resume → npm ru
 - manual_all_functions: UNVERIFIED
 - submission: UNVERIFIED
 - usage: PASS
-원본: handoff/chart/history/2026-10-16T23-39-35-529Z.json. 모의검사는 실제 사이트 성공 증거가 아니다.
+원본: handoff/chart/history/2026-10-17T01-16-10-905Z.json. 모의검사는 실제 사이트 성공 증거가 아니다.
 
 ## 5. 남은 문제
-추가 UI 합성 브라우저 검사 10/10 PASS(Chromium153). 고정 차트 검사는 2/10 PASS, 나머지는 기존 첫화면 가시성 가정 및 mock 전역 const 재선언 문제. 고정 파일은 변경하지 않음. 이전 중단 세션은 경과시간과 interruption을 보존해 제한 내 완료로 인정하지 않았다. 운영 배포와 실제 시세/차트 데이터, 비교 모델과 학생 판단은 별도 확인 필요. 스크린샷 검사 환경에 한글 폰트가 없어 한국어 글리프 시각 확인은 제한됨. 운영 사이트 직접 브라우저 접근은 net::ERR_EMPTY_RESPONSE. HTTP HEAD는200이지만 브라우저 기능 성공 증거가 아니며 연결 실패 후 무효한 버튼 대기는 중단하고 탐색 실패 처리를 보완해 같은 세션에서 finish를 재실행했다. site gate는 미확인으로 유지. 최신 .site.json의 started가 이번 실행보다 이전이면 과거 결과이므로 사용 금지.
+원본 고정 차트 검사와 과거 실패는 보존하며 수정본으로 대체하지 않음. 실제 운영 차트·배포 일치 및 과제 비교/학생 판단 증빙은 별도 확인 필요. 수정본 합성 검사는 실제 시장 데이터 증거가 아님.
 - chart_fixed: 실행 로그 확인
 - site: 실행 로그 확인
 - live_chart: ENOENT: no such file or directory, open 'handoff/chart/review.json'
@@ -35,7 +36,7 @@ npm ci → npx playwright install chromium → npm run handoff:resume → npm ru
 - submission: ENOENT: no such file or directory, open 'handoff/chart/review.json'
 
 ## 6. 다음 행동
-최신 UI/KRW ZIP을 루트에 업로드 후 Actions bitcoin_ui 및 원본 차트 결과를 각각 확인한다. 배포에서 BTC 탭→조회→USD/KRW 값·환율 기준시각·차트 확인. 모든 실제 사이트 기능과 배포 바이트를 재검증해 review.json에 기록. 고정검사 기존 가정과 새 사용자 UI 요구 충돌을 숨기지 말고 별도 실험 여부를 결정한다. 종료마다 notes와 finish로 인계.
+누적 ZIP을 저장소 루트에 업로드. Actions chart_current 및 bitcoin_ui 결과 확인. 원본 chart_fixed 실패를 현재 수정본 오류로 오해해 UI를 되돌리지 말 것. 실제 배포 기능과 제출 증빙 확인 후 review.json에 실제 관찰 기록.
 담당 역할 이름 없이 이 문서와 세션 기록으로 이어간다. 종료 전 handoff/chart/notes.json에 changes/problems/next_action을 실제 내용으로 적고 finish 실행.
 
 ## 7. 건드리지 말 것

@@ -1,0 +1,48 @@
+{
+  "kind": "synthetic-browser",
+  "started_at": "2026-10-17T01:16:31.175Z",
+  "finished_at": "2026-10-17T01:16:32.782Z",
+  "browser": "153.0.8010.0",
+  "rows": [
+    {
+      "id": "BTC-UI01-tabs",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI02-matching-layout-and-KRW",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI03-chart-isolation-and-intervals",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI04-chart-failure-and-recovery",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI05-price-failure-preserves-KRW",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI06-auto-query-and-tab-stop",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI07-mobile",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI08-missing-FX",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI09-stale-FX",
+      "status": "PASS"
+    },
+    {
+      "id": "BTC-UI10-no-runtime-errors",
+      "status": "PASS"
+    }
+  ]
+}

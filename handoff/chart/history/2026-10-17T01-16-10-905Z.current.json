@@ -1,0 +1,88 @@
+{
+  "kind": "synthetic-browser-corrected",
+  "original_assignment_result": false,
+  "runner": "scripts/bitcoin-chart-check.mjs",
+  "at": "2026-10-17T01:16:30.826Z",
+  "rows": [
+    {
+      "id": "BTC-CHART01",
+      "input": "페이지 열기 → 비트코인 탭 선택",
+      "expected": "비트코인 차트 제목·호스트·간격 선택·다시 불러오기 표시",
+      "original_test_id": "T05-BCH01",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART02",
+      "input": "페이지 열기 → 비트코인 탭 선택",
+      "expected": "기본 1시간, BTCUSD 차트 설정, Asia/Seoul",
+      "original_test_id": "T05-BCH02",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART03",
+      "input": "간격 1/5/15/60/240/D/W/M 순서로 선택",
+      "expected": "각 선택이 위젯 설정에 반영되고 BTCUSD 유지",
+      "original_test_id": "T05-BCH03",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART04",
+      "input": "다시 불러오기",
+      "expected": "선택 간격 유지, 차트 새 요청",
+      "original_test_id": "T05-BCH04",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART05",
+      "input": "출처 링크 확인",
+      "expected": "TradingView HTTPS 출처 링크 표시",
+      "original_test_id": "T05-BCH05",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART06",
+      "input": "차트 설명 읽기",
+      "expected": "USD/BTC, 차트와 현재가의 출처 차이, 참고가격 안내",
+      "original_test_id": "T05-BCH06",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART07",
+      "input": "차트 제공 스크립트 요청 실패 후 다시 불러오기",
+      "expected": "실패 안내 표시, 재시도 버튼 사용 가능",
+      "original_test_id": "T05-BCH07",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART08",
+      "input": "실패 뒤 제공 스크립트 복구 후 다시 불러오기",
+      "expected": "새 차트 프레임 표시, 이전 실패 안내 해제",
+      "original_test_id": "T05-BCH08",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART09",
+      "input": "간격 변경·새로고침 5회 반복",
+      "expected": "차트 프레임 정확히 1개, 중복 위젯 없음",
+      "original_test_id": "T05-BCH09",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "BTC-CHART10",
+      "input": "차트 간격 변경·새로고침",
+      "expected": "현재가와 두 시각 유지, BTC 조회 또는 DB 저장 추가 요청 없음",
+      "original_test_id": "T05-BCH10",
+      "status": "PASS",
+      "reason": ""
+    }
+  ]
+}
