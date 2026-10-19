@@ -1,3 +1,7 @@
+# 완료 상태 안내
+
+BTC 차트 구현 및 실제 배포 확인이 끝났다. 현재 작업은 제출 보고서 정리까지 완료했다. 기능을 다시 만들거나 새 구현 세션을 시작하지 않는다. docs/task5/chart-restart/final/submission.md와 verification.md를 먼저 읽는다. 이후 새 기능을 요청받았을 때만 아래 반복 인계 절차를 적용한다. 기존 세션·고정검사는 보존한다. 보고서는 finish/build 때 scripts/task5-report.mjs가 생성한다.
+
 # 현재 작업의 유일한 시작점
 
 현재 작업: `bitcoin-chart-restart-v2`. 사용자가 기존 BTC 차트를 제거하고 부분 구현 후 반복 인계하도록 승인했다. 기존 현재가·원화·탭은 유지한다.

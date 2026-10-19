@@ -1,0 +1,49 @@
+{
+  "reconstructed_at": "2026-10-19T01:18:38.608478+00:00",
+  "method": "Restored exact bytes against pre-existing SHA-256 manifests; new commits created at reconstruction time, never backdated.",
+  "scope": "All files recorded by original sourceDigest: public (except generated handoff-status.json), api, scripts, tests, package.json, package-lock.json, AGENTS.md. Unrecorded documentation/config files are not claimed reconstructed.",
+  "versions": {
+    "start": {
+      "reconstructed_commit": "a167cd1c3150e8d41eb08be25474b1ff3e35b3d0",
+      "tree": "6bbfa66f88d2f712fb4fa8f71f6bb2fe6573e01d",
+      "original_manifest": "handoff/restart/history/2026-10-17T06-59-33-434Z-start.source.json",
+      "original_source_digest": "69b5609860a36bdc623de5f28457935af82d1683268c18e53a8e05d6881a2748",
+      "files_verified": 98,
+      "archive": "start.zip",
+      "archive_sha256": "de4f6c46a7c1b9d8b2972bb554702a3a7774b41720edbc757d792c3141fbc1a9"
+    },
+    "handoff": {
+      "reconstructed_commit": "259eb9f065abdf917c611b8a3e389923ff54a739",
+      "tree": "896144e6fcc215b8857987e7f70a28afe51619a3",
+      "original_manifest": "handoff/restart/history/2026-10-17T07-34-01-296Z-start.source.json",
+      "original_source_digest": "6b7c0018be391cd9294cfc78f500a84692b13e9a94ef5bdf6cc057e2e1250371",
+      "files_verified": 100,
+      "archive": "handoff.zip",
+      "archive_sha256": "8508904b2a850feab4994ebc82aca2d9d2507721e2e60e17f4c5e1dd15b1b19c"
+    },
+    "complete": {
+      "reconstructed_commit": "eba98f157036c1668183f356087b213093ee3ac8",
+      "tree": "17acdf4bfe27cc51c3f8c7b8b2cb4f89035f78cd",
+      "original_manifest": "handoff/restart/history/2026-10-17T07-39-06-682Z.source.json",
+      "original_source_digest": "72f14fd1d5e079018a60b2b696fd1294302e7a8dff3b14471b3cdf2cd720ce9f",
+      "files_verified": 100,
+      "archive": "complete.zip",
+      "archive_sha256": "eb55f0a5753109b263b792641fd69455db84fdca56e620df4c086376f24f56b8"
+    }
+  },
+  "pairs": {
+    "run1": {
+      "start": "a167cd1c3150e8d41eb08be25474b1ff3e35b3d0",
+      "end": "259eb9f065abdf917c611b8a3e389923ff54a739"
+    },
+    "run2": {
+      "start": "259eb9f065abdf917c611b8a3e389923ff54a739",
+      "end": "eba98f157036c1668183f356087b213093ee3ac8"
+    }
+  },
+  "original_uploads": {
+    "handoff": "e1ec0ca9b895665170284afc75b101e334d9af8b",
+    "complete": "533f7dfbbdf1742b74a9437cd33c075be29bf721"
+  },
+  "bundle_sha256": "14af72bd77ac8781627a6644385ece7ee1fce932bb57c0eb1dba15492d6693dd"
+}

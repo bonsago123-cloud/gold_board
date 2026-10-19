@@ -1,8 +1,8 @@
 {
   "phase": "FEATURE_COMPLETE",
   "finished_at": "2026-10-17T07:39:11.278Z",
-  "source_commit": "e1ec0ca9b895665170284afc75b101e334d9af8b",
-  "next_action": "새 기능을 만들지 말고 확인과 증거만 이어간다. (1) 사용자가 변경 파일을 GitHub에 직접 업로드한다. (2) Node 24와 고정 Playwright 1.62.1 환경(Actions 또는 npm ci 가능한 로컬)에서 npm run chart:check로 10/10을 다시 확인한다. (3) 배포 화면의 비트코인 탭에서 실제 차트 표시, 간격 8종 변경, 다시 불러오기를 사람이 눈으로 확인하고 결과를 기록한다. (4) 업로드 시작·종료 full commit과 과제 제출 증거(서로 다른 서비스 또는 모델의 두 실행, 동일 인계, 공개 비교표, 본인 판단 3줄)를 별도로 준비한다. 차트 외 기능 추가 금지.",
+  "source_commit": "533f7dfbbdf1742b74a9437cd33c075be29bf721",
+  "next_action": "기능 완료. 과제5 보고서와 제출문 정리 완료. 보고서 수정본 업로드 후 제출 링크 사용.",
   "gates": [
     {
       "id": "BTC-R01",
@@ -55,5 +55,6 @@
       "reason": ""
     }
   ],
-  "submission_ready": false
+  "submission_ready": false,
+  "reviewed_at": "2026-10-19T00:48:00Z"
 }

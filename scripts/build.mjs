@@ -1,3 +1,5 @@
+import {generateTask5Report} from './task5-report.mjs';
+await generateTask5Report();
 import { cp, mkdir, rm } from 'node:fs/promises';
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist');

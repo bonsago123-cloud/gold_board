@@ -1,3 +1,14 @@
+# C26 증빙 보완 — 2026-10-19
+
+첫 실행 시작98개·인계100개·완료100개 파일을 당시 저장한 SHA-256 manifest와 전부 일치하도록 복원했다. 실제 소스 ZIP과 Git bundle, 두 실행의 시작·종료 고정 커밋 쌍을 source-versions에 보존했다. 복원 커밋은 2026-10-19 새로 생성한 것이며 과거 작성으로 소급하지 않았다. 범위는 당시 manifest에 기록된 소스 전체이며 기록 밖의 문서·설정까지 복원했다고 주장하지 않는다.
+검증 및 사용법: docs/task5/chart-restart/final/source-versions/README.md. 과거 시작 버전 불완전 안내는 이 복원 결과로 보완한다.
+
+# 완료 후 제출 정리 안내 — 2026-10-19
+
+차트 구현 성공. 완료 업로드 커밋 533f7dfbbdf1742b74a9437cd33c075be29bf721. Actions와 고정 환경 재검사, 실제 페이지 확인까지 완료했다. 아래의 당시 미확인 항목 중 설치 환경·실제 차트 확인은 docs/task5/chart-restart/final/verification.md로 보완했다. 보고서와 제출문은 같은 final 폴더에 있다. 기능 재구현이나 새 실험은 필요 없다. 두 작업자의 원본 인수인계는 history의 outgoing/received 파일 그대로 보존한다.
+
+---
+
 # 현재 인수인계 — BTC 차트 새 작업
 
 ## 1. 목표

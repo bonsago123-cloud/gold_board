@@ -1,0 +1,32 @@
+{
+  "reviewed_at": "2026-10-19T00:48:00Z",
+  "start_base_commit": "b4cbb2222a879e5e2d196d6a7d18fbafc4bf99ce",
+  "handoff_commit": "e1ec0ca9b895665170284afc75b101e334d9af8b",
+  "completion_commit": "533f7dfbbdf1742b74a9437cd33c075be29bf721",
+  "actions_url": "https://github.com/bonsago123-cloud/gold_board/actions/runs/39182055639",
+  "actions_result": "고정 검사·회귀 검사·빌드·증거 저장 모두 성공. Node 24, npm ci 및 Chromium 설치 성공.",
+  "independent_recheck": "Node 24.19.0 / Playwright 1.62.1에서 동일 고정 검사 10/10, 회귀 46/46, 빌드 통과.",
+  "live_observations": [
+    "무로그인 정보판에서 비트코인 탭 진입",
+    "실제 Bitstamp BTCUSD 차트 선·가격 표시",
+    "시간 간격 1시간 → 1일 변경 및 다시 불러오기",
+    "현재가 달러·원화 표시 정상"
+  ],
+  "live_scope": "실제 화면 확인은 위 항목에 한정한다. 8종 간격·오류 주입·복구·중복 방지는 고정 합성 검사로 확인했다.",
+  "handoff_sha256": "3f05ae10a55da6209928f036b57e1b21e7992eedce4416bf08a8dd1b5ac9280a",
+  "service_difference": "세션 기록상 서로 다른 서비스 사용. 구체적인 모델명은 미확인이나 과제는 서비스 또는 모델 차이를 허용한다.",
+  "gaps": "기능 구현을 막은 인수인계 누락은 보고되지 않았다. 다음 실행의 설치 환경 제약은 종료 인계에 기록됐으며 이후 고정 환경 재검사와 Actions 통과로 보완했다.",
+  "source_note": "첫 실행 시작98개·인계100개·완료100개 파일을 당시 저장한 SHA-256 manifest와 전부 일치하도록 복원했다. 실제 소스 ZIP과 Git bundle, 두 실행의 시작·종료 고정 커밋 쌍을 source-versions에 보존했다. 복원 커밋은 2026-10-19 새로 생성한 것이며 과거 작성으로 소급하지 않았다. 범위는 당시 manifest에 기록된 소스 전체이며 기록 밖의 문서·설정까지 복원했다고 주장하지 않는다.",
+  "attestation_note": "새 대화에 이전 대화 전문을 전달하지 않았는지와 무료 AI 사용 여부는 사용자 실행 사실에 대한 항목이며 코드 검사만으로 증명하지 않는다. 도구 선택 기준 문장은 제출자가 확인할 제안이다.",
+  "source_versions": {
+    "run1": {
+      "start": "a167cd1c3150e8d41eb08be25474b1ff3e35b3d0",
+      "end": "259eb9f065abdf917c611b8a3e389923ff54a739"
+    },
+    "run2": {
+      "start": "259eb9f065abdf917c611b8a3e389923ff54a739",
+      "end": "eba98f157036c1668183f356087b213093ee3ac8"
+    }
+  },
+  "source_evidence_path": "docs/task5/chart-restart/final/source-versions"
+}

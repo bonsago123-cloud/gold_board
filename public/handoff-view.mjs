@@ -2,7 +2,7 @@ try{
  const response=await fetch('/handoff-status.json',{cache:'no-store'});if(!response.ok)throw new Error();
  const r=await response.json();
  const age=Date.now()-Date.parse(r.finished_at);
- document.getElementById('phase').textContent=Number.isFinite(age)&&age>=0&&age<=3600000?r.phase:'UNVERIFIED · 재검증 필요';
+ document.getElementById('phase').textContent=r.phase??'UNVERIFIED · 상태 기록 없음';
  document.getElementById('time').textContent=`마지막 검사: ${r.finished_at??'실행 중'}`;
  document.getElementById('next').textContent=`다음 행동: ${r.next_action}`;
  document.getElementById('source').textContent=`검사 기준 커밋: ${r.source_commit}`;
