@@ -1,0 +1,28 @@
+{
+  "id": "2026-10-17T07-34-01-296Z",
+  "parent_session_id": "2026-10-17T06-59-33-434Z",
+  "parent_session_sha256": "0cf0d98530f8ca61e5881f1d41e329e413e5f473ca32431638b259ef1be964d5",
+  "started_at": "2026-10-17T07:34:01.297Z",
+  "start_commit": "e1ec0ca9b895665170284afc75b101e334d9af8b",
+  "start_source_digest": "6b7c0018be391cd9294cfc78f500a84692b13e9a94ef5bdf6cc057e2e1250371",
+  "received_handoff_sha256": "3f05ae10a55da6209928f036b57e1b21e7992eedce4416bf08a8dd1b5ac9280a",
+  "handoff_equal": true,
+  "user_work_requests": 3,
+  "service": "Claude (claude.ai 코드 세션, 클라우드 컨테이너)",
+  "model": "UNVERIFIED (세션 설정값 claude-sonnet-5-5, 실제 제공 모델은 확인되지 않음)",
+  "runs": [
+    "2026-10-17T07-34-13-494Z",
+    "2026-10-17T07-34-56-580Z",
+    "2026-10-17T07-39-06-682Z"
+  ],
+  "closed_at": "2026-10-17T07:39:11.278Z",
+  "interrupted": false,
+  "end_commit": null,
+  "end_base_commit": "e1ec0ca9b895665170284afc75b101e334d9af8b",
+  "end_source_digest": "72f14fd1d5e079018a60b2b696fd1294302e7a8dff3b14471b3cdf2cd720ce9f",
+  "elapsed_seconds": 309.981,
+  "within_limits": true,
+  "failed_rounds": 1,
+  "passed": 10,
+  "outgoing_handoff_sha256": "a3ae06f6f82dcc53b595a2616673510f9055e60153f2f18eae9773a034a3f818"
+}

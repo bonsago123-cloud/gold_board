@@ -3,10 +3,10 @@
   "current_feature": {
     "id": "bitcoin-chart-restart-v2"
   },
-  "phase": "IN_PROGRESS",
+  "phase": "FEATURE_COMPLETE",
   "submission_ready": false,
   "handoff_document": "docs/handoff/current.md",
   "config": "docs/task5/chart-restart/fixed-tests.json",
   "runtime_report": "handoff/restart/latest.json",
-  "last_session": "2026-10-17T06-59-33-434Z"
+  "last_session": "2026-10-17T07-34-01-296Z"
 }
